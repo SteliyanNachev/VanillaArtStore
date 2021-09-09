@@ -9,6 +9,8 @@ namespace VanillaArtStore
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using VanillaArtStore.Data;
+    using VanillaArtStore.Infrastructure;
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -19,7 +21,7 @@ namespace VanillaArtStore
         public void ConfigureServices(IServiceCollection services)
         {
             services
-                .AddDbContext<ApplicationDbContext>(options => options
+                .AddDbContext<VanillaArtDbContext>(options => options
                     .UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDatabaseDeveloperPageExceptionFilter();
@@ -31,13 +33,15 @@ namespace VanillaArtStore
                          options.Password.RequireNonAlphanumeric = false;
                          options.Password.RequireUppercase = false;
                      })
-                    .AddEntityFrameworkStores<ApplicationDbContext>();
+                    .AddEntityFrameworkStores<VanillaArtDbContext>();
 
             services.AddControllersWithViews();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.PrepareDatabase();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
