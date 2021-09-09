@@ -1,0 +1,33 @@
+/*>>>>>>>> Bredcrumb <<<<<<<<<*/
+
+.breadcrumb-contents {
+    height: 435px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    @include desktops {
+        height: 594px;
+    }
+    h2 {
+        font-size: 36px;
+        font-family: 'Playfair Display', serif;
+        font-weight: 700;
+    }
+    .breadcrumb {
+        background: transparent;
+        justify-content: center;
+        .breadcrumb-item {
+            font-size: 12px;
+            &+.breadcrumb-item:before {
+                color: #fff;
+            }
+            a {
+                &:hover {
+                    color: #FFF;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,50 @@
+/*>>>>>>>> Color <<<<<<<<<*/
+
+.text-primary {
+    color: $primary-color !important;
+    &:hover {
+        color: $primary-color !important;
+    }
+}
+
+.text-white {
+    color: #fff;
+}
+
+.text-black {
+    color: #292929;
+}
+
+.text-black-2 {
+    color: #1a1f2b;
+}
+
+/*
+#929292
+#292929
+#ebebeb
+*/
+
+.bg-gray {
+    background: #f6f6f6;
+}
+
+.bg-white {
+    background: #f6f6f6;
+}
+
+.bg-yellow {
+    background: #F1C40F;
+}
+
+.bg-red {
+    background: #f6f6f6;
+}
+
+.bg-green {
+    background: #A0D468;
+}
+
+.bg-beige {
+    background: #f5f5dc;
+}

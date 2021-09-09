@@ -1,0 +1,31 @@
+.product-countdown {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  margin: 30px 0; }
+  .product-countdown .single-countdown {
+    height: 45px;
+    width: 45px;
+    text-align: center;
+    line-height: 45px;
+    margin-right: 10px;
+    border-radius: 50%;
+    background-color: #eaeaea; }
+    .product-countdown .single-countdown__time {
+      font-size: 16px;
+      display: inline-block;
+      color: #333; }
+    .product-countdown .single-countdown__text {
+      font-size: 11px;
+      display: block;
+      color: #333;
+      line-height: 1;
+      margin-top: 5px;
+      text-transform: uppercase; }
+    .product-countdown .single-countdown:last-child {
+      margin-right: 0; }
+
+/*----- hot deals item start -----*/

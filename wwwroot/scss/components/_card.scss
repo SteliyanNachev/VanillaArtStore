@@ -1,0 +1,377 @@
+/*>>>>>>>> Card <<<<<<<<<*/
+
+.rating-block {
+    span {
+        // color: $yellow-color;
+        color: #b6b6b6;
+        font-size: 16px;
+        &.star_on {
+            color: $yellow-color;
+        }
+    }
+}
+
+/*~~~ Cards ~~~*/
+
+/*++ Product Cards ++*/
+
+.product-card {
+    margin-bottom: -6px;
+    .image {
+        position: relative;
+        img {
+            display: block;
+            width: 100%;
+        }
+    }
+    .description-block {
+        padding-top: 20px; // padding-bottom: 20px;
+        &.list-description {
+            display: none;
+            padding-top: 20px;
+            @include mobile-lg {
+                padding-top: 10px;
+            }
+        }
+        .description-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 10px;
+            .description-tag {
+                color: $gray-color;
+                font-size: 12px;
+                margin-bottom: 0;
+                font-weight: 400;
+                &:hover {
+                    a {
+                        color: $primary-color;
+                    }
+                }
+            }
+        }
+        .post-title {
+            color: $black-color;
+            font-size: 14px;
+            line-height: 22px;
+            font-weight: 400;
+            margin-bottom: 5px;
+            text-transform: capitalize;
+            &:hover {
+                a {
+                    color: $primary-color;
+                }
+            }
+        }
+    }
+    .hover-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        visibility: hidden;
+        opacity: 0;
+        transition: .4s;
+        .hover-image {
+            display: block;
+            img {
+                width: 100%;
+            }
+        }
+        .hover-btns {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            max-width: 195px;
+            width: 100%;
+            padding: 10px 0;
+            margin-top: 25px;
+            .sin-btn {
+                font-size: 0;
+                display: inline-block;
+                border-left: 1px solid $border-color;
+                padding: 0 22px;
+                i {
+                    color: $black-color;
+                    font-size: 20px;
+                    line-height: 37px;
+                    transition: .4s;
+                }
+                &:hover {
+                    i {
+                        color: $primary-color;
+                    }
+                }
+            }
+        }
+    }
+    .product-badge {
+        position: absolute;
+        top: 10px;
+        z-index: 1;
+        text-transform: capitalize;
+        left: 10px;
+        &-2 {
+            position: absolute;
+            top: 10px;
+            z-index: 1;
+            text-transform: capitalize;
+            right: 10px;
+        }
+    }
+    &:hover {
+        .hover-content {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+    &.product-type-list {
+        @include mobile-lg {
+            display: flex;
+        }
+        .image {
+            @include mobile-lg {
+                margin-right: 20px;
+                min-width: 250px;
+            }
+        }
+        .description-header {
+            flex-direction: column;
+            align-items: flex-start;
+            .rating-block {
+                margin-top: 18px;
+            }
+        }
+        .description-block {
+            display: none;
+            &.list-description {
+                display: block;
+            }
+        }
+        .price {
+            margin-top: 18px;
+        }
+        .product-article {
+            padding-top: 20px;
+            margin-top: 20px;
+            @include tablet {
+                padding-top: 30px;
+                margin-top: 30px;
+            }
+            p {
+                display: block;
+                color: #707070;
+                &:last-child {
+                    margin-bottom: 0;
+                }
+            }
+        }
+    }
+}
+
+.price {
+    color: $gray-color;
+    font-family: 'Karla', sans-serif;
+    font-size: 16px;
+    margin-top: 12px;
+    &-new {
+        color: $primary-color;
+        font-weight: 600;
+    }
+}
+
+/*+ Product Card Badge +*/
+
+.product-badge {
+    background: $primary-color;
+    color: white;
+    font-size: 12px;
+    padding: 0;
+    z-index: 1;
+    border-radius: 100%;
+    font-weight: 500;
+    height: 50px;
+    width: 50px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-badge-2 {
+    background: $orange-fade-color;
+    color: white;
+    font-size: 12px;
+    padding: 0;
+    z-index: 1;
+    border-radius: 100%;
+    font-weight: 500;
+    height: 50px;
+    width: 50px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-badge-3 {
+    min-width: 25px;
+    line-height: 23px;
+    border-radius: 100%;
+    padding: 2px 0 0;
+    text-align: center;
+    background: #24bbdb;
+    color: white;
+    font-size: 12px;
+}
+
+/*++ Method Cards ++*/
+
+.method-card {
+    text-align: center;
+    .icon {
+        margin-bottom: 25px;
+    }
+    .text {
+        padding: 0 15px;
+        @include mobile {
+            padding: 0 110px;
+        }
+        @include mobile-lg {
+            padding: 0px;
+        }
+        @include desktops {
+            padding: 0 40px;
+        }
+        .method-title {
+            font-size: 12px;
+            color: #292929;
+            font-weight: 700;
+            margin-bottom: 22px;
+            @include desktops {
+                margin-bottom: 38px;
+            }
+            &:hover {
+                a {
+                    color: $primary-color;
+                }
+            }
+        }
+        p {
+            color: #929292;
+            letter-spacing: .025em;
+            margin-bottom: 16px;
+            &:last-child {
+                margin-bottom: 0 !important;
+            }
+        }
+    }
+}
+
+/*++ Blog Cards ++*/
+
+.blog-card {
+    margin-bottom: -8px;
+    .blog-image {
+        position: relative;
+        display: block;
+        margin-bottom: 22px;
+        img {
+            width: 100%;
+        }
+        .plus-icon {
+            background: rgba(0, 0, 0, 0.4);
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            transform: scale(.6);
+            opacity: 0;
+            transition: .4s;
+            i {
+                font-size: 22px;
+            }
+        }
+        &:hover {
+            .plus-icon {
+                opacity: 1;
+                transform: scale(1)
+            }
+        }
+    }
+    .blog-gallery-slider,
+    .blog-video {
+        position: relative;
+        margin-bottom: 22px;
+    }
+    .text {
+        .blog-title {
+            font-size: 18px;
+            color: #292929;
+            text-transform: capitalize;
+            font-weight: 400;
+            margin-bottom: 15px;
+            display: block;
+            font-family: 'Playfair Display', serif;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            display: block;
+            &:hover {
+                a {
+                    color: $primary-color;
+                }
+            }
+        }
+        .post-meta {
+            margin-right: 10px;
+            display: block;
+            color: #24bbdb;
+            font-size: 12px;
+            line-height: 15px;
+            margin-bottom: 15px;
+            i {
+                margin-right: 10px;
+            }
+        }
+        p {
+            color: #707070;
+            line-height: 23px;
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+    .date-badge {
+        background: #fff;
+        position: absolute;
+        top: 20px;
+        right: 25px;
+        text-align: center;
+        box-shadow: 1px 1px 1px 0 rgba(0, 0, 0, .1);
+        padding: 5px 8px 0;
+        @include mobile-lg {
+            padding: 10px 8px;
+        }
+        .month {
+            display: block;
+            font-size: 12px;
+            color: #929292;
+            margin-bottom: 10px;
+        }
+    }
+    &.card-style-list {
+        .blog-image {
+            @include tablet {
+                margin-bottom: 0;
+            }
+        }
+    }
+}

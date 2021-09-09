@@ -1,0 +1,49 @@
+/*>>>>>>>> Images <<<<<<<<<*/
+
+.bg-image {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 1;
+}
+
+.title-sep {
+    position: relative;
+    z-index: 1;
+    &:before {
+        width: 70%;
+        left: 0;
+        right: 0;
+        position: absolute;
+        background: url(../image/title-sep.png);
+        content: "";
+        height: 5px;
+        background-repeat: repeat-x;
+        margin: 0 auto;
+        top: calc(50% - 5px);
+        z-index: -1;
+    }
+    img {
+        background: #fff;
+    }
+}
+
+.border-bottom {
+    border-bottom: 1px solid #ebebeb;
+}
+
+.overflow-image {
+    overflow: hidden;
+    width: 100%;
+    display: block;
+    img {
+        transform: scale(1);
+        transition: .4s;
+        width: 100%;
+    }
+    &:hover {
+        img {
+            transform: scale(1.1);
+        }
+    }
+}

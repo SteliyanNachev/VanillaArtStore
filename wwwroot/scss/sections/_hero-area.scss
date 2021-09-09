@@ -1,0 +1,292 @@
+/*>>>>>>>> Hero Area <<<<<<<<<*/
+
+.hero-slider {
+    .hero-content {
+        display: flex;
+        align-items: center;
+        color: #fff;
+        padding-top: 0px;
+        height: 600px;
+        @include tablet {
+            height: 991px;
+            padding-top: 60px;
+        }
+        &.bg-image {
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .icon {
+            display: block;
+            width: 50px;
+            margin: 0 auto;
+            @include tablet {
+                display: flex;
+                justify-content: center;
+                width: auto;
+            }
+        }
+        h1 {
+            text-transform: capitalize;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            margin-top: 15px;
+            @include mobile {
+                font-size: 30px;
+            }
+            @include tablet {
+                font-size: 72px;
+                margin-top: 0px;
+            }
+        }
+        p {
+            color: #fff;
+            text-transform: capitalize;
+            font-family: 'Rubik', sans-serif;
+            margin-top: 30px;
+            margin-bottom: 0;
+            font-size: 14px;
+            @include tablet {
+                font-size: 16px;
+            }
+        }
+        .slider-btn {
+            margin-top: 40px;
+            .btn {
+                max-width: 150px;
+                height: 40px;
+                @include tablet {
+                    height: 60px;
+                    width: 183px;
+                }
+            }
+        }
+    }
+    &-2 {
+        .hero-content {
+            display: flex;
+            align-items: center;
+            color: #292929;
+            padding-top: 0px;
+            height: 600px;
+            @include tablet {
+                height: 765px;
+                padding-top: 100px;
+            }
+            &.bg-image {
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            h1 {
+                text-transform: capitalize;
+                font-weight: 700;
+                font-family: 'Playfair Display', serif;
+                font-size: 30px;
+                @include mobile-lg {
+                    font-size: 50px;
+                }
+                @include tablet {
+                    font-size: 70px;
+                }
+                &:first-child {
+                    // margin-bottom: 7px;
+                    @include tablet {
+                        margin-bottom: -7px;
+                    }
+                }
+            }
+            p {
+                font-size: 16px;
+                color: #292929;
+                text-transform: capitalize;
+                font-family: 'Oswald', sans-serif;
+                letter-spacing: .025em;
+                margin-bottom: 0;
+                margin-top: 25px;
+                @include desktops {
+                    margin-top: 50px;
+                }
+            }
+            .slider-btn {
+                margin-top: 30px;
+                @include mobile-lg {
+                    margin-top: 60px;
+                }
+                .btn {
+                    border-color: #292929 !important;
+                    color: #292929;
+                    font-family: 'Oswald', sans-serif;
+                    height: 40px;
+                    max-width: 150px;
+                    @include tablet {
+                        height: 60px;
+                        max-width: 170px;
+                    }
+                    &:hover {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+    &-3 {
+        .hero-content {
+            display: flex;
+            align-items: center;
+            color: #fff;
+            height: 600px;
+            padding-top: 60px;
+            @include tablet {
+                height: 951px;
+                padding-top: 140px;
+            }
+            &.bg-image {
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            h1 {
+                text-transform: capitalize;
+                font-weight: 700;
+                font-family: 'Playfair Display', serif;
+                font-size: 30px;
+                @include mobile {
+                    font-size: 45px;
+                }
+                @include tablet {
+                    margin-top: 15px;
+                    font-size: 72px;
+                }
+            }
+            p {
+                font-size: 16px;
+                color: #fff;
+                text-transform: capitalize;
+                font-family: 'Rubik', sans-serif;
+                margin-top: 30px;
+                margin-bottom: 0;
+                line-height: 28px;
+            }
+            .slider-btn {
+                margin-top: 40px;
+                @include tablet {
+                    margin-top: 90px;
+                }
+                .btn {
+                    max-width: 150px;
+                    height: 40px;
+                    @include tablet {
+                        height: 60px;
+                        width: 183px;
+                    }
+                }
+            }
+        }
+    }
+    &-4 {
+        .hero-content {
+            display: flex;
+            align-items: center;
+            color: #292929;
+            padding-left: 15px;
+            padding-right: 15px;
+            margin-top: 30px;
+            height: 450px;
+            @include mobile-lg {
+                margin-top: 50px;
+                padding-left: 30px;
+                padding-right: 30px;
+            }
+            @include tablet {
+                height: 565px;
+            }
+            @include desktops {
+                padding-left: 50px;
+                padding-right: 50px;
+            }
+            @include desktops {
+                padding-left: 100px;
+                padding-right: 100px;
+            }
+            &.bg-image {
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            h1 {
+                text-transform: capitalize;
+                font-weight: 700;
+                font-family: 'Playfair Display', serif;
+                font-size: 30px;
+                @include mobile-lg {
+                    font-size: 38px;
+                }
+                @include tablet {
+                    font-size: 55px;
+                }
+                @include desktops {
+                    font-size: 60px;
+                }
+                &:first-child {
+                    @include desktops {
+                        margin-bottom: -7px;
+                    }
+                }
+            }
+            p {
+                font-size: 16px;
+                color: #292929;
+                text-transform: capitalize;
+                font-family: 'Rubik', sans-serif;
+                margin-top: 30px;
+                margin-bottom: 0;
+                line-height: 28px;
+                padding: 0 40px 0 0;
+            }
+            .slider-btn {
+                margin-top: 40px;
+                @include tablet {
+                    margin-top: 60px;
+                }
+                @include desktops {
+                    margin-top: 90px;
+                }
+                .btn {
+                    border-color: #292929 !important;
+                    color: #292929;
+                    font-family: 'Oswald', sans-serif;
+                    max-width: 150px;
+                    height: 40px;
+                    @include tablet {
+                        height: 60px;
+                        width: 183px;
+                    }
+                    &:hover {
+                        color: #fff;
+                    }
+                }
+            }
+        }
+    }
+    &-5 {
+        .hero-content {
+            height: 800px;
+            @media #{$md-layout} {
+                height: 500px;
+            }
+            @media #{$sm-layout} {
+                height: 400px;
+            }
+            @media #{$small-mobile} {
+                height: 340px;
+            }
+            h1 {
+                @media #{$sm-layout} {
+                    font-size: 32px;
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VanillaArtStore", "VanillaArtStore.csproj", "{546F6A75-8441-4B02-ADCC-C5FCD57CF217}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{546F6A75-8441-4B02-ADCC-C5FCD57CF217}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{546F6A75-8441-4B02-ADCC-C5FCD57CF217}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{546F6A75-8441-4B02-ADCC-C5FCD57CF217}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{546F6A75-8441-4B02-ADCC-C5FCD57CF217}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6B01F11D-0AFA-4104-B71E-38E1B5081881}
+	EndGlobalSection
+EndGlobal

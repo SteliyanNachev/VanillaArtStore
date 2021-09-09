@@ -1,0 +1,31 @@
+// product countdown
+.product-countdown {
+    display: flex;
+    justify-content: center;
+    .single-countdown {
+        width: 25%;
+        padding: 12px 0;
+        text-align: center;
+        background-color: #444;
+
+        &__time {
+            font-size: 20px;
+            display: inline-block;
+            color: $white-color;
+        }
+
+        &__text {
+            font-size: 11px;
+            font-weight: 300;
+            display: block;
+            color: $white-color;
+            line-height: 1;
+            margin-top: 5px;
+            text-transform: uppercase;
+        }
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}
+/*----- hot deals item start -----*/

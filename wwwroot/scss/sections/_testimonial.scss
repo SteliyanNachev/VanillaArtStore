@@ -1,0 +1,37 @@
+/*>>>>>>>> Testimonial <<<<<<<<<*/
+
+.testimonial-content {
+    text-align: center;
+    .testimonial-avatar {
+        width: 70px;
+        height: 70px;
+        border: 2px solid white;
+        border-radius: 100%;
+        margin: auto;
+        margin-bottom: 40px;
+        position: relative;
+    }
+    p {
+        font-size: 16px;
+        color: #777;
+        line-height: 30px;
+        margin: auto;
+        padding-bottom: 38px;
+        letter-spacing: .025em;
+        font-weight: 400;
+        font-style: italic;
+    }
+    .quote-image {
+        margin-bottom: 32px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .author {
+        font-size: 14px;
+        color: #292929;
+        font-weight: 500;
+        text-transform: uppercase;
+        position: relative;
+    }
+}
