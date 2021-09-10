@@ -1,9 +1,11 @@
 ﻿namespace VanillaArtStore.Controllers
 {
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
     using System.Collections.Generic;
     using System.Linq;
     using VanillaArtStore.Data;
+    using VanillaArtStore.Data.Models;
     using VanillaArtStore.Models.Products;
 
     public class ProductsController : Controller
@@ -19,9 +21,41 @@
         });
 
         [HttpPost]
-        public IActionResult Add(AddProductFormModel product)
+        public IActionResult Add(AddProductFormModel product, IEnumerable<IFormFile> images)
         {
-            return View();
+            if (images.Any(i=>i.Length > 4 * 1024 * 1024))
+            {
+                this.ModelState.AddModelError("Images","Images should be maximum 4Mb.");
+            }
+
+            //Image should be saved explained at -32min at lecture working with data.
+
+            if (!this.data.Categories.Any(c=>c.Id == product.CategoryId))
+            {
+                this.ModelState.AddModelError(nameof(product.CategoryId), "Category does not exist!");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                product.Categories = this.GetProductCategories();
+
+                return View(product);
+            }
+
+            var productData = new Product
+            {
+                Name = product.Name,
+                Price = product.Price,
+                Description = product.Description,
+                ImageUrl = product.ImageUrl,
+                InStockQuantity = product.InStockQuantity,
+                CategoryId = product.CategoryId
+            };
+
+            this.data.Products.Add(productData);
+            this.data.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
         }
 
         private IEnumerable<ProductCategoryViewModel> GetProductCategories()

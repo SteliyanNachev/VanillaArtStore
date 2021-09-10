@@ -7,7 +7,9 @@
     public class AddProductFormModel
     {
         [Required]
-        [MaxLength(ProductNameMaxLenght)]
+        [StringLength(ProductNameMaxLenght,
+            MinimumLength = ProductNameMinLenght,
+            ErrorMessage ="Name should be between {2} and {1} characters long !")]
         [MinLength(ProductNameMinLenght)]
         public string Name { get; init; }
 
