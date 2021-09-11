@@ -1,3 +1,5 @@
+@model IEnumerable<ProductListingViewModel>
+
 <html lang="en">
 
 <body>
@@ -177,375 +179,53 @@
                     <div class="tab-content space-db--30" id="myTabContent">
                         <div class="tab-pane fade show active" id="shop" role="tabpanel" aria-labelledby="shop-tab">
                             <div class="row">
-                                <div class="col-lg-3 col-sm-6 mb--30">
-                                    <div class="product-card">
-                                        <div class="image">
-                                            <img src="image/products/home-1/product-1.jpg" alt="">
-                                            <div class="hover-content">
-                                                <a href="product-details.html" class="hover-image">
-                                                    <img src="image/products/home-1/product-2.jpg" alt="">
-                                                </a>
-
-                                                <div class="hover-btns">
-                                                    <a href="cart.html" class="sin-btn"><i class="ion-bag"></i></a>
-                                                    <a href="compare.html" class="sin-btn">
-                                                        <i class="ion-android-options"></i>
+                                @foreach (var product in Model)
+                                {
+                                    <div class="col-lg-3 col-sm-6 mb--30">
+                                        <div class="product-card">
+                                            <div class="image">
+                                                <img src="@product.ImageUrl" alt="">
+                                                <div class="hover-content">
+                                                    <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id" class="hover-image">
+                                                        <img src="image/products/home-1/product-2.jpg" alt="">
                                                     </a>
-                                                    <a href="javascript:" class="sin-btn" data-toggle="modal"
-                                                       data-target="#quickModal"><i class="ion-android-open"></i></a>
-                                                </div>
+                                                    <div class="hover-btns">
+                                                        <a href="cart.html" class="sin-btn"><i class="ion-bag"></i></a>
+                                                        <a href="compare.html" class="sin-btn">
+                                                            <i class="ion-android-options"></i>
+                                                        </a>
+                                                        <a href="javascript:" class="sin-btn" data-toggle="modal"
+                                                           data-target="#quickModal"><i class="ion-android-open"></i></a>
+                                                    </div>
 
-                                            </div>
-                                            <span class="product-badge">new</span>
-                                            <span class="product-badge-2">-5%</span>
-                                        </div>
-                                        <div class="description-block">
-                                            <div class="description-header">
-                                                <h5 class="description-tag"><a href="">Fashion Manufacturer</a></h5>
-                                                <div class="rating-block">
-                                                    <span class="ion-android-star-outline star_on"></span>
-                                                    <span class="ion-android-star-outline star_on"></span>
-                                                    <span class="ion-android-star-outline star_on"></span>
-                                                    <span class="ion-android-star-outline"></span>
-                                                    <span class="ion-android-star-outline"></span>
                                                 </div>
+                                                <span class="product-badge">new</span>
+                                                <span class="product-badge-2">-5%</span>
                                             </div>
-                                            <h3 class="post-title">
-                                                <a href="product-details.html">
-                                                    zyfg men sweatshirts
-                                                    casual ethnic
-                                                    style pattern
-                                                </a>
-                                            </h3>
+                                            <div class="description-block">
+                                                <div class="description-header">
+                                                    <h5 class="description-tag"><a href="">Fashion Manufacturer</a></h5>
+                                                    <div class="rating-block">
+                                                        <span class="ion-android-star-outline star_on"></span>
+                                                        <span class="ion-android-star-outline star_on"></span>
+                                                        <span class="ion-android-star-outline star_on"></span>
+                                                        <span class="ion-android-star-outline"></span>
+                                                        <span class="ion-android-star-outline"></span>
+                                                    </div>
+                                                </div>
+                                                <h3 class="post-title">
+                                                    <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">
+                                                       @product.Description
+                                                    </a>
+                                                </h3>
 
-                                            <p class="mb-0 price">
-                                                <del class="price-old">€500.00</del> <span class="price-new">€500.00</span>
-                                            </p>
+                                                <p class="mb-0 price">
+                                                    <del class="price-old">@product.Price Лв.</del> <span class="price-new">@product.Price Лв.</span>
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6 mb--30">
-                                    <div class="product-card">
-                                        <div class="image">
-                                            <img src="image/products/home-1/product-3.jpg" alt="">
-                                            <div class="hover-content">
-                                                <a href="product-details.html" class="hover-image">
-                                                    <img src="image/products/home-1/product-4.jpg" alt="">
-                                                </a>
-
-                                                <div class="hover-btns">
-                                                    <a href="cart.html" class="sin-btn"><i class="ion-bag"></i></a>
-                                                    <a href="compare.html" class="sin-btn">
-                                                        <i class="ion-android-options"></i>
-                                                    </a>
-                                                    <a href="javascript:" class="sin-btn" data-toggle="modal"
-                                                       data-target="#quickModal"><i class="ion-android-open"></i></a>
-                                                </div>
-
-                                            </div>
-                                            <span class="product-badge">new</span>
-                                        </div>
-                                        <div class="description-block">
-                                            <div class="description-header">
-                                                <h5 class="description-tag"><a href="">Fashion Manufacturer</a></h5>
-                                                <div class="rating-block">
-                                                    <span class="ion-android-star-outline star_on"></span>
-                                                    <span class="ion-android-star-outline star_on"></span>
-                                                    <span class="ion-android-star-outline star_on"></span>
-                                                    <span class="ion-android-star-outline"></span>
-                                                    <span class="ion-android-star-outline"></span>
-                                                </div>
-                                            </div>
-                                            <h3 class="post-title">
-                                                <a href="product-details.html">
-                                                    yuqidong sudaderas
-                                                    hombre hip hop
-                                                    zipper
-                                                </a>
-                                            </h3>
-
-                                            <p class="mb-0 price">
-                                                <del class="price-old">€500.00</del> <span class="price-new">€500.00</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6 mb--30">
-                                    <div class="product-card">
-                                        <div class="image">
-                                            <img src="image/products/home-1/product-5.jpg" alt="">
-                                            <div class="hover-content">
-                                                <a href="product-details.html" class="hover-image">
-                                                    <img src="image/products/home-1/product-6.jpg" alt="">
-                                                </a>
-
-                                                <div class="hover-btns">
-                                                    <a href="cart.html" class="sin-btn"><i class="ion-bag"></i></a>
-                                                    <a href="compare.html" class="sin-btn">
-                                                        <i class="ion-android-options"></i>
-                                                    </a>
-                                                    <a href="javascript:" class="sin-btn" data-toggle="modal"
-                                                       data-target="#quickModal"><i class="ion-android-open"></i></a>
-                                                </div>
-
-                                            </div>
-                                            <span class="product-badge">new</span>
-                                        </div>
-                                        <div class="description-block">
-                                            <div class="description-header">
-                                                <h5 class="description-tag"><a href="">Inside Autumn Winter</a></h5>
-                                                <div class="rating-block">
-                                                    <span class="ion-android-star-outline star_on"></span>
-                                                    <span class="ion-android-star-outline star_on"></span>
-                                                    <span class="ion-android-star-outline star_on"></span>
-                                                    <span class="ion-android-star-outline"></span>
-                                                    <span class="ion-android-star-outline"></span>
-                                                </div>
-                                            </div>
-                                            <h3 class="post-title">
-                                                <a href="product-details.html">
-                                                    SexeMara Sweatshirts
-                                                    Hoodies Male
-                                                    Tracksuit
-                                                </a>
-                                            </h3>
-
-                                            <p class="mb-0 price">
-                                                <del class="price-old">€500.00</del> <span class="price-new">€500.00</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6 mb--30">
-                                    <div class="product-card">
-                                        <div class="image">
-                                            <img src="image/products/home-1/product-7.jpg" alt="">
-                                            <div class="hover-content">
-                                                <a href="product-details.html" class="hover-image">
-                                                    <img src="image/products/home-1/product-8.jpg" alt="">
-                                                </a>
-
-                                                <div class="hover-btns">
-                                                    <a href="cart.html" class="sin-btn"><i class="ion-bag"></i></a>
-                                                    <a href="compare.html" class="sin-btn">
-                                                        <i class="ion-android-options"></i>
-                                                    </a>
-                                                    <a href="javascript:" class="sin-btn" data-toggle="modal"
-                                                       data-target="#quickModal"><i class="ion-android-open"></i></a>
-                                                </div>
-
-                                            </div>
-                                            <span class="product-badge">new</span>
-                                        </div>
-                                        <div class="description-block">
-                                            <div class="description-header">
-                                                <h5 class="description-tag"><a href="">Fashion Manufacturer</a></h5>
-                                                <div class="rating-block">
-                                                    <span class="ion-android-star-outline star_on"></span>
-                                                    <span class="ion-android-star-outline star_on"></span>
-                                                    <span class="ion-android-star-outline star_on"></span>
-                                                    <span class="ion-android-star-outline"></span>
-                                                    <span class="ion-android-star-outline"></span>
-                                                </div>
-                                            </div>
-                                            <h3 class="post-title">
-                                                <a href="product-details.html">
-                                                    zengker winter
-                                                    hooded with fat
-                                                    thickening
-                                                </a>
-                                            </h3>
-
-                                            <p class="mb-0 price">
-                                                <del class="price-old">€500.00</del> <span class="price-new">€500.00</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6 mb--30">
-                                    <div class="product-card">
-                                        <div class="image">
-                                            <img src="image/products/home-1/product-9.jpg" alt="">
-                                            <div class="hover-content">
-                                                <a href="product-details.html" class="hover-image">
-                                                    <img src="image/products/home-1/product-10.jpg" alt="">
-                                                </a>
-
-                                                <div class="hover-btns">
-                                                    <a href="cart.html" class="sin-btn"><i class="ion-bag"></i></a>
-                                                    <a href="compare.html" class="sin-btn">
-                                                        <i class="ion-android-options"></i>
-                                                    </a>
-                                                    <a href="javascript:" class="sin-btn" data-toggle="modal"
-                                                       data-target="#quickModal"><i class="ion-android-open"></i></a>
-                                                </div>
-
-                                            </div>
-                                            <span class="product-badge">new</span>
-                                        </div>
-                                        <div class="description-block">
-                                            <div class="description-header">
-                                                <h5 class="description-tag"><a href="">Fashion Manufacturer</a></h5>
-                                                <div class="rating-block">
-                                                    <span class="ion-android-star-outline star_on"></span>
-                                                    <span class="ion-android-star-outline star_on"></span>
-                                                    <span class="ion-android-star-outline star_on"></span>
-                                                    <span class="ion-android-star-outline"></span>
-                                                    <span class="ion-android-star-outline"></span>
-                                                </div>
-                                            </div>
-                                            <h3 class="post-title">
-                                                <a href="product-details.html">
-                                                    Vantiorango PU
-                                                    Patchwork Knitted
-                                                    Plus
-                                                </a>
-                                            </h3>
-
-                                            <p class="mb-0 price">
-                                                <del class="price-old">€500.00</del> <span class="price-new">€500.00</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6 mb--30">
-                                    <div class="product-card">
-                                        <div class="image">
-                                            <img src="image/products/home-1/product-11.jpg" alt="">
-                                            <div class="hover-content">
-                                                <a href="product-details.html" class="hover-image">
-                                                    <img src="image/products/home-1/product-1.jpg" alt="">
-                                                </a>
-
-                                                <div class="hover-btns">
-                                                    <a href="cart.html" class="sin-btn"><i class="ion-bag"></i></a>
-                                                    <a href="compare.html" class="sin-btn">
-                                                        <i class="ion-android-options"></i>
-                                                    </a>
-                                                    <a href="javascript:" class="sin-btn" data-toggle="modal"
-                                                       data-target="#quickModal"><i class="ion-android-open"></i></a>
-                                                </div>
-
-                                            </div>
-                                            <span class="product-badge">new</span>
-                                        </div>
-                                        <div class="description-block">
-                                            <div class="description-header">
-                                                <h5 class="description-tag"><a href="">Fashion Manufacturer</a></h5>
-                                                <div class="rating-block">
-                                                    <span class="ion-android-star-outline star_on"></span>
-                                                    <span class="ion-android-star-outline star_on"></span>
-                                                    <span class="ion-android-star-outline star_on"></span>
-                                                    <span class="ion-android-star-outline"></span>
-                                                    <span class="ion-android-star-outline"></span>
-                                                </div>
-                                            </div>
-                                            <h3 class="post-title">
-                                                <a href="product-details.html">
-                                                    Vantiorango PU
-                                                    Patchwork Knitted
-                                                    Plus
-                                                </a>
-                                            </h3>
-
-                                            <p class="mb-0 price">
-                                                <del class="price-old">€500.00</del> <span class="price-new">€500.00</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6 mb--30">
-                                    <div class="product-card">
-                                        <div class="image">
-                                            <img src="image/products/home-1/product-13.jpg" alt="">
-                                            <div class="hover-content">
-                                                <a href="product-details.html" class="hover-image">
-                                                    <img src="image/products/home-1/product-12.jpg" alt="">
-                                                </a>
-
-                                                <div class="hover-btns">
-                                                    <a href="cart.html" class="sin-btn"><i class="ion-bag"></i></a>
-                                                    <a href="compare.html" class="sin-btn">
-                                                        <i class="ion-android-options"></i>
-                                                    </a>
-                                                    <a href="javascript:" class="sin-btn" data-toggle="modal"
-                                                       data-target="#quickModal"><i class="ion-android-open"></i></a>
-                                                </div>
-
-                                            </div>
-                                            <span class="product-badge">new</span>
-                                        </div>
-                                        <div class="description-block">
-                                            <div class="description-header">
-                                                <h5 class="description-tag"><a href="">Fashion Manufacturer</a></h5>
-                                                <div class="rating-block">
-                                                    <span class="ion-android-star-outline star_on"></span>
-                                                    <span class="ion-android-star-outline star_on"></span>
-                                                    <span class="ion-android-star-outline star_on"></span>
-                                                    <span class="ion-android-star-outline"></span>
-                                                    <span class="ion-android-star-outline"></span>
-                                                </div>
-                                            </div>
-                                            <h3 class="post-title">
-                                                <a href="product-details.html">
-                                                    Vantiorango PU
-                                                    Patchwork Knitted
-                                                    Plus
-                                                </a>
-                                            </h3>
-
-                                            <p class="mb-0 price">
-                                                <del class="price-old">€500.00</del> <span class="price-new">€500.00</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-3 col-sm-6 mb--30">
-                                    <div class="product-card">
-                                        <div class="image">
-                                            <img src="image/products/home-1/product-6.jpg" alt="">
-                                            <div class="hover-content">
-                                                <a href="product-details.html" class="hover-image">
-                                                    <img src="image/products/home-1/product-5.jpg" alt="">
-                                                </a>
-
-                                                <div class="hover-btns">
-                                                    <a href="cart.html" class="sin-btn"><i class="ion-bag"></i></a>
-                                                    <a href="compare.html" class="sin-btn">
-                                                        <i class="ion-android-options"></i>
-                                                    </a>
-                                                    <a href="javascript:" class="sin-btn" data-toggle="modal"
-                                                       data-target="#quickModal"><i class="ion-android-open"></i></a>
-                                                </div>
-
-                                            </div>
-                                            <span class="product-badge">new</span>
-                                        </div>
-                                        <div class="description-block">
-                                            <div class="description-header">
-                                                <h5 class="description-tag"><a href="">Fashion Manufacturer</a></h5>
-                                                <div class="rating-block">
-                                                    <span class="ion-android-star-outline star_on"></span>
-                                                    <span class="ion-android-star-outline star_on"></span>
-                                                    <span class="ion-android-star-outline star_on"></span>
-                                                    <span class="ion-android-star-outline"></span>
-                                                    <span class="ion-android-star-outline"></span>
-                                                </div>
-                                            </div>
-                                            <h3 class="post-title">
-                                                <a href="product-details.html">
-                                                    Vantiorango PU
-                                                    Patchwork Knitted
-                                                    Plus
-                                                </a>
-                                            </h3>
-
-                                            <p class="mb-0 price">
-                                                <del class="price-old">€500.00</del> <span class="price-new">€500.00</span>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
+                                }
                             </div>
                         </div>
                         <div class="tab-pane fade" id="men" role="tabpanel" aria-labelledby="men-tab">

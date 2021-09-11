@@ -1,0 +1,20 @@
+﻿@model IEnumerable<ProductListingViewModel>
+<div class="container">
+    <div class="row" style="margin-top: 150px;">
+        @foreach (var product in Model)
+        {
+            <div class="col-md-4">
+                <div class="card">
+                    <img class="card-img-top mh-50" src="@product.ImageUrl">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">@product.Name</h5>
+                        <p class="card-text text-center">Price: @product.Price Category: @product.Category In Stock Quantity: @product.InStockQuantity</p>
+                        <a class="btn btn-primary text-center" asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">Details</a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+</div>
+

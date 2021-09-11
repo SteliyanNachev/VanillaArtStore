@@ -20,6 +20,25 @@
             Categories = this.GetProductCategories()
         });
 
+        public IActionResult All()
+        {
+            var products = this.data
+                .Products
+                .OrderByDescending(p => p.Id)
+                .Select(p => new ProductListingViewModel
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Price = p.Price,
+                    InStockQuantity = p.InStockQuantity,
+                    ImageUrl = p.ImageUrl,
+                    Category = p.Category.Name
+                })
+                .ToList();
+
+            return View(products);
+        }
+
         [HttpPost]
         public IActionResult Add(AddProductFormModel product, IEnumerable<IFormFile> images)
         {
@@ -55,7 +74,7 @@
             this.data.Products.Add(productData);
             this.data.SaveChanges();
 
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction(nameof(All));
         }
 
         private IEnumerable<ProductCategoryViewModel> GetProductCategories()
