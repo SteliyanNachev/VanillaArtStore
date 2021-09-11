@@ -1494,8 +1494,7 @@
                 <div class="section-title mb--55">
                     <h2>Latest Products</h2>
                     <p>
-                        Mirum est notare quam littera gothica, quam nunc putamus parum claram anteposuerit litterarum
-                        formas.
+                        Quick view of our latest arrivals.
                     </p>
                 </div>
                 <div class="product-slider handart-slick-slider arrow-type-two space-db--5" data-slick-setting='{
@@ -1510,270 +1509,51 @@
                             {"breakpoint":768, "settings": {"slidesToShow": 2} },
                             {"breakpoint":480, "settings": {"slidesToShow": 1} }
                         ]'>
-                    <div class="single-slide">
-                        <div class="product-card">
-                            <div class="image">
-                                <img src="image/products/home-1/product-1.jpg" alt="">
-                                <div class="hover-content">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="image/products/home-1/product-2.jpg" alt="">
-                                    </a>
+                    @foreach (var product in Model)
+                    {
+                        <div class="single-slide">
+                            <div class="product-card">
+                                <div class="image">
+                                    <img src="@product.ImageUrl" alt="">
+                                    <div class="hover-content">
+                                        <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id" class="hover-image">
+                                            <img src="image/products/home-1/product-2.jpg" alt="">
+                                        </a>
 
-                                    <div class="hover-btns">
-                                        <a href="cart.html" class="sin-btn"><i class="ion-bag"></i></a>
-                                        <a href="compare.html" class="sin-btn"><i class="ion-android-options"></i></a>
-                                        <a href="javascript:" class="sin-btn" data-toggle="modal"
-                                           data-target="#quickModal"><i class="ion-android-open"></i></a>
+                                        <div class="hover-btns">
+                                            <a href="cart.html" class="sin-btn"><i class="ion-bag"></i></a>
+                                            <a href="compare.html" class="sin-btn"><i class="ion-android-options"></i></a>
+                                            <a href="javascript:" class="sin-btn" data-toggle="modal"
+                                               data-target="#quickModal"><i class="ion-android-open"></i></a>
+                                        </div>
+
                                     </div>
-
+                                    <span class="product-badge">new</span>
                                 </div>
-                                <span class="product-badge">new</span>
-                                <span class="product-badge-2">-5%</span>
-                            </div>
-                            <div class="description-block">
-                                <div class="description-header">
-                                    <h5 class="description-tag"><a href="">Fashion Manufacturer</a></h5>
-                                    <div class="rating-block">
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline"></span>
-                                        <span class="ion-android-star-outline"></span>
+                                <div class="description-block">
+                                    <div class="description-header">
+                                        <h5 class="description-tag"><a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">@product.Name</a></h5>
+                                        <div class="rating-block">
+                                            <span class="ion-android-star-outline star_on"></span>
+                                            <span class="ion-android-star-outline star_on"></span>
+                                            <span class="ion-android-star-outline star_on"></span>
+                                            <span class="ion-android-star-outline"></span>
+                                            <span class="ion-android-star-outline"></span>
+                                        </div>
                                     </div>
+                                    <h3 class="post-title">
+                                        <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">
+                                            @product.Description
+                                        </a>
+                                    </h3>
+
+                                    <p class="mb-0 price">
+                                        <span class="price-new">@product.Price Лв.</span>
+                                    </p>
                                 </div>
-                                <h3 class="post-title">
-                                    <a href="product-details.html">
-                                        zyfg men sweatshirts casual
-                                        ethnic style pattern
-                                    </a>
-                                </h3>
-
-                                <p class="mb-0 price">
-                                    <del class="price-old">€500.00</del> <span class="price-new">€500.00</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-slide">
-                        <div class="product-card">
-                            <div class="image">
-                                <img src="image/products/home-1/product-3.jpg" alt="">
-                                <div class="hover-content">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="image/products/home-1/product-4.jpg" alt="">
-                                    </a>
-
-                                    <div class="hover-btns">
-                                        <a href="cart.html" class="sin-btn"><i class="ion-bag"></i></a>
-                                        <a href="compare.html" class="sin-btn"><i class="ion-android-options"></i></a>
-                                        <a href="javascript:" class="sin-btn" data-toggle="modal"
-                                           data-target="#quickModal"><i class="ion-android-open"></i></a>
-                                    </div>
-
-                                </div>
-                                <span class="product-badge">new</span>
-                                <span class="product-badge-2">-5%</span>
-                            </div>
-                            <div class="description-block">
-                                <div class="description-header">
-                                    <h5 class="description-tag"><a href="">Fashion Manufacturer</a></h5>
-                                    <div class="rating-block">
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline"></span>
-                                        <span class="ion-android-star-outline"></span>
-                                    </div>
-                                </div>
-                                <h3 class="post-title">
-                                    <a href="product-details.html">
-                                        zyfg men sweatshirts casual
-                                        ethnic style pattern
-                                    </a>
-                                </h3>
-
-                                <p class="mb-0 price">
-                                    <del class="price-old">€500.00</del> <span class="price-new">€500.00</span>
-                                </p>
                             </div>
                         </div>
-                    </div>
-                    <div class="single-slide">
-                        <div class="product-card">
-                            <div class="image">
-                                <img src="image/products/home-1/product-5.jpg" alt="">
-                                <div class="hover-content">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="image/products/home-1/product-6.jpg" alt="">
-                                    </a>
-
-                                    <div class="hover-btns">
-                                        <a href="cart.html" class="sin-btn"><i class="ion-bag"></i></a>
-                                        <a href="compare.html" class="sin-btn"><i class="ion-android-options"></i></a>
-                                        <a href="javascript:" class="sin-btn" data-toggle="modal"
-                                           data-target="#quickModal"><i class="ion-android-open"></i></a>
-                                    </div>
-
-                                </div>
-                                <span class="product-badge">new</span>
-                                <span class="product-badge-2">-5%</span>
-                            </div>
-                            <div class="description-block">
-                                <div class="description-header">
-                                    <h5 class="description-tag"><a href="">Fashion Manufacturer</a></h5>
-                                    <div class="rating-block">
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline"></span>
-                                        <span class="ion-android-star-outline"></span>
-                                    </div>
-                                </div>
-                                <h3 class="post-title">
-                                    <a href="product-details.html">
-                                        zyfg men sweatshirts casual
-                                        ethnic style pattern
-                                    </a>
-                                </h3>
-
-                                <p class="mb-0 price">
-                                    <del class="price-old">€500.00</del> <span class="price-new">€500.00</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-slide">
-                        <div class="product-card">
-                            <div class="image">
-                                <img src="image/products/home-1/product-7.jpg" alt="">
-                                <div class="hover-content">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="image/products/home-1/product-8.jpg" alt="">
-                                    </a>
-
-                                    <div class="hover-btns">
-                                        <a href="cart.html" class="sin-btn"><i class="ion-bag"></i></a>
-                                        <a href="compare.html" class="sin-btn"><i class="ion-android-options"></i></a>
-                                        <a href="javascript:" class="sin-btn" data-toggle="modal"
-                                           data-target="#quickModal"><i class="ion-android-open"></i></a>
-                                    </div>
-
-                                </div>
-                                <span class="product-badge">new</span>
-                                <span class="product-badge-2">-5%</span>
-                            </div>
-                            <div class="description-block">
-                                <div class="description-header">
-                                    <h5 class="description-tag"><a href="">Fashion Manufacturer</a></h5>
-                                    <div class="rating-block">
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline"></span>
-                                        <span class="ion-android-star-outline"></span>
-                                    </div>
-                                </div>
-                                <h3 class="post-title">
-                                    <a href="product-details.html">
-                                        zyfg men sweatshirts casual
-                                        ethnic style pattern
-                                    </a>
-                                </h3>
-
-                                <p class="mb-0 price">
-                                    <del class="price-old">€500.00</del> <span class="price-new">€500.00</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-slide">
-                        <div class="product-card">
-                            <div class="image">
-                                <img src="image/products/home-1/product-9.jpg" alt="">
-                                <div class="hover-content">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="image/products/home-1/product-10.jpg" alt="">
-                                    </a>
-
-                                    <div class="hover-btns">
-                                        <a href="cart.html" class="sin-btn"><i class="ion-bag"></i></a>
-                                        <a href="compare.html" class="sin-btn"><i class="ion-android-options"></i></a>
-                                        <a href="javascript:" class="sin-btn" data-toggle="modal"
-                                           data-target="#quickModal"><i class="ion-android-open"></i></a>
-                                    </div>
-
-                                </div>
-                                <span class="product-badge">new</span>
-                                <span class="product-badge-2">-5%</span>
-                            </div>
-                            <div class="description-block">
-                                <div class="description-header">
-                                    <h5 class="description-tag"><a href="">Fashion Manufacturer</a></h5>
-                                    <div class="rating-block">
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline"></span>
-                                        <span class="ion-android-star-outline"></span>
-                                    </div>
-                                </div>
-                                <h3 class="post-title">
-                                    <a href="product-details.html">
-                                        zyfg men sweatshirts casual
-                                        ethnic style pattern
-                                    </a>
-                                </h3>
-
-                                <p class="mb-0 price">
-                                    <del class="price-old">€500.00</del> <span class="price-new">€500.00</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-slide">
-                        <div class="product-card">
-                            <div class="image">
-                                <img src="image/products/home-1/product-11.jpg" alt="">
-                                <div class="hover-content">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="image/products/home-1/product-12.jpg" alt="">
-                                    </a>
-
-                                    <div class="hover-btns">
-                                        <a href="cart.html" class="sin-btn"><i class="ion-bag"></i></a>
-                                        <a href="compare.html" class="sin-btn"><i class="ion-android-options"></i></a>
-                                        <a href="javascript:" class="sin-btn" data-toggle="modal"
-                                           data-target="#quickModal"><i class="ion-android-open"></i></a>
-                                    </div>
-
-                                </div>
-                                <span class="product-badge">new</span>
-                                <span class="product-badge-2">-5%</span>
-                            </div>
-                            <div class="description-block">
-                                <div class="description-header">
-                                    <h5 class="description-tag"><a href="">Fashion Manufacturer</a></h5>
-                                    <div class="rating-block">
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline"></span>
-                                        <span class="ion-android-star-outline"></span>
-                                    </div>
-                                </div>
-                                <h3 class="post-title">
-                                    <a href="product-details.html">
-                                        zyfg men sweatshirts casual
-                                        ethnic style pattern
-                                    </a>
-                                </h3>
-
-                                <p class="mb-0 price">
-                                    <del class="price-old">€500.00</del> <span class="price-new">€500.00</span>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
+                    }
                 </div>
             </div>
         </section>
