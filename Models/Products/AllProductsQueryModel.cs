@@ -5,7 +5,7 @@
     {
         public IEnumerable<string> Category { get; init; }
 
-        public IEnumerable<string> SearchTerm { get; init; }
+        public string SearchTerm { get; init; }
 
         public ProductSorting Sorting { get; init; }
 

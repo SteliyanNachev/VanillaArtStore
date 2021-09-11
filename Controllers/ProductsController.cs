@@ -2,6 +2,7 @@
 {
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using System;
     using System.Collections.Generic;
     using System.Linq;
     using VanillaArtStore.Data;
@@ -20,10 +21,19 @@
             Categories = this.GetProductCategories()
         });
 
-        public IActionResult All()
+        public IActionResult All(string searchTerm)
         {
-            var products = this.data
-                .Products
+            var productsQuery = this.data.Products.AsQueryable();
+
+            if (!string.IsNullOrWhiteSpace(searchTerm))
+            {
+                productsQuery = productsQuery.Where(p =>
+                    p.Name.ToLower().Contains(searchTerm.ToLower())
+                    || p.Description.ToLower().Contains(searchTerm.ToLower())
+                    || p.Category.Name.ToLower().Contains(searchTerm.ToLower()));
+            }
+
+            var products = productsQuery
                 .OrderByDescending(p => p.Id)
                 .Select(p => new ProductListingViewModel
                 {
@@ -38,7 +48,8 @@
 
             return View(new AllProductsQueryModel
             {
-                Products = products
+                Products = products,
+                SearchTerm = searchTerm
             });
         }
 
