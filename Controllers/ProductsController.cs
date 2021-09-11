@@ -36,7 +36,10 @@
                 })
                 .ToList();
 
-            return View(products);
+            return View(new AllProductsQueryModel
+            {
+                Products = products
+            });
         }
 
         [HttpPost]
