@@ -3,12 +3,14 @@
     using System.Collections.Generic;
     public class AllProductsQueryModel
     {
-        public IEnumerable<string> Category { get; init; }
+        public string Category { get; set; }
 
-        public string SearchTerm { get; init; }
+        public IEnumerable<string> Categories { get; set; }
 
-        public ProductSorting Sorting { get; init; }
+        public string SearchTerm { get; set; }
 
-        public IEnumerable<ProductListingViewModel> Products { get; init; }
+        public ProductSorting Sorting { get; set; }
+
+        public IEnumerable<ProductListingViewModel> Products { get; set; }
     }
 }

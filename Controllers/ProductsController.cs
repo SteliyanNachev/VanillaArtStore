@@ -21,20 +21,32 @@
             Categories = this.GetProductCategories()
         });
 
-        public IActionResult All(string searchTerm)
-        {
+        public IActionResult All([FromQuery] AllProductsQueryModel query)
+         {
             var productsQuery = this.data.Products.AsQueryable();
 
-            if (!string.IsNullOrWhiteSpace(searchTerm))
+            if (!string.IsNullOrWhiteSpace(query.Category))
             {
-                productsQuery = productsQuery.Where(p =>
-                    p.Name.ToLower().Contains(searchTerm.ToLower())
-                    || p.Description.ToLower().Contains(searchTerm.ToLower())
-                    || p.Category.Name.ToLower().Contains(searchTerm.ToLower()));
+                productsQuery = productsQuery.Where(p => p.Category.Name == query.Category);
             }
 
+            if (!string.IsNullOrWhiteSpace(query.SearchTerm))
+            {
+                productsQuery = productsQuery.Where(p =>
+                    p.Name.ToLower().Contains(query.SearchTerm.ToLower())
+                    || p.Description.ToLower().Contains(query.SearchTerm.ToLower())
+                    || p.Category.Name.ToLower().Contains(query.SearchTerm.ToLower()));
+            }
+
+            productsQuery = query.Sorting switch
+            {
+                ProductSorting.DateCreated => productsQuery.OrderByDescending(p => p.Id),
+                ProductSorting.PriceInc => productsQuery.OrderByDescending(p => p.Price),
+                ProductSorting.PriceDec => productsQuery.OrderBy(p => p.Price),
+                _ => productsQuery.OrderByDescending(p => p.Id)
+            };
+
             var products = productsQuery
-                .OrderByDescending(p => p.Id)
                 .Select(p => new ProductListingViewModel
                 {
                     Id = p.Id,
@@ -46,11 +58,17 @@
                 })
                 .ToList();
 
-            return View(new AllProductsQueryModel
-            {
-                Products = products,
-                SearchTerm = searchTerm
-            });
+            var categories = this.data
+                .Categories
+                .Select(c => c.Name)
+                .Distinct()
+                .OrderBy(c => c)
+                .ToList();
+
+            query.Categories = categories;
+            query.Products = products;
+
+            return View(query);
         }
 
         [HttpPost]
