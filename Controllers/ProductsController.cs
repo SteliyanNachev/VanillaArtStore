@@ -46,7 +46,11 @@
                 _ => productsQuery.OrderByDescending(p => p.Id)
             };
 
+            var totalProducts = productsQuery.Count();
+
             var products = productsQuery
+                .Skip((query.CurrentPage - 1) * AllProductsQueryModel.ProductsPerPage)
+                .Take(AllProductsQueryModel.ProductsPerPage)
                 .Select(p => new ProductListingViewModel
                 {
                     Id = p.Id,
@@ -67,6 +71,7 @@
 
             query.Categories = categories;
             query.Products = products;
+            query.TotalProducts = totalProducts;
 
             return View(query);
         }
