@@ -1,8 +1,10 @@
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+
 namespace VanillaArtStore
 {
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.HttpsPolicy;
+
     using Microsoft.AspNetCore.Identity;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
@@ -10,6 +12,7 @@ namespace VanillaArtStore
     using Microsoft.Extensions.Hosting;
     using VanillaArtStore.Data;
     using VanillaArtStore.Infrastructure;
+    using VanillaArtStore.Services.Products;
 
     public class Startup
     {
@@ -36,6 +39,8 @@ namespace VanillaArtStore
                     .AddEntityFrameworkStores<VanillaArtDbContext>();
 
             services.AddControllersWithViews();
+
+            services.AddTransient<IProductService,ProductService>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

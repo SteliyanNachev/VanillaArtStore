@@ -8,13 +8,18 @@
     using VanillaArtStore.Data;
     using VanillaArtStore.Data.Models;
     using VanillaArtStore.Models.Products;
+    using VanillaArtStore.Services.Products;
 
     public class ProductsController : Controller
     {
         private readonly VanillaArtDbContext data;
+        private readonly IProductService products;
 
-        public ProductsController(VanillaArtDbContext data)
-            => this.data = data;
+        public ProductsController(IProductService products, VanillaArtDbContext data)
+        {
+            this.data = data;
+            this.products = products;
+        }
 
         public IActionResult Add() => View(new AddProductFormModel
         {
@@ -23,55 +28,22 @@
 
         public IActionResult All([FromQuery] AllProductsQueryModel query)
          {
-            var productsQuery = this.data.Products.AsQueryable();
+            var queryResult = this.products.All(query.Category, query.SearchTerm, query.Sorting, query.CurrentPage);
 
-            if (!string.IsNullOrWhiteSpace(query.Category))
+            query.Products = queryResult.Products.Select(p => new ProductListingViewModel 
             {
-                productsQuery = productsQuery.Where(p => p.Category.Name == query.Category);
-            }
+                Id = p.Id,
+                Price = p.Price,
+                Description = p.Description,
+                ImageUrl = p.ImageUrl,
+                Category = p.Category,
+                Name = p.Name,
+                InStockQuantity = p.InStockQuantity
+            });
 
-            if (!string.IsNullOrWhiteSpace(query.SearchTerm))
-            {
-                productsQuery = productsQuery.Where(p =>
-                    p.Name.ToLower().Contains(query.SearchTerm.ToLower())
-                    || p.Description.ToLower().Contains(query.SearchTerm.ToLower())
-                    || p.Category.Name.ToLower().Contains(query.SearchTerm.ToLower()));
-            }
+            query.TotalProducts = queryResult.TotalProducts;
 
-            productsQuery = query.Sorting switch
-            {
-                ProductSorting.DateCreated => productsQuery.OrderByDescending(p => p.Id),
-                ProductSorting.PriceInc => productsQuery.OrderByDescending(p => p.Price),
-                ProductSorting.PriceDec => productsQuery.OrderBy(p => p.Price),
-                _ => productsQuery.OrderByDescending(p => p.Id)
-            };
-
-            var totalProducts = productsQuery.Count();
-
-            var products = productsQuery
-                .Skip((query.CurrentPage - 1) * AllProductsQueryModel.ProductsPerPage)
-                .Take(AllProductsQueryModel.ProductsPerPage)
-                .Select(p => new ProductListingViewModel
-                {
-                    Id = p.Id,
-                    Name = p.Name,
-                    Price = p.Price,
-                    InStockQuantity = p.InStockQuantity,
-                    ImageUrl = p.ImageUrl,
-                    Category = p.Category.Name
-                })
-                .ToList();
-
-            var categories = this.data
-                .Categories
-                .Select(c => c.Name)
-                .Distinct()
-                .OrderBy(c => c)
-                .ToList();
-
-            query.Categories = categories;
-            query.Products = products;
-            query.TotalProducts = totalProducts;
+            query.Categories = queryResult.Categories;
 
             return View(query);
         }
