@@ -1,0 +1,41 @@
+﻿@page
+@model RegisterModel
+
+<main class="page-section inner-page-sec-padding-top">
+    <div class="container">
+        <div class="col-sm-12 col-md-12 col-lg-6 col-xs-12">
+            <h1 class="entry-title">Register</h1>
+            <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="login-form">
+                    <div class="row">
+                        <div class="col-md-12 col-12 mb--20">
+                            <label asp-for="Input.Email"></label>
+                            <input asp-for="Input.Email" class="form-control mb-0" type="email" />
+                            <span asp-validation-for="Input.Email" class="text-danger"></span>
+                        </div>
+                        <div class="col-12 mb--20">
+                            <label asp-for="Input.Password"></label>
+                            <input asp-for="Input.Password" class="form-control mb-0" type="password" />
+                            <span asp-validation-for="Input.Password" class="text-danger"></span>
+                        </div>
+                        <div class="col-12 mb--20">
+                            <label asp-for="Input.ConfirmPassword"></label>
+                            <input asp-for="Input.ConfirmPassword" class="form-control mb-0" type="password" />
+                            <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-black">Register</button>
+                        </div>
+                        <p class="mt--10 ml--20"><a asp-page="./LogIn" asp-route-returnUrl="@Model.ReturnUrl">Click for LogIn.</a></p>
+                    </div>
+                </div>
+            </form>
+        </div>
+        </div>
+
+</main>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

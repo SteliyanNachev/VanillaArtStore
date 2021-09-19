@@ -1,0 +1,56 @@
+﻿@page
+@model LoginModel
+
+<main class="page-section inner-page-sec-padding-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-12 col-xs-12 col-lg-6 mb--30 mb-lg--0">
+                <!-- Login Form s-->
+                <form id="account" method="post">
+                    <h4 class="login-title">Login</h4>
+                    <div class="login-form">
+                        <div class="row">
+                            <div class="col-md-12 col-12 mb--20">
+                                <label asp-for="Input.Email"></label>
+                                <input asp-for="Input.Email" class="form-control mb-0" />
+                                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                            </div>
+                            <div class="col-12 mb--20">
+                                <label asp-for="Input.Password"></label>
+                                <input asp-for="Input.Password" class="form-control mb-0" />
+                                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="d-flex align-items-center flex-wrap">
+                                    <button type="submit" class="btn btn-black mr-3">Log in</button>
+                                    <div class="d-inline-flex align-items-center">
+                                        <div class="checkbox">
+                                            <label asp-for="Input.RememberMe">
+                                                <input asp-for="Input.RememberMe" />
+                                                @Html.DisplayNameFor(m => m.Input.RememberMe)
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group mt--20">
+                                    <p>
+                                        <a id="forgot-password" asp-page="./ForgotPassword">Forgot your password?</a>
+                                    </p>
+                                    <p>
+                                        <a asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register as a new user</a>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
