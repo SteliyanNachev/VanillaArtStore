@@ -87,6 +87,8 @@
                         <h5 class="card-title text-center">@product.Name</h5>
                         <p class="card-text text-center">Price: @product.Price Category: @product.Category In Stock Quantity: @product.InStockQuantity</p>
                         <a class="btn btn-primary text-center" asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">Details</a>
+                        <a class="btn btn-warning text-center" asp-controller="Products" asp-action="Edit" asp-route-id="@product.Id">Edit</a>
+                        <a class="btn btn-danger text-center" asp-controller="Products" asp-action="Delete" asp-route-id="@product.Id">Delete</a>
                     </div>
                 </div>
             </div>

@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using VanillaArtStore.Data;
+using VanillaArtStore.Data.Models;
 using VanillaArtStore.Models.Products;
 
 namespace VanillaArtStore.Services.Products
@@ -51,6 +53,7 @@ namespace VanillaArtStore.Services.Products
                     Id = p.Id,
                     Name = p.Name,
                     Price = p.Price,
+                    Description = p.Description,
                     InStockQuantity = p.InStockQuantity,
                     ImageUrl = p.ImageUrl,
                     Category = p.Category.Name
@@ -71,5 +74,76 @@ namespace VanillaArtStore.Services.Products
                 TotalProducts = totalProducts
             };
         }
+
+        public bool CategoryExists(int categoryId)
+            => this.data.Categories.Any(c => c.Id == categoryId);
+
+        public int Create(string name, decimal price, string description, string imageUrl, int inStockQuantity, int categoryId)
+        {
+            var productData = new Product
+            {
+                Name = name,
+                Price = price,
+                Description = description,
+                ImageUrl = imageUrl,
+                InStockQuantity = inStockQuantity,
+                CategoryId = categoryId
+            };
+
+            this.data.Products.Add(productData);
+            this.data.SaveChanges();
+
+            return productData.Id;
+        }
+
+        public ProductServiceModel Details(int id)
+            => this.data
+                .Products
+                .Where(p => p.Id == id)
+                .Select(p => new ProductServiceModel
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Description = p.Description,
+                    Price = p.Price,
+                    InStockQuantity = p.InStockQuantity,
+                    ImageUrl = p.ImageUrl,
+                    Category = p.Category.Name
+                })
+                .FirstOrDefault();
+
+        public bool Edit(int id, string name, decimal price, string description, string imageUrl, int inStockQuantity, int categoryId)
+        {
+            var productData = this.data.Products.Find(id);
+
+            //check if car can be edited by user in future if there is more than one admin.
+
+            if (productData == null)
+            {
+                return false;
+            }
+
+            productData.Name = name;
+            productData.Price = price;
+            productData.Description = description;
+            productData.ImageUrl = imageUrl;
+            productData.InStockQuantity = inStockQuantity;
+            productData.CategoryId = categoryId;
+            
+            this.data.SaveChanges();
+
+            return true;
+        }
+
+        public IEnumerable<ProductCategoryServiceModel> GetAllProductCategories()
+             => this.data
+                .Categories
+                .Select(p => new ProductCategoryServiceModel
+                {
+                    Id = p.Id,
+                    Name = p.Name
+                })
+                .ToList();
+        
     }
 }

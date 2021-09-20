@@ -1,4 +1,4 @@
-﻿@model AddProductFormModel
+﻿@model ProductFormModel
 
  <section class="bg-image" data-bg="/image/bg-images/bg-header.jpg">
      <h2 class="sr-only">Site Breadcrumb</h2>
@@ -15,55 +15,4 @@
      </div>
  </section>
 
-<div class="container bg-secondary pt-lg--120">
-    <div class="row">
-        <div class="col-md-9">
-            <form method="post" enctype="multipart/form-data">
-                <div class="form-group text-white">
-                    <label asp-for="Name">Name</label>
-                    <input asp-for="Name" class="form-control" placeholder="Enter product name !">
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                </div>
-                <div class="form-group text-white">
-                    <label asp-for="Price">Price</label>
-                    <input asp-for="Price" class="form-control" placeholder="Enter product Price !">
-                    <span asp-validation-for="Price" class="text-danger"></span>
-
-                </div>
-                <div class="form-group text-white">
-                    <label asp-for="Description">Description</label>
-                    <textarea asp-for="Description" class="form-control" placeholder="Enter product Description !"></textarea>
-                    <span asp-validation-for="Description" class="text-danger"></span>
-
-                </div>
-                <div class="form-group text-white">
-                    <label asp-for="InStockQuantity">InStockQuantity</label>
-                    <input asp-for="InStockQuantity" class="form-control" placeholder="Enter product InStockQuantity !">
-                    <span asp-validation-for="InStockQuantity" class="text-danger"></span>
-
-                </div>
-                <div class="form-group text-white">
-                    <label asp-for="ImageUrl">Image Url</label>
-                    <input asp-for="ImageUrl" class="form-control" placeholder="Enter product ImageUrl !">
-                    <span asp-validation-for="ImageUrl" class="text-danger"></span>
-
-                </div>
-                <div class="form-group text-white">
-                    <label asp-for="CategoryId">Category</label>
-                    <select asp-for="CategoryId" class="form-control">
-                        @foreach(var category in Model.Categories)
-                        {
-                            <option value="@category.Id">@category.Name</option>
-                        }
-                    </select>
-                </div>
-                <div class="form-group text-white">
-                    <label for="exampleFormControlFile1">Example file input</label>
-                    <input type="file" name="Images" multiple>
-                </div>
-
-                <input class="btn btn-primary" type="submit" value="Save" />
-            </form>
-        </div>
-    </div>
-</div>
+<partial name="_ProductFormPartial" model="Model" />

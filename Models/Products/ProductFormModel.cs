@@ -2,9 +2,9 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-
+    using VanillaArtStore.Services.Products;
     using static Data.DataConstants;
-    public class AddProductFormModel
+    public class ProductFormModel
     {
         [Required]
         [StringLength(ProductNameMaxLenght,
@@ -34,6 +34,6 @@
         [Required]
         public int CategoryId { get; init; }
 
-        public IEnumerable<ProductCategoryViewModel> Categories { get; set; }
+        public IEnumerable<ProductCategoryServiceModel> Categories { get; set; }
     }
 }

@@ -14,6 +14,27 @@
             ProductSorting sorting,
             int currentPage);
 
+        ProductServiceModel Details(int id);
 
+        IEnumerable<ProductCategoryServiceModel> GetAllProductCategories();
+
+        bool CategoryExists(int categoryId);
+
+        int Create(
+            string name,
+            decimal price,
+            string description,
+            string imageUrl,
+            int inStockQuantity,
+            int categoryId);
+        
+        bool Edit(
+            int id,
+            string name,
+            decimal price,
+            string description,
+            string imageUrl,
+            int inStockQuantity,
+            int categoryId);
     }
 }

@@ -1,6 +1,6 @@
-﻿namespace VanillaArtStore.Models.Products
+﻿namespace VanillaArtStore.Services.Products
 {
-    public class ProductCategoryViewModel
+    public class ProductCategoryServiceModel
     {
         public int Id { get; set; }
 
