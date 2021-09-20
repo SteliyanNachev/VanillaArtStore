@@ -3,17 +3,12 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
-    using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using VanillaArtStore.Data;
-    using VanillaArtStore.Data.Models;
     using VanillaArtStore.Models.Products;
     using VanillaArtStore.Services.Products;
 
     public class ProductsController : Controller
     {
-        private readonly VanillaArtDbContext data;
         private readonly IProductService products;
 
         public ProductsController(IProductService products)
@@ -41,6 +36,21 @@
             query.Categories = queryResult.Categories;
 
             return View(query);
+        }
+
+        public IActionResult Details(int id)
+        {
+            var product = this.products.Details(id);
+
+            return View(new ProductListingViewModel
+            {
+                Name = product.Name,
+                Price = product.Price,
+                Description = product.Description,
+                ImageUrl = product.ImageUrl,
+                InStockQuantity = product.InStockQuantity,
+                Category = product.Category
+            });
         }
 
         [Authorize]
