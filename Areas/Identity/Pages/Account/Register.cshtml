@@ -35,6 +35,16 @@
                             <span asp-validation-for="Input.LastName" class="text-danger"></span>
                         </div>
                         <div class="col-md-12 col-12 mb--20">
+                            <label asp-for="Input.PhoneNumber"></label>
+                            <input asp-for="Input.PhoneNumber" class="form-control mb-0" type="number" />
+                            <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-12 col-12 mb--20">
+                            <label asp-for="Input.Adress"></label>
+                            <input asp-for="Input.Adress" class="form-control mb-0" type="text" />
+                            <span asp-validation-for="Input.Adress" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-12 col-12 mb--20">
                             <label asp-for="Input.Email"></label>
                             <input asp-for="Input.Email" class="form-control mb-0" type="email" />
                             <span asp-validation-for="Input.Email" class="text-danger"></span>

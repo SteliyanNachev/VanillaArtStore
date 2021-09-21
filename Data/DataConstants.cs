@@ -19,7 +19,8 @@
         public class User
         {
             public const int UserNameMaxLenght = 20;
-            public const int UserAdressMaxLenght = 20;
+            public const int UserAdressMaxLenght = 120;
+            public const int UserPhoneMaxLenght = 20;
         }
     }
 }

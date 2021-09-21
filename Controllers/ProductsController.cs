@@ -16,6 +16,7 @@
             this.products = products;
         }
 
+        [Authorize(Roles = WebConstants.AdministratorRoleName)]
         public IActionResult All([FromQuery] AllProductsQueryModel query)
          {
             var queryResult = this.products.All(query.Category, query.SearchTerm, query.Sorting, query.CurrentPage);
@@ -57,7 +58,7 @@
             });
         }
 
-        [Authorize]
+        [Authorize(Roles = WebConstants.AdministratorRoleName)]
         public IActionResult Add()
             => View(new ProductFormModel
             {
@@ -65,7 +66,7 @@
             });
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles = WebConstants.AdministratorRoleName)]
         public IActionResult Add(ProductFormModel product)
         {
             //Image should be saved explained at -32min at lecture working with data.
@@ -93,7 +94,7 @@
             return RedirectToAction(nameof(All));
         }
 
-        [Authorize]
+        [Authorize(Roles = WebConstants.AdministratorRoleName)]
         public IActionResult Edit(int id)
         {
             var product = this.products.Details(id);
@@ -110,7 +111,7 @@
             });
         }
 
-        [Authorize]
+        [Authorize(Roles = WebConstants.AdministratorRoleName)]
         [HttpPost]
         public IActionResult Edit(int id, ProductFormModel product)
         {

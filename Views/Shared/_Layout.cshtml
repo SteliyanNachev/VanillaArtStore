@@ -87,12 +87,16 @@
                                 <a href="contact.html">Contact</a>
                             </li>
                             <!--Products-->
-                            <li class="menu-item">
-                                <a asp-controller="Products" asp-action="Add">Add Product</a>
-                            </li>
-                            <li class="menu-item">
-                                <a asp-controller="Products" asp-action="All">All Products</a>
-                            </li>
+                            @if (User.IsInRole(WebConstants.AdministratorRoleName))
+                            {
+                                <li class="menu-item">
+                                    <a asp-controller="Products" asp-action="Add">Add Product</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a asp-controller="Products" asp-action="All">All Products</a>
+                                </li>
+                            }
+
                         </ul>
                     </div>
                 </div>
@@ -149,22 +153,22 @@
                                         </div>
                                     </div>
                                 </li>
-                            }
+                             }
 
-                            <li class="sin-link">
-                                <a href="javascript:" class="link-icon hamburgur-icon">
-                                    <i class="ion-navicon"></i>
-                                </a>
-                                <div class="sin-dropdown option-dropdown">
-                                    <div class="inner-single-block">
-                                        <h4 class="option-title">my account</h4>
-                                        <ul class="option-list">
-                                            <partial name="_LoginPartial" />
-                                        </ul>
+                                <li class="sin-link">
+                                    <a href="javascript:" class="link-icon hamburgur-icon">
+                                        <i class="ion-navicon"></i>
+                                    </a>
+                                    <div class="sin-dropdown option-dropdown">
+                                        <div class="inner-single-block">
+                                            <h4 class="option-title">@User.Identity.Name</h4>
+                                            <ul class="option-list">
+                                                <partial name="_LoginPartial" />
+                                            </ul>
+                                        </div>
                                     </div>
-                                </div>
-                            </li>
-                        </ul>
+                                </li>
+                            </ul>
 
                         <div class="search-wrapper">
                             <div class="search-wrapper-inner">

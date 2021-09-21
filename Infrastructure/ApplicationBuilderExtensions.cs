@@ -6,6 +6,11 @@
     using Microsoft.EntityFrameworkCore;
     using System.Linq;
     using VanillaArtStore.Data.Models;
+    using System;
+    using Microsoft.AspNetCore.Identity;
+
+    using static WebConstants;
+    using System.Threading.Tasks;
 
     public static class ApplicationBuilderExtensions
     {
@@ -13,11 +18,14 @@
         {
             using var scopedServices = app.ApplicationServices.CreateScope();
 
-            var data = scopedServices.ServiceProvider.GetService<VanillaArtDbContext>();
+            var serviceProvider = scopedServices.ServiceProvider;
+
+            var data = serviceProvider.GetRequiredService<VanillaArtDbContext>();
 
             data.Database.Migrate();
 
             SeedCategories(data);
+            SeedAdministrator(serviceProvider);
 
             return app;
         }
@@ -40,6 +48,42 @@
             });
 
             data.SaveChanges();
+        }
+
+        private static void SeedAdministrator(IServiceProvider services)
+        {
+            var userManager = services.GetRequiredService<UserManager<User>>();
+            var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+
+            Task
+                .Run(async () =>
+                {
+                    if (await roleManager.RoleExistsAsync(AdministratorRoleName))
+                    {
+                        return;
+                    }
+
+                    var role = new IdentityRole { Name = AdministratorRoleName };
+
+                    await roleManager.CreateAsync(role);
+
+                    const string adminPass = "admin12";
+
+                    var user = new User
+                    {
+                       FirstName = "Steliyan",
+                       LastName = "Nachev",
+                       UserName = "admin@gmail.com",
+                       PhoneNumber = "0898460866",
+                       Email = "admin@gmail.com"
+                    };
+
+                    await userManager.CreateAsync(user, adminPass);
+
+                    await userManager.AddToRoleAsync(user, role.Name);
+                })
+                .GetAwaiter()
+                .GetResult();
         }
     }
 }
