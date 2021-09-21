@@ -11,6 +11,7 @@ namespace VanillaArtStore
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using VanillaArtStore.Data;
+    using VanillaArtStore.Data.Models;
     using VanillaArtStore.Infrastructure;
     using VanillaArtStore.Services.Products;
 
@@ -29,7 +30,7 @@ namespace VanillaArtStore
 
             services.AddDatabaseDeveloperPageExceptionFilter();
 
-            services.AddDefaultIdentity<IdentityUser>(options =>
+            services.AddDefaultIdentity<User>(options =>
                      {
                          options.SignIn.RequireConfirmedAccount = false;
                          options.Password.RequireDigit = false;
@@ -37,6 +38,7 @@ namespace VanillaArtStore
                          options.Password.RequireNonAlphanumeric = false;
                          options.Password.RequireUppercase = false;
                      })
+                    .AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<VanillaArtDbContext>();
 
             services.AddControllersWithViews();

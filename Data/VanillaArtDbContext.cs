@@ -4,7 +4,7 @@
     using Microsoft.EntityFrameworkCore;
     using VanillaArtStore.Data.Models;
 
-    public class VanillaArtDbContext : IdentityDbContext
+    public class VanillaArtDbContext : IdentityDbContext<User>
     {
 
         public VanillaArtDbContext(DbContextOptions<VanillaArtDbContext> options)

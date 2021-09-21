@@ -25,6 +25,16 @@
                 <div class="login-form">
                     <div class="row">
                         <div class="col-md-12 col-12 mb--20">
+                            <label asp-for="Input.FirstName"></label>
+                            <input asp-for="Input.FirstName" class="form-control mb-0" type="text" />
+                            <span asp-validation-for="Input.FirstName" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-12 col-12 mb--20">
+                            <label asp-for="Input.LastName"></label>
+                            <input asp-for="Input.LastName" class="form-control mb-0" type="text" />
+                            <span asp-validation-for="Input.LastName" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-12 col-12 mb--20">
                             <label asp-for="Input.Email"></label>
                             <input asp-for="Input.Email" class="form-control mb-0" type="email" />
                             <span asp-validation-for="Input.Email" class="text-danger"></span>
