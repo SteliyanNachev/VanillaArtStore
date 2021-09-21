@@ -108,7 +108,8 @@ namespace VanillaArtStore.Services.Products
                     Price = p.Price,
                     InStockQuantity = p.InStockQuantity,
                     ImageUrl = p.ImageUrl,
-                    Category = p.Category.Name
+                    Category = p.Category.Name,
+                    CategoryId = p.CategoryId
                 })
                 .FirstOrDefault();
 
@@ -144,6 +145,25 @@ namespace VanillaArtStore.Services.Products
                     Name = p.Name
                 })
                 .ToList();
-        
+
+        public IEnumerable<ProductServiceModel> GetAllProductFromSAmeCategory(int categoryId)
+        {
+            var productsFromCategory = this.data
+                .Products
+                .Where(p => p.CategoryId == categoryId)
+                .Select(p => new ProductServiceModel
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Description = p.Description,
+                    Price = p.Price,
+                    InStockQuantity = p.InStockQuantity,
+                    ImageUrl = p.ImageUrl,
+                    Category = p.Category.Name
+                })
+                .ToList();
+
+            return productsFromCategory;
+        }
     }
 }

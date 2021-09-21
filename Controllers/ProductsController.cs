@@ -42,14 +42,18 @@
         {
             var product = this.products.Details(id);
 
+            var productsFromCategory = this.products.GetAllProductFromSAmeCategory(product.CategoryId); 
+
             return View(new ProductListingViewModel
+
             {
                 Name = product.Name,
                 Price = product.Price,
                 Description = product.Description,
                 ImageUrl = product.ImageUrl,
                 InStockQuantity = product.InStockQuantity,
-                Category = product.Category
+                Category = product.Category,
+                ProductsFromCategory = productsFromCategory
             });
         }
 

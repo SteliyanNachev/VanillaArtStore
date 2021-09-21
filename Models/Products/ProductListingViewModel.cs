@@ -1,5 +1,8 @@
 ﻿namespace VanillaArtStore.Models.Products
 {
+    using System.Collections.Generic;
+    using VanillaArtStore.Services.Products;
+
     public class ProductListingViewModel
     {
         public int Id { get; init; } 
@@ -14,5 +17,7 @@
         public string ImageUrl { get; init; }
 
         public string Category { get; init; }
+
+        public IEnumerable<ProductServiceModel> ProductsFromCategory { get; init; }
     }
 }

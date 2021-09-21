@@ -28,19 +28,19 @@
           "asNavFor": ".product-slider-nav"
           }'>
                         <div class="single-slide">
-                            <img src="/image/products/IMG_6868-600x600.jpg" alt="">
+                            <img src="@Model.ImageUrl" alt="">
                         </div>
                         <div class="single-slide">
-                            <img src="/image/products/product-details-big-2.jpg" alt="">
+                            <img src="@Model.ImageUrl" alt="">
                         </div>
                         <div class="single-slide">
-                            <img src="/image/products/product-details-big-3.jpg" alt="">
+                            <img src="@Model.ImageUrl" alt="">
                         </div>
                         <div class="single-slide">
-                            <img src="/image/products/product-details-big-4.jpg" alt="">
+                            <img src="@Model.ImageUrl" alt="">
                         </div>
                         <div class="single-slide">
-                            <img src="/image/products/product-details-big-5.jpg" alt="">
+                            <img src="@Model.ImageUrl" alt="">
                         </div>
                     </div>
                     <!-- Product Details Slider Nav -->
@@ -56,25 +56,25 @@
           "focusOnSelect": true
           }'>
                         <div class="single-slide">
-                            <img src="image/products/IMG_6868-600x600.jpg" alt="">
+                            <img src="@Model.ImageUrl" alt="">
                         </div>
                         <div class="single-slide">
-                            <img src="image/products/product-details-big-2.jpg" alt="">
+                            <img src="@Model.ImageUrl" alt="">
                         </div>
                         <div class="single-slide">
-                            <img src="image/products/product-details-big-3.jpg" alt="">
+                            <img src="@Model.ImageUrl" alt="">
                         </div>
                         <div class="single-slide">
-                            <img src="image/products/product-details-big-4.jpg" alt="">
+                            <img src="@Model.ImageUrl" alt="">
                         </div>
                         <div class="single-slide">
-                            <img src="image/products/product-details-big-5.jpg" alt="">
+                            <img src="@Model.ImageUrl" alt="">
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-7">
                     <div class="product-details-description pl-lg--30 ">
-                        <h3 class="title">Zyfg Men Sweatshirts Casual Ethnic Style Pattern</h3>
+                        <h3 class="title">@Model.Name</h3>
                         <div class="widget-block">
                             <div class="rating-block">
                                 <span class="ion-android-star-outline star_on"></span>
@@ -88,15 +88,14 @@
                                 <a href=""><i class="fas fa-pencil-alt"></i>Write a review</a>
                             </div>
                         </div>
+
                         <div class="price-block">
-                            <del class="price-old">$500.00</del> <span class="price-new">$500.00</span>
+                            <span class="price-new">@Model.Price Лв.</span>
                         </div>
                         <article class="product-details-article border-top">
                             <h4 class="sr-only">Product Summery</h4>
                             <p>
-                                Long printed dress with thin adjustable straps. V-neckline and wiring under the Dust with ruffles at
-                                the bottom of the
-                                dress.
+                                @Model.Description
                             </p>
                         </article>
                         <div class="widget-block-3">
@@ -113,7 +112,15 @@
                                     <a href="" class="btn btn-outlined--primary"><i class="ion-bag"></i>Add to Cart</a>
                                 </div>
                                 <div class="product-status">
-                                    <p><i class="zmdi zmdi-check"></i> In Stock</p>
+                                    @if (Model.InStockQuantity >= 1)
+                                    {
+                                        <p><i class="zmdi zmdi-check"></i> In Stock</p>
+                                    }
+                                    else
+                                    {
+                                        <p><i class="zmdi zmdi-close"></i> Out Of Stock</p>
+                                    }
+
                                 </div>
                             </div>
                         </div>
@@ -152,10 +159,6 @@
                            aria-controls="tab-1" aria-selected="true">Description</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" id="product-detils" data-toggle="tab" href="#tab-2" role="tab" aria-controls="tab-2"
-                           aria-selected="false">Product Details</a>
-                    </li>
-                    <li class="nav-item">
                         <a class="nav-link" id="review" data-toggle="tab" href="#tab-3" role="tab" aria-controls="tab-3"
                            aria-selected="false">Reviews</a>
                     </li>
@@ -165,44 +168,11 @@
                         <article class="review-article">
                             <h1 class="sr-only">Tab Article</h1>
                             <p>
-                                Fashion has been creating well-designed collections since 2010. The brand offers feminine designs
-                                delivering
-                                stylish
-                                separates and statement dresses which have since evolved into a full ready-to-wear collection in which
-                                every
-                                item is
-                                a
-                                vital part of a woman's wardrobe. The result? Cool, easy, chic looks with youthful elegance and
-                                unmistakable
-                                signature
-                                style. All the beautiful pieces are made in Italy and manufactured with the greatest attention. Now
-                                Fashion
-                                extends
-                                to
-                                a range of accessories including shoes, hats, belts and more!
+                                @Model.Description
                             </p>
                         </article>
                     </div>
-                    <div class="tab-pane fade" id="tab-2" role="tabpanel" aria-labelledby="product-detils">
-                        <div class="tab-product-details">
-                            <div class="brand">
-                                <img src="/image/others/review-tab-product-details.jpg" alt="">
-                            </div>
-                            <h5 class="meta">Reference <span class="small-text">demo_5</span></h5>
-                            <h5 class="meta">In stock <span class="small-text">297 Items</span></h5>
-                            <section class="product-features">
-                                <h3 class="title">Data sheet</h3>
-                                <dl class="data-sheet">
-                                    <dt class="name">Compositions</dt>
-                                    <dd class="value">Viscose</dd>
-                                    <dt class="name">Styles</dt>
-                                    <dd class="value">Casual</dd>
-                                    <dt class="name">Properties</dt>
-                                    <dd class="value">Maxi Dress</dd>
-                                </dl>
-                            </section>
-                        </div>
-                    </div>
+
                     <div class="tab-pane fade" id="tab-3" role="tabpanel" aria-labelledby="review">
                         <div class="review-wrapper">
                             <h2 class="title-lg mb--20">1 REVIEW FOR AUCTOR GRAVIDA ENIM</h2>
@@ -280,7 +250,7 @@
             <div class="container">
                 <div class="section-title mb--55">
                     <h2>12 Other Products In The Same Category:</h2>
-                    <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram anteposuerit litterarum formas.</p>
+                    <p>Please check our products from the same category.</p>
                 </div>
                 <div class="product-slider handart-slick-slider arrow-type-two space-db--5" data-slick-setting='{
           "autoplay": true,
@@ -294,210 +264,42 @@
                                   {"breakpoint":768, "settings": {"slidesToShow": 2} },
                                   {"breakpoint":480, "settings": {"slidesToShow": 1} }
                               ]'>
-                    <div class="single-slide">
-                        <div class="product-card">
-                            <div class="image">
-                                <img src="/image/products/home-1/product-1.jpg" alt="">
-                                <div class="hover-content">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="/image/products/home-1/product-2.jpg" alt="">
-                                    </a>
-                                </div>
-                                <span class="product-badge">new</span>
-                                <span class="product-badge-2">-5%</span>
-                            </div>
-                            <div class="description-block">
-                                <div class="description-header">
-                                    <h5 class="description-tag"><a href="">Fashion Manufacturer</a></h5>
-                                    <div class="rating-block">
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline"></span>
-                                        <span class="ion-android-star-outline"></span>
+                    @foreach (var product in Model.ProductsFromCategory)
+                    {
+                        <div class="single-slide">
+                            <div class="product-card">
+                                <div class="image">
+                                    <img src="@product.ImageUrl" alt="">
+                                    <div class="hover-content">
+                                        <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id" class="hover-image">
+                                            <img src="@product.ImageUrl" alt="">
+                                        </a>
                                     </div>
+                                    <span class="product-badge">new</span>
                                 </div>
-                                <h3 class="post-title">
-                                    <a href="product-details.html">
-                                        zyfg men sweatshirts casual ethnic style
-                                        pattern
-                                    </a>
-                                </h3>
+                                <div class="description-block">
+                                    <div class="description-header">
+                                        <h5 class="description-tag"><a href="">Fashion Manufacturer</a></h5>
+                                        <div class="rating-block">
+                                            <span class="ion-android-star-outline star_on"></span>
+                                            <span class="ion-android-star-outline star_on"></span>
+                                            <span class="ion-android-star-outline star_on"></span>
+                                            <span class="ion-android-star-outline"></span>
+                                            <span class="ion-android-star-outline"></span>
+                                        </div>
+                                    </div>
+                                    <h3 class="post-title">
+                                        <a href="product-details.html">
+                                            @product.Description
+                                        </a>
+                                    </h3>
 
-                                <p class="mb-0 price"><del class="price-old">€500.00</del> <span class="price-new">€500.00</span></p>
+                                    <p class="mb-0 price"><span class="price-new">@product.Price Лв.</span></p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="single-slide">
-                        <div class="product-card">
-                            <div class="image">
-                                <img src="/image/products/home-1/product-3.jpg" alt="">
-                                <div class="hover-content">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="/image/products/home-1/product-4.jpg" alt="">
-                                    </a>
-                                </div>
-                                <span class="product-badge">new</span>
-                                <span class="product-badge-2">-5%</span>
-                            </div>
-                            <div class="description-block">
-                                <div class="description-header">
-                                    <h5 class="description-tag"><a href="">Fashion Manufacturer</a></h5>
-                                    <div class="rating-block">
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline"></span>
-                                        <span class="ion-android-star-outline"></span>
-                                    </div>
-                                </div>
-                                <h3 class="post-title">
-                                    <a href="product-details.html">
-                                        zyfg men sweatshirts casual ethnic style
-                                        pattern
-                                    </a>
-                                </h3>
+                    }
 
-                                <p class="mb-0 price"><del class="price-old">€500.00</del> <span class="price-new">€500.00</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-slide">
-                        <div class="product-card">
-                            <div class="image">
-                                <img src="/image/products/home-1/product-5.jpg" alt="">
-                                <div class="hover-content">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="/image/products/home-1/product-6.jpg" alt="">
-                                    </a>
-                                </div>
-                                <span class="product-badge">new</span>
-                                <span class="product-badge-2">-5%</span>
-                            </div>
-                            <div class="description-block">
-                                <div class="description-header">
-                                    <h5 class="description-tag"><a href="">Fashion Manufacturer</a></h5>
-                                    <div class="rating-block">
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline"></span>
-                                        <span class="ion-android-star-outline"></span>
-                                    </div>
-                                </div>
-                                <h3 class="post-title">
-                                    <a href="product-details.html">
-                                        zyfg men sweatshirts casual ethnic style
-                                        pattern
-                                    </a>
-                                </h3>
-
-                                <p class="mb-0 price"><del class="price-old">€500.00</del> <span class="price-new">€500.00</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-slide">
-                        <div class="product-card">
-                            <div class="image">
-                                <img src="/image/products/home-1/product-7.jpg" alt="">
-                                <div class="hover-content">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="/image/products/home-1/product-8.jpg" alt="">
-                                    </a>
-                                </div>
-                                <span class="product-badge">new</span>
-                                <span class="product-badge-2">-5%</span>
-                            </div>
-                            <div class="description-block">
-                                <div class="description-header">
-                                    <h5 class="description-tag"><a href="">Fashion Manufacturer</a></h5>
-                                    <div class="rating-block">
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline"></span>
-                                        <span class="ion-android-star-outline"></span>
-                                    </div>
-                                </div>
-                                <h3 class="post-title">
-                                    <a href="product-details.html">
-                                        zyfg men sweatshirts casual ethnic style
-                                        pattern
-                                    </a>
-                                </h3>
-
-                                <p class="mb-0 price"><del class="price-old">€500.00</del> <span class="price-new">€500.00</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-slide">
-                        <div class="product-card">
-                            <div class="image">
-                                <img src="/image/products/home-1/product-9.jpg" alt="">
-                                <div class="hover-content">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="/image/products/home-1/product-10.jpg" alt="">
-                                    </a>
-                                </div>
-                                <span class="product-badge">new</span>
-                                <span class="product-badge-2">-5%</span>
-                            </div>
-                            <div class="description-block">
-                                <div class="description-header">
-                                    <h5 class="description-tag"><a href="">Fashion Manufacturer</a></h5>
-                                    <div class="rating-block">
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline"></span>
-                                        <span class="ion-android-star-outline"></span>
-                                    </div>
-                                </div>
-                                <h3 class="post-title">
-                                    <a href="product-details.html">
-                                        zyfg men sweatshirts casual ethnic style
-                                        pattern
-                                    </a>
-                                </h3>
-
-                                <p class="mb-0 price"><del class="price-old">€500.00</del> <span class="price-new">€500.00</span></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="single-slide">
-                        <div class="product-card">
-                            <div class="image">
-                                <img src="/image/products/home-1/product-11.jpg" alt="">
-                                <div class="hover-content">
-                                    <a href="product-details.html" class="hover-image">
-                                        <img src="/image/products/home-1/product-12.jpg" alt="">
-                                    </a>
-                                </div>
-                                <span class="product-badge">new</span>
-                                <span class="product-badge-2">-5%</span>
-                            </div>
-                            <div class="description-block">
-                                <div class="description-header">
-                                    <h5 class="description-tag"><a href="">Fashion Manufacturer</a></h5>
-                                    <div class="rating-block">
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline star_on"></span>
-                                        <span class="ion-android-star-outline"></span>
-                                        <span class="ion-android-star-outline"></span>
-                                    </div>
-                                </div>
-                                <h3 class="post-title">
-                                    <a href="product-details.html">
-                                        zyfg men sweatshirts casual ethnic style
-                                        pattern
-                                    </a>
-                                </h3>
-
-                                <p class="mb-0 price"><del class="price-old">€500.00</del> <span class="price-new">€500.00</span></p>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>

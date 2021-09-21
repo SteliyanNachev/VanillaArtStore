@@ -21,5 +21,6 @@
         public int CategoryId { get; init; }
 
         public string Category { get; init; }
+
     }
 }

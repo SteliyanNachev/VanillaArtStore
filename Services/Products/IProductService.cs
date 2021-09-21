@@ -17,6 +17,7 @@
         ProductServiceModel Details(int id);
 
         IEnumerable<ProductCategoryServiceModel> GetAllProductCategories();
+        IEnumerable<ProductServiceModel> GetAllProductFromSAmeCategory(int categoryId);
 
         bool CategoryExists(int categoryId);
 
