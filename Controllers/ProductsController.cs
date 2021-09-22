@@ -43,9 +43,11 @@
         {
             var product = this.products.Details(id);
 
-            var productsFromCategory = this.products.GetAllProductFromSAmeCategory(product.CategoryId); 
+            var productsFromCategory = this.products.GetAllProductFromSAmeCategory(product.CategoryId);
 
-            return View(new ProductListingViewModel
+            MultipleClassForDetailsAndReview multiModel = new MultipleClassForDetailsAndReview();
+
+            var products = new ProductListingViewModel
 
             {
                 Name = product.Name,
@@ -56,7 +58,23 @@
                 Category = product.Category,
                 ProductsFromCategory = productsFromCategory,
                 Reviews = product.Reviews
-            });
+            };
+
+            var reviews = new ProductReviewFormModel { };
+
+            multiModel.Products = products;
+            multiModel.Review = reviews;
+
+            return View(multiModel);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public IActionResult Details(MultipleClassForDetailsAndReview multiView)
+        {
+            var review = multiView.Review;
+
+            return RedirectToAction(nameof(Details));
         }
 
         [Authorize(Roles = WebConstants.AdministratorRoleName)]

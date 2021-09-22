@@ -15,6 +15,9 @@
         public const int ProductInSctockMinQuantity = 1;
 
         public const int ReviewCommentMaxLenght = 10000;
+        public const int ReviewCommentMinLenght = 10000;
+        public const int ReviewRatingMin = 1;
+        public const int ReviewRatingMxn = 5;
 
         public class User
         {
