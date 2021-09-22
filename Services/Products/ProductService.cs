@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Identity;
+using System.Collections.Generic;
 using System.Linq;
 using VanillaArtStore.Data;
 using VanillaArtStore.Data.Models;
@@ -9,8 +10,14 @@ namespace VanillaArtStore.Services.Products
     public class ProductService : IProductService
     {
         private readonly VanillaArtDbContext data;
+        private readonly UserManager<User> user;
 
-        public ProductService(VanillaArtDbContext data) => this.data = data;
+        public ProductService(VanillaArtDbContext data,UserManager<User> user)
+        {
+            this.data = data;
+            this.user = user;
+        }
+
         public AllProductsQueryServiceModel All(
             string category,
             string searchTerm,
@@ -97,21 +104,26 @@ namespace VanillaArtStore.Services.Products
         }
 
         public ProductServiceModel Details(int id)
-            => this.data
-                .Products
-                .Where(p => p.Id == id)
-                .Select(p => new ProductServiceModel
-                {
-                    Id = p.Id,
-                    Name = p.Name,
-                    Description = p.Description,
-                    Price = p.Price,
-                    InStockQuantity = p.InStockQuantity,
-                    ImageUrl = p.ImageUrl,
-                    Category = p.Category.Name,
-                    CategoryId = p.CategoryId
-                })
-                .FirstOrDefault();
+        {
+            var reviews = this.GetAllProductReviews(id);
+
+            return this.data
+                           .Products
+                           .Where(p => p.Id == id)
+                           .Select(p => new ProductServiceModel
+                           {
+                               Id = p.Id,
+                               Name = p.Name,
+                               Description = p.Description,
+                               Price = p.Price,
+                               InStockQuantity = p.InStockQuantity,
+                               ImageUrl = p.ImageUrl,
+                               Category = p.Category.Name,
+                               CategoryId = p.CategoryId,
+                               Reviews = p.Reviews
+                           })
+                           .FirstOrDefault();
+        }
 
         public bool Edit(int id, string name, decimal price, string description, string imageUrl, int inStockQuantity, int categoryId)
         {
@@ -164,6 +176,26 @@ namespace VanillaArtStore.Services.Products
                 .ToList();
 
             return productsFromCategory;
+        }
+
+        public IEnumerable<Review> GetAllProductReviews(int productId)
+        {
+            var productReviews = this.data
+                .Reviews
+                .Where(r => r.ProductId == productId)
+                .Select(r => new Review
+                {
+                    Id = r.Id,
+                    Date = r.Date,
+                    Comment = r.Comment,
+                    Rating = r.Rating,
+                    ProductId = r.ProductId,
+                    UserId = r.UserId,
+                    User = r.User
+                })
+                .ToList();
+
+            return productReviews;
         }
     }
 }

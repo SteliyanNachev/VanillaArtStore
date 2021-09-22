@@ -54,7 +54,8 @@
                 ImageUrl = product.ImageUrl,
                 InStockQuantity = product.InStockQuantity,
                 Category = product.Category,
-                ProductsFromCategory = productsFromCategory
+                ProductsFromCategory = productsFromCategory,
+                Reviews = product.Reviews
             });
         }
 

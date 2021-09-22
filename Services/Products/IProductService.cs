@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using VanillaArtStore.Data.Models;
     using VanillaArtStore.Models.Products;
 
     public interface IProductService
@@ -18,6 +19,8 @@
 
         IEnumerable<ProductCategoryServiceModel> GetAllProductCategories();
         IEnumerable<ProductServiceModel> GetAllProductFromSAmeCategory(int categoryId);
+
+        IEnumerable<Review> GetAllProductReviews(int productId);
 
         bool CategoryExists(int categoryId);
 

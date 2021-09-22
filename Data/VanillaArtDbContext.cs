@@ -32,6 +32,13 @@
                 .HasForeignKey(c => c.ProductId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            builder
+                .Entity<Review>()
+                .HasOne(c => c.User)
+                .WithMany(c => c.Reviews)
+                .HasForeignKey(c => c.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
             base.OnModelCreating(builder);
         }
     }
