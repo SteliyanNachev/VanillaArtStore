@@ -2,16 +2,16 @@
 
     <form method="post" enctype="multipart/form-data" class="mt--15 site-form ">
         <span class="rating-widget-block d-inline-block">
+            <input type="radio" asp-for="@Model.Review.Rating" value="2">
+            <label asp-for="@Model.Review.Rating" class="d-inline-block"></label>
             <input type="radio" asp-for="@Model.Review.Rating" value="1">
-            <label asp-for="@Model.Review.Rating"></label>
-            <input type="radio" name="star" id="star2">
-            <label for="star2"></label>
-            <input type="radio" name="star" id="star3">
-            <label for="star3"></label>
-            <input type="radio" name="star" id="star4">
-            <label for="star4"></label>
-            <input type="radio" name="star" id="star5">
-            <label for="star5"></label>
+            <label asp-for="@Model.Review.Rating"class="d-inline-block"></label>
+            <input type="radio" asp-for="@Model.Review.Rating" value="1">
+            <label asp-for="@Model.Review.Rating"class="d-inline-block"></label>
+            <input type="radio" asp-for="@Model.Review.Rating" value="1">
+            <label asp-for="@Model.Review.Rating"class="d-inline-block"></label>
+            <input type="radio" asp-for="@Model.Review.Rating" value="1">
+            <label asp-for="@Model.Review.Rating"class="d-inline-block"></label>
         </span>
         <div class="row">
             <div class="col-12">
