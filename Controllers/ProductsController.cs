@@ -6,6 +6,7 @@
     using System.Linq;
     using VanillaArtStore.Models.Products;
     using VanillaArtStore.Services.Products;
+    using VanillaArtStore.Services.Products.Models;
 
     public class ProductsController : Controller
     {

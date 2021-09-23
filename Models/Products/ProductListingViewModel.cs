@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using VanillaArtStore.Data.Models;
     using VanillaArtStore.Services.Products;
+    using VanillaArtStore.Services.Products.Models;
 
     public class ProductListingViewModel
     {

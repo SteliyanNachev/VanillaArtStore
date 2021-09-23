@@ -3,6 +3,7 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using VanillaArtStore.Services.Products;
+    using VanillaArtStore.Services.Products.Models;
     using static Data.DataConstants;
     public class ProductFormModel
     {

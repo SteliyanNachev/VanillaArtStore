@@ -6,6 +6,7 @@
     using System.Threading.Tasks;
     using VanillaArtStore.Data.Models;
     using VanillaArtStore.Models.Products;
+    using VanillaArtStore.Services.Products.Models;
 
     public interface IProductService
     {

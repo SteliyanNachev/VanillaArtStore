@@ -1,4 +1,4 @@
-﻿namespace VanillaArtStore.Services.Products
+﻿namespace VanillaArtStore.Services.Products.Models
 {
     using System;
     using System.Collections.Generic;

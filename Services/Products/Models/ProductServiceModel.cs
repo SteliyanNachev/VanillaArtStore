@@ -1,4 +1,4 @@
-﻿namespace VanillaArtStore.Services.Products
+﻿namespace VanillaArtStore.Services.Products.Models
 {
     using Microsoft.AspNetCore.Identity;
     using System;

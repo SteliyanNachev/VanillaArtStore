@@ -4,6 +4,7 @@ using System.Linq;
 using VanillaArtStore.Data;
 using VanillaArtStore.Data.Models;
 using VanillaArtStore.Models.Products;
+using VanillaArtStore.Services.Products.Models;
 
 namespace VanillaArtStore.Services.Products
 {
