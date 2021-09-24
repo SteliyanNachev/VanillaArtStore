@@ -1,5 +1,6 @@
 ﻿namespace VanillaArtStore.Controllers
 {
+    using AutoMapper;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
@@ -11,10 +12,12 @@
     public class ProductsController : Controller
     {
         private readonly IProductService products;
+        private readonly IMapper mapper;
 
-        public ProductsController(IProductService products)
+        public ProductsController(IProductService products, IMapper mapper)
         {
             this.products = products;
+            this.mapper = mapper;
         }
 
         [Authorize(Roles = WebConstants.AdministratorRoleName)]
@@ -119,16 +122,11 @@
         {
             var product = this.products.Details(id);
 
-            return View(new ProductFormModel
-            {
-                Name = product.Name,
-                Price = product.Price,
-                Description = product.Description,
-                ImageUrl = product.ImageUrl,
-                InStockQuantity = product.InStockQuantity,
-                CategoryId = product.CategoryId,
-                Categories = this.products.GetAllProductCategories()
-            });
+            var productForm = this.mapper.Map<ProductFormModel>(product);
+
+            productForm.Categories = this.products.GetAllProductCategories();
+
+            return View(productForm);
         }
 
         [Authorize(Roles = WebConstants.AdministratorRoleName)]

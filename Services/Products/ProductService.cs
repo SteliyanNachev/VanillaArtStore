@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 using System.Linq;
 using VanillaArtStore.Data;
@@ -12,11 +14,13 @@ namespace VanillaArtStore.Services.Products
     {
         private readonly VanillaArtDbContext data;
         private readonly UserManager<User> user;
+        private readonly IMapper mapper;
 
-        public ProductService(VanillaArtDbContext data,UserManager<User> user)
+        public ProductService(VanillaArtDbContext data,UserManager<User> user, IMapper mapper)
         {
             this.data = data;
             this.user = user;
+            this.mapper = mapper;
         }
 
         public AllProductsQueryServiceModel All(
@@ -111,18 +115,7 @@ namespace VanillaArtStore.Services.Products
             return this.data
                            .Products
                            .Where(p => p.Id == id)
-                           .Select(p => new ProductServiceModel
-                           {
-                               Id = p.Id,
-                               Name = p.Name,
-                               Description = p.Description,
-                               Price = p.Price,
-                               InStockQuantity = p.InStockQuantity,
-                               ImageUrl = p.ImageUrl,
-                               Category = p.Category.Name,
-                               CategoryId = p.CategoryId,
-                               Reviews = p.Reviews
-                           })
+                           .ProjectTo<ProductServiceModel>(this.mapper.ConfigurationProvider)
                            .FirstOrDefault();
         }
 

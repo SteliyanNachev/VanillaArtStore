@@ -41,6 +41,8 @@ namespace VanillaArtStore
                     .AddRoles<IdentityRole>()
                     .AddEntityFrameworkStores<VanillaArtDbContext>();
 
+            services.AddAutoMapper(typeof(Startup));
+
             services.AddControllersWithViews();
 
             services.AddTransient<IProductService,ProductService>();

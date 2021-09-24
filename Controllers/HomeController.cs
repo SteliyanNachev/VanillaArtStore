@@ -1,5 +1,7 @@
 ﻿namespace VanillaArtStore.Controllers
 {
+    using AutoMapper;
+    using AutoMapper.QueryableExtensions;
     using Microsoft.AspNetCore.Mvc;
     using System.Diagnostics;
     using System.Linq;
@@ -10,25 +12,20 @@
     public class HomeController : Controller
     {
         private readonly VanillaArtDbContext data;
+        private readonly IMapper mapper;
 
-        public HomeController(VanillaArtDbContext data)
-            => this.data = data;
+        public HomeController(VanillaArtDbContext data, IMapper mapper)
+        {
+            this.data = data;
+            this.mapper = mapper;
+        }
 
         public IActionResult Index()
         {
             var products = this.data
                 .Products
                 .OrderByDescending(p => p.Id)
-                .Select(p => new ProductListingViewModel
-                {
-                    Id = p.Id,
-                    Name = p.Name,
-                    Price = p.Price,
-                    InStockQuantity = p.InStockQuantity,
-                    ImageUrl = p.ImageUrl,
-                    Description = p.Description,
-                    Category = p.Category.Name
-                })
+                .ProjectTo<ProductListingViewModel>(this.mapper.ConfigurationProvider)
                 .Take(8)
                 .ToList();
 
