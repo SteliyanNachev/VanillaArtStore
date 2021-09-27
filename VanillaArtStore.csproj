@@ -7,10 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Contact\Index.cshtml" />
     <Content Remove="Views\Home\Index.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\Contact\Index.cshtml" />
     <None Include="Views\Home\Index.cshtml" />
     <None Include="wwwroot\js\site.js" />
   </ItemGroup>

@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="zxx">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Handart - Responsive Handmade Ecommerce Bootstrap 4 Template</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/plugins.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="image/favicon.ico">
+</head>
+<body>
+    <div class="site-wrapper" id="top">
+
+        <section class="bg-image" data-bg="image/bg-images/home-3/slidershow3-1-1920x960.jpg">
+            <h2 class="sr-only">Site Breadcrumb</h2>
+            <div class="container">
+                <div class="breadcrumb-contents">
+                    <nav aria-label="breadcrumb">
+                        <h2 class="page-name">Contact</h2>
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item">Contact</li>
+                        </ol>
+                    </nav>
+                </div>
+            </div>
+        </section>
+        <!-- Cart Page Start -->
+        <main class="contact_area section-padding pt--60">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="gogle_map">
+                            <div id="googleMap">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt--60 space-db--30">
+                    <div class="col-lg-5 col-md-5 col-12">
+                        <div class="contact_adress">
+                            <div class="ct_address">
+                                <h3 class="ct_title">Location & Details</h3>
+                            </div>
+
+                            <div class="address_wrapper">
+
+                                <div class="address">
+                                    <div class="icon">
+                                        <i class="fas fa-map-marker-alt"></i>
+                                    </div>
+                                    <div class="contact-info-text">
+                                        <p><span>Address:</span> bul. "Chataldzha", <br> 9002 Varna Center, Varna </p>
+                                    </div>
+                                </div>
+
+                                <div class="address">
+                                    <div class="icon">
+                                        <i class="far fa-envelope"></i>
+                                    </div>
+                                    <div class="contact-info-text">
+                                        <p><span>Email: </span> support@vanillaartstore.com </p>
+                                    </div>
+                                </div>
+
+                                <div class="address">
+                                    <div class="icon">
+                                        <i class="fas fa-mobile-alt"></i>
+                                    </div>
+                                    <div class="contact-info-text">
+                                        <p><span>Phone:</span> (+359) 897 030 018 </p>
+                                    </div>
+                                </div>
+                                <div class="address">
+                                    <div class="icon">
+                                        <i class="far fa-clock"></i>
+                                    </div>
+                                    <div class="contact-info-text">
+                                        <p><span>Working time:</span> Mon - Sat: 10AM- 7PM  </p>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="col-lg-7 col-md-7 col-12 mt-sm--30 mt-md--0">
+
+                        <div class="contact_form">
+                            <h3 class="ct_title">Send Us a Message</h3>
+
+                            <form id="contact-form" action="php/mail.php" method="post" class="contact-form">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label>Your Name <span class="required">*</span></label>
+                                            <input type="text" name="customerName" id="customername" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label>Your Email <span class="required">*</span></label>
+                                            <input type="email" name="customerEmail" id="customerEmail" class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label>Subject</label>
+                                            <input type="text" name="contactSubject" class="form-control" id="contactSubject">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label>Your Message</label>
+                                            <textarea name="contactMessage" class="form-control" id="contactMessage"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="form-btn">
+                                            <button type="submit" value="submit" id="submit" class="btn btn-black"
+                                                    name="submit">
+                                                send
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                            <div class="form-output">
+                                <p class="form-messege"></p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+
+
+    <script src="js/plugins.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBmGmeot5jcjdaJTvfCmQPfzeoG_pABeWo"></script>
+    <script>
+        // When the window has finished loading create our google map below
+        google.maps.event.addDomListener(window, 'load', init);
+
+        function init() {
+            // Basic options for a simple Google Map
+            // For more options see: https://developers.google.com/maps/documentation/javascript/reference#MapOptions
+            var mapOptions = {
+                // How zoomed in you want the map to start at (always required)
+                zoom: 17,
+
+                scrollwheel: false,
+
+                // The latitude and longitude to center the map (always required)
+                center: new google.maps.LatLng(43.213165, 27.923549), // New York
+
+                // How you would like to style the map.
+                // This is where you would paste any style found on Snazzy Maps.
+                styles: [{
+                    "featureType": "all",
+                    "elementType": "labels.text.fill",
+                    "stylers": [{
+                        "saturation": 36
+                    },
+                    {
+                        "color": "#000000"
+                    },
+                    {
+                        "lightness": 40
+                    }
+                    ]
+                },
+                {
+                    "featureType": "all",
+                    "elementType": "labels.text.stroke",
+                    "stylers": [{
+                        "visibility": "on"
+                    },
+                    {
+                        "color": "#000000"
+                    },
+                    {
+                        "lightness": 16
+                    }
+                    ]
+                },
+                {
+                    "featureType": "all",
+                    "elementType": "labels.icon",
+                    "stylers": [{
+                        "visibility": "off"
+                    }]
+                },
+                {
+                    "featureType": "administrative",
+                    "elementType": "geometry.fill",
+                    "stylers": [{
+                        "color": "#000000"
+                    },
+                    {
+                        "lightness": 20
+                    }
+                    ]
+                },
+                {
+                    "featureType": "administrative",
+                    "elementType": "geometry.stroke",
+                    "stylers": [{
+                        "color": "#000000"
+                    },
+                    {
+                        "lightness": 17
+                    },
+                    {
+                        "weight": 1.2
+                    }
+                    ]
+                },
+                {
+                    "featureType": "landscape",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#000000"
+                    },
+                    {
+                        "lightness": 20
+                    }
+                    ]
+                },
+                {
+                    "featureType": "poi",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#000000"
+                    },
+                    {
+                        "lightness": 21
+                    }
+                    ]
+                },
+                {
+                    "featureType": "road.highway",
+                    "elementType": "geometry.fill",
+                    "stylers": [{
+                        "color": "#000000"
+                    },
+                    {
+                        "lightness": 17
+                    }
+                    ]
+                },
+                {
+                    "featureType": "road.highway",
+                    "elementType": "geometry.stroke",
+                    "stylers": [{
+                        "color": "#000000"
+                    },
+                    {
+                        "lightness": 29
+                    },
+                    {
+                        "weight": 0.2
+                    }
+                    ]
+                },
+                {
+                    "featureType": "road.arterial",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#000000"
+                    },
+                    {
+                        "lightness": 18
+                    }
+                    ]
+                },
+                {
+                    "featureType": "road.local",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#000000"
+                    },
+                    {
+                        "lightness": 16
+                    }
+                    ]
+                },
+                {
+                    "featureType": "transit",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#000000"
+                    },
+                    {
+                        "lightness": 19
+                    }
+                    ]
+                },
+                {
+                    "featureType": "water",
+                    "elementType": "geometry",
+                    "stylers": [{
+                        "color": "#000000"
+                    },
+                    {
+                        "lightness": 17
+                    }
+                    ]
+                }
+                ]
+            };
+
+            // Get the HTML DOM element that will contain your map
+            // We are using a div with id="map" seen below in the <body>
+            var mapElement = document.getElementById('googleMap');
+
+            // Create the Google Map using our element and options defined above
+            var map = new google.maps.Map(mapElement, mapOptions);
+
+            // Let's also add a marker while we're at it
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(23.761226, 90.420766),
+                map: map,
+                title: 'googlemap!',
+                animation: google.maps.Animation.BOUNCE
+
+            });
+        }
+    </script>
+    <script src="js/ajax-mail.js"></script>
+    <script src="js/custom.js"></script>
+</body>
+
+</html>
