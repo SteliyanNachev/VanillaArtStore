@@ -49,7 +49,7 @@
 
             var productsFromCategory = this.products.GetAllProductFromSAmeCategory(product.CategoryId);
 
-            MultipleClassForDetailsAndReview multiModel = new MultipleClassForDetailsAndReview();
+            MultipleClassForDetailsAndReview multiModel = new();
 
             var products = new ProductListingViewModel
 
