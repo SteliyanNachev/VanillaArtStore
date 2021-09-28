@@ -23,5 +23,7 @@
         public IEnumerable<ProductServiceModel> ProductsFromCategory { get; init; }
 
         public IEnumerable<Review> Reviews { get; init; }
+
+        public IEnumerable<Image> Images { get; init; }
     }
 }

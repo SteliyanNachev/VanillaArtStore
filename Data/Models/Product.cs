@@ -23,13 +23,12 @@
         [MaxLength(ProductInSctockMaxQuantity)]
         public int InStockQuantity { get; set; }
 
-        [Required]
-        public string ImageUrl { get; set; }
-
         public int CategoryId { get; set; }
 
         public Category Category { get; set; }
 
         public ICollection<Review> Reviews { get; set; } = new HashSet<Review>();
+
+        public ICollection<Image> Images { get; set; } = new HashSet<Image>();
     }
 }

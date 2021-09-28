@@ -33,21 +33,13 @@
           "swipe": false,
           "asNavFor": ".product-slider-nav"
           }'>
+                    @foreach (var image in Model.Products.Images)
+                    {
                     <div class="single-slide">
-                        <img src="@Model.Products.ImageUrl" alt="">
+                        <img src="@image.ImageUrl" alt="">
                     </div>
-                    <div class="single-slide">
-                        <img src="@Model.Products.ImageUrl" alt="">
-                    </div>
-                    <div class="single-slide">
-                        <img src="@Model.Products.ImageUrl" alt="">
-                    </div>
-                    <div class="single-slide">
-                        <img src="@Model.Products.ImageUrl" alt="">
-                    </div>
-                    <div class="single-slide">
-                        <img src="@Model.Products.ImageUrl" alt="">
-                    </div>
+                    }
+
                 </div>
                 <!-- Product Details Slider Nav -->
                 <div class="mt--30 product-slider-nav handart-slick-slider arrow-type-two" data-slick-setting='{
@@ -61,21 +53,12 @@
           "asNavFor": ".product-details-slider",
           "focusOnSelect": true
           }'>
-                    <div class="single-slide">
-                        <img src="@Model.Products.ImageUrl" alt="">
-                    </div>
-                    <div class="single-slide">
-                        <img src="@Model.Products.ImageUrl" alt="">
-                    </div>
-                    <div class="single-slide">
-                        <img src="@Model.Products.ImageUrl" alt="">
-                    </div>
-                    <div class="single-slide">
-                        <img src="@Model.Products.ImageUrl" alt="">
-                    </div>
-                    <div class="single-slide">
-                        <img src="@Model.Products.ImageUrl" alt="">
-                    </div>
+                    @foreach (var image in Model.Products.Images)
+                    {
+                        <div class="single-slide">
+                            <img src="@image.ImageUrl" alt="">
+                        </div>
+                    }
                 </div>
             </div>
             <div class="col-lg-7">
@@ -251,10 +234,10 @@
                     <div class="single-slide">
                         <div class="product-card">
                             <div class="image">
-                                <img src="@product.ImageUrl" alt="">
+                                <img src="@product.Images.FirstOrDefault().ImageUrl" alt="">
                                 <div class="hover-content">
                                     <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id" class="hover-image">
-                                        <img src="@product.ImageUrl" alt="">
+                                        <img src="@product.Images.Skip(1).FirstOrDefault().ImageUrl" alt="">
                                     </a>
                                 </div>
                                 <span class="product-badge">new</span>

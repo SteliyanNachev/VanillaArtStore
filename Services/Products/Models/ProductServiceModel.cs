@@ -26,5 +26,9 @@
 
         public IEnumerable<Review> Reviews { get; init; }
 
+        public IEnumerable<Image> Images { get; init; }
+
+
+
     }
 }

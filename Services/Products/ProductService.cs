@@ -67,7 +67,7 @@ namespace VanillaArtStore.Services.Products
                     Price = p.Price,
                     Description = p.Description,
                     InStockQuantity = p.InStockQuantity,
-                    ImageUrl = p.ImageUrl,
+                    Images = p.Images,
                     Category = p.Category.Name
                 })
                 .ToList();
@@ -97,7 +97,6 @@ namespace VanillaArtStore.Services.Products
                 Name = name,
                 Price = price,
                 Description = description,
-                ImageUrl = imageUrl,
                 InStockQuantity = inStockQuantity,
                 CategoryId = categoryId
             };
@@ -133,7 +132,6 @@ namespace VanillaArtStore.Services.Products
             productData.Name = name;
             productData.Price = price;
             productData.Description = description;
-            productData.ImageUrl = imageUrl;
             productData.InStockQuantity = inStockQuantity;
             productData.CategoryId = categoryId;
             
@@ -164,8 +162,8 @@ namespace VanillaArtStore.Services.Products
                     Description = p.Description,
                     Price = p.Price,
                     InStockQuantity = p.InStockQuantity,
-                    ImageUrl = p.ImageUrl,
-                    Category = p.Category.Name
+                    Category = p.Category.Name,
+                    Images = p.Images
                 })
                 .ToList();
 
@@ -190,6 +188,23 @@ namespace VanillaArtStore.Services.Products
                 .ToList();
 
             return productReviews;
+        }
+
+        public  IEnumerable<Image> GetImages(int productId)
+        {
+            var productImages = this.data
+                .Images
+                .Where(i => i.ProductId == productId)
+                .Select(i => new Image
+                {
+                    Id = i.Id,
+                    ImageUrl = i.ImageUrl,
+                    ProductId = i.ProductId,
+                    Product = i.Product
+                })
+                .ToList();
+
+            return productImages;
         }
     }
 }

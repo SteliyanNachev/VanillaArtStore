@@ -30,7 +30,7 @@
                 Id = p.Id,
                 Price = p.Price,
                 Description = p.Description,
-                ImageUrl = p.ImageUrl,
+                Images = p.Images,
                 Category = p.Category,
                 Name = p.Name,
                 InStockQuantity = p.InStockQuantity
@@ -57,7 +57,7 @@
                 Name = product.Name,
                 Price = product.Price,
                 Description = product.Description,
-                ImageUrl = product.ImageUrl,
+                Images = product.Images,
                 InStockQuantity = product.InStockQuantity,
                 Category = product.Category,
                 ProductsFromCategory = productsFromCategory,

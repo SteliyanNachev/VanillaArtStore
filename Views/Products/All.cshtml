@@ -82,7 +82,7 @@
         {
             <div class="col-lg-3">
                 <div class="card mb--10">
-                    <img class="card-img-top mh-50" src="@product.ImageUrl">
+                    <img class="card-img-top mh-50" src="@product.Images.FirstOrDefault().ImageUrl">
                     <div class="card-body">
                         <h5 class="card-title text-center">@product.Name</h5>
                         <p class="card-text text-center">Price: @product.Price Category: @product.Category In Stock Quantity: @product.InStockQuantity</p>

@@ -184,10 +184,10 @@
                                     <div class="col-lg-3 col-sm-6 mb--30">
                                         <div class="product-card">
                                             <div class="image">
-                                                <img src="@product.ImageUrl" alt="">
+                                                <img src="@product.Images.FirstOrDefault().ImageUrl" alt="">
                                                 <div class="hover-content">
                                                     <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Id" class="hover-image">
-                                                        <img src="image/products/home-1/product-2.jpg" alt="">
+                                                        <img src="@product.Images.Skip(1).FirstOrDefault().ImageUrl" alt="">
                                                     </a>
                                                     <div class="hover-btns">
                                                         <a href="cart.html" class="sin-btn"><i class="ion-bag"></i></a>

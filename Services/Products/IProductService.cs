@@ -41,5 +41,7 @@
             string imageUrl,
             int inStockQuantity,
             int categoryId);
+
+        IEnumerable<Image> GetImages(int productId);
     }
 }

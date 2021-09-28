@@ -15,6 +15,7 @@
         public DbSet<Product> Products { get; init; }
         public DbSet<Category> Categories { get; init; }
         public DbSet<Review> Reviews { get; init; }
+        public DbSet<Image> Images { get; init; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -37,6 +38,13 @@
                 .HasOne(c => c.User)
                 .WithMany(c => c.Reviews)
                 .HasForeignKey(c => c.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+            
+            builder
+                .Entity<Image>()
+                .HasOne(c => c.Product)
+                .WithMany(c => c.Images)
+                .HasForeignKey(c => c.ProductId)
                 .OnDelete(DeleteBehavior.Restrict);
 
             base.OnModelCreating(builder);
