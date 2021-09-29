@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using VanillaArtStore.Data;
 using VanillaArtStore.Data.Models;
+using VanillaArtStore.Models.Images;
 using VanillaArtStore.Models.Products;
 using VanillaArtStore.Services.Products.Models;
 
@@ -90,15 +91,24 @@ namespace VanillaArtStore.Services.Products
         public bool CategoryExists(int categoryId)
             => this.data.Categories.Any(c => c.Id == categoryId);
 
-        public int Create(string name, decimal price, string description, string imageUrl, int inStockQuantity, int categoryId)
+        public int Create(string name, decimal price, string description, ICollection<ImageInputModel> images, int inStockQuantity, int categoryId)
         {
+
+            var queryImages = images
+                .Select(i => new Image 
+                { 
+                    ImageUrl = i.ImageUrl
+                })
+                .ToList();
+
             var productData = new Product
             {
                 Name = name,
                 Price = price,
                 Description = description,
                 InStockQuantity = inStockQuantity,
-                CategoryId = categoryId
+                CategoryId = categoryId,
+                Images = queryImages
             };
 
             this.data.Products.Add(productData);

@@ -18,8 +18,6 @@
 
         public int InStockQuantity { get; init; }
 
-        public string ImageUrl { get; init; }
-
         public int CategoryId { get; init; }
 
         public string Category { get; init; }

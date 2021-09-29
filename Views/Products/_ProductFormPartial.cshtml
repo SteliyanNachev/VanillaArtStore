@@ -28,12 +28,6 @@
 
                 </div>
                 <div class="form-group text-white">
-                    <label asp-for="ImageUrl">Image Url</label>
-                    <input asp-for="ImageUrl" class="form-control" placeholder="Enter product ImageUrl !">
-                    <span asp-validation-for="ImageUrl" class="text-danger"></span>
-
-                </div>
-                <div class="form-group text-white">
                     <label asp-for="CategoryId">Category</label>
                     <select asp-for="CategoryId" class="form-control">
                         @foreach (var category in Model.Categories)
@@ -42,9 +36,11 @@
                         }
                     </select>
                 </div>
-                <div class="form-group text-white">
-                    <label for="exampleFormControlFile1">Example file input</label>
-                    <input type="file" name="Images" multiple>
+
+                <div class="text-white" id="ImagesContainer">
+                    <label asp-for="Images"></label>
+                    <a class="btn btn-success" onclick="AddMoreImages()">+</a>
+                    <span asp-validation-for="Images" class="text-danger"></span>
                 </div>
 
                 <input class="btn btn-primary" type="submit" value="Save" />
@@ -52,3 +48,6 @@
         </div>
     </div>
 </div>
+
+
+

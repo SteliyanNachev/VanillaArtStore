@@ -153,22 +153,22 @@
                                         </div>
                                     </div>
                                 </li>
-                             }
+                            }
 
-                                <li class="sin-link">
-                                    <a href="javascript:" class="link-icon hamburgur-icon">
-                                        <i class="ion-navicon"></i>
-                                    </a>
-                                    <div class="sin-dropdown option-dropdown">
-                                        <div class="inner-single-block">
-                                            <h4 class="option-title">@User.Identity.Name</h4>
-                                            <ul class="option-list">
-                                                <partial name="_LoginPartial" />
-                                            </ul>
-                                        </div>
+                            <li class="sin-link">
+                                <a href="javascript:" class="link-icon hamburgur-icon">
+                                    <i class="ion-navicon"></i>
+                                </a>
+                                <div class="sin-dropdown option-dropdown">
+                                    <div class="inner-single-block">
+                                        <h4 class="option-title">@User.Identity.Name</h4>
+                                        <ul class="option-list">
+                                            <partial name="_LoginPartial" />
+                                        </ul>
                                     </div>
-                                </li>
-                            </ul>
+                                </div>
+                            </li>
+                        </ul>
 
                         <div class="search-wrapper">
                             <div class="search-wrapper-inner">
@@ -535,6 +535,15 @@
     <script src="~/js/plugins.min.js"></script>
     <script src="~/js/ajax-mail.js"></script>
     <script src="~/js/custom.js"></script>
+    <script>
+        var imageIndex = 0;
+
+        function AddMoreImages() {
+            console.log("AddMoreImages()");
+            $("#ImagesContainer").append("<div class='form-control'> ImageURL: <input type='text' name='Images[" + imageIndex + "].ImageUrl' /> </div>");
+            imageIndex++;
+        }
+    </script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

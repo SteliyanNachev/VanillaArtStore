@@ -288,6 +288,7 @@ jQuery(document).ready(function () {
 				$(this).addClass('added').find('i').addClass('ti-check').removeClass('ti-shopping-cart').siblings('span').text('added');
 			}
 		});
+
 	/*-------------------------------------
 		--> Data Background Image
 	---------------------------------------*/

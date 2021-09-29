@@ -5,6 +5,7 @@
     using System.Linq;
     using System.Threading.Tasks;
     using VanillaArtStore.Data.Models;
+    using VanillaArtStore.Models.Images;
     using VanillaArtStore.Models.Products;
     using VanillaArtStore.Services.Products.Models;
 
@@ -29,18 +30,18 @@
             string name,
             decimal price,
             string description,
-            string imageUrl,
+            ICollection<ImageInputModel> images,
             int inStockQuantity,
             int categoryId);
         
-        bool Edit(
-            int id,
-            string name,
-            decimal price,
-            string description,
-            string imageUrl,
-            int inStockQuantity,
-            int categoryId);
+        //ool Edit(
+        //   int id,
+        //   string name,
+        //   decimal price,
+        //   string description,
+        //   string imageUrl,
+        //   int inStockQuantity,
+        //   int categoryId);
 
         IEnumerable<Image> GetImages(int productId);
     }

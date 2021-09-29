@@ -2,6 +2,8 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using VanillaArtStore.Data.Models;
+    using VanillaArtStore.Models.Images;
     using VanillaArtStore.Services.Products;
     using VanillaArtStore.Services.Products.Models;
     using static Data.DataConstants;
@@ -28,13 +30,10 @@
         public int InStockQuantity { get; init; }
 
         [Required]
-        [Display(Name = "Image URL")]
-        [Url]
-        public string ImageUrl { get; init; }
-
-        [Required]
         public int CategoryId { get; init; }
 
         public IEnumerable<ProductCategoryServiceModel> Categories { get; set; }
+
+        public ICollection<ImageInputModel> Images { get; set; }
     }
 }

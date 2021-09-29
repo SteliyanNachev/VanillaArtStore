@@ -38,7 +38,7 @@
                 Id = p.Id,
                 Price = p.Price,
                 Description = p.Description,
-                ImageUrl = p.ImageUrl,
+               // ImageUrl = p.ImageUrl,
                 Category = p.Category,
                 Name = p.Name,
                 InStockQuantity = p.InStockQuantity

@@ -13,6 +13,9 @@
 
         public const int ProductInSctockMaxQuantity = 100;
         public const int ProductInSctockMinQuantity = 1;
+        
+        public const int ProductImagesMaxCount = 10;
+        public const int ProductImagesMinCount = 3;
 
         public const int ReviewCommentMaxLenght = 10000;
         public const int ReviewCommentMinLenght = 10000;

@@ -4,6 +4,8 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Mvc.ModelBinding;
+    using System.Collections.Generic;
     using System.Linq;
     using VanillaArtStore.Models.Products;
     using VanillaArtStore.Services.Products;
@@ -99,6 +101,10 @@
                 this.ModelState.AddModelError(nameof(product.CategoryId), "Category does not exist!");
             }
 
+            if (product.Images == null || product.Images.Count < 3)
+            {
+                this.ModelState.AddModelError(nameof(product.Images), "Images should be mode than 3");
+            }
             if (!ModelState.IsValid)
             {
                 product.Categories = this.products.GetAllProductCategories();
@@ -110,7 +116,7 @@
                 product.Name,
                 product.Price,
                 product.Description,
-                product.ImageUrl,
+                product.Images,
                 product.InStockQuantity,
                 product.CategoryId);
 
@@ -145,19 +151,19 @@
                 return View(product);
             }
 
-            var productEdited = this.products.Edit(
-                id,
-                product.Name,
-                product.Price,
-                product.Description,
-                product.ImageUrl,
-                product.InStockQuantity,
-                product.CategoryId);
+            //var productEdited = this.products.Edit(
+            //   id,
+            //   product.Name,
+            //   product.Price,
+            //   product.Description,
+            //   //product.ImageUrl,
+            //   product.InStockQuantity,
+            //   product.CategoryId);
 
-            if (productEdited)
-            {
-                return RedirectToAction(nameof(All));
-            }
+           // if (productEdited)
+           // {
+           //     return RedirectToAction(nameof(All));
+           // }
 
             return BadRequest();
         }
