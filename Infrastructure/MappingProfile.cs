@@ -3,6 +3,7 @@ namespace VanillaArtStore.Infrastructure
 {
     using AutoMapper;
     using VanillaArtStore.Data.Models;
+    using VanillaArtStore.Models.Images;
     using VanillaArtStore.Models.Products;
     using VanillaArtStore.Services.Products.Models;
 
@@ -12,7 +13,9 @@ namespace VanillaArtStore.Infrastructure
         {
             this.CreateMap<Product, ProductListingViewModel>();
             this.CreateMap<Product, ProductServiceModel>();
+            this.CreateMap<ProductFormModel, ProductServiceModel>();
             this.CreateMap<ProductServiceModel, ProductFormModel>();
+            this.CreateMap<ImageInputModel, Image>();
 
         }
     }

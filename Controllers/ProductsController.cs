@@ -128,7 +128,21 @@
         {
             var product = this.products.Details(id);
 
-            var productForm = this.mapper.Map<ProductFormModel>(product);
+            var productForm = new ProductFormModel
+            {
+                Name = product.Name,
+                Price = product.Price,
+                Description = product.Description,
+                InStockQuantity = product.InStockQuantity,
+                CategoryId = product.CategoryId,
+                Images = product.Images
+                .Select(i => new Models.Images.ImageInputModel
+                {
+                    Id = i.Id,
+                    ImageUrl = i.ImageUrl
+                })
+                .ToList()
+            };
 
             productForm.Categories = this.products.GetAllProductCategories();
 
@@ -151,19 +165,19 @@
                 return View(product);
             }
 
-            //var productEdited = this.products.Edit(
-            //   id,
-            //   product.Name,
-            //   product.Price,
-            //   product.Description,
-            //   //product.ImageUrl,
-            //   product.InStockQuantity,
-            //   product.CategoryId);
+           var productEdited = this.products.Edit(
+              id,
+              product.Name,
+              product.Price,
+              product.Description,
+              product.Images,
+              product.InStockQuantity,
+              product.CategoryId);
 
-           // if (productEdited)
-           // {
-           //     return RedirectToAction(nameof(All));
-           // }
+           if (productEdited)
+           {
+               return RedirectToAction(nameof(All));
+           }
 
             return BadRequest();
         }

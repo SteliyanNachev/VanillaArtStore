@@ -535,15 +535,7 @@
     <script src="~/js/plugins.min.js"></script>
     <script src="~/js/ajax-mail.js"></script>
     <script src="~/js/custom.js"></script>
-    <script>
-        var imageIndex = 0;
-
-        function AddMoreImages() {
-            console.log("AddMoreImages()");
-            $("#ImagesContainer").append("<div class='form-control'> ImageURL: <input type='text' name='Images[" + imageIndex + "].ImageUrl' /> </div>");
-            imageIndex++;
-        }
-    </script>
+    
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

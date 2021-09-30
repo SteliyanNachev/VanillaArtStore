@@ -128,9 +128,19 @@ namespace VanillaArtStore.Services.Products
                            .FirstOrDefault();
         }
 
-        public bool Edit(int id, string name, decimal price, string description, string imageUrl, int inStockQuantity, int categoryId)
+        public bool Edit(int id, string name, decimal price, string description, ICollection<ImageInputModel> images, int inStockQuantity, int categoryId)
         {
             var productData = this.data.Products.Find(id);
+
+            var queryImages = images
+                .Select(i => new Image
+                {
+                    ImageUrl = i.ImageUrl
+                })
+                .ToList();
+
+            ICollection<Image> imagesToUpdate = this.GetAllProductNewImages(id, queryImages);
+            
 
             //check if car can be edited by user in future if there is more than one admin.
 
@@ -143,11 +153,24 @@ namespace VanillaArtStore.Services.Products
             productData.Price = price;
             productData.Description = description;
             productData.InStockQuantity = inStockQuantity;
+            productData.Images = imagesToUpdate;
             productData.CategoryId = categoryId;
-            
+
+            this.data.Products.Update(productData);
             this.data.SaveChanges();
 
             return true;
+        }
+
+        private ICollection<Image> GetAllProductNewImages(int id, ICollection<Image> images)
+        {
+
+            var productImages = this.GetImages(id);
+
+            var newImages = images.Where(p => !productImages.Any(l => p.ImageUrl == l.ImageUrl)).ToList();
+
+
+            return newImages;
         }
 
         public IEnumerable<ProductCategoryServiceModel> GetAllProductCategories()

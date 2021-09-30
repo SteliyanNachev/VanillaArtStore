@@ -33,15 +33,15 @@
             ICollection<ImageInputModel> images,
             int inStockQuantity,
             int categoryId);
-        
-        //ool Edit(
-        //   int id,
-        //   string name,
-        //   decimal price,
-        //   string description,
-        //   string imageUrl,
-        //   int inStockQuantity,
-        //   int categoryId);
+
+        bool Edit(
+           int id,
+           string name,
+           decimal price,
+           string description,
+           ICollection<ImageInputModel> images,
+           int inStockQuantity,
+           int categoryId);
 
         IEnumerable<Image> GetImages(int productId);
     }

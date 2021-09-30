@@ -1,5 +1,7 @@
 ﻿@model ProductFormModel
-
+@{ 
+    var imageIndex = 0;
+}
 <div class="container bg-secondary pt-lg--120">
     <div class="row">
         <div class="col-md-9">
@@ -38,8 +40,20 @@
                 </div>
 
                 <div class="text-white" id="ImagesContainer">
-                    <label asp-for="Images"></label>
-                    <a class="btn btn-success" onclick="AddMoreImages()">+</a>
+
+                    @{
+                        
+
+                        @foreach (var image in Model.Images)
+                        {
+                            <div class='form-control'> ImageURL: <input type='text' name='Images[@imageIndex].ImageUrl' value="@image.ImageUrl" /> </div>
+
+                            imageIndex++;
+                        }
+
+                        <label asp-for="Images"></label>
+                        <a class="btn btn-success" onclick="AddMoreImages()">+</a>
+                    }
                     <span asp-validation-for="Images" class="text-danger"></span>
                 </div>
 
@@ -48,6 +62,15 @@
         </div>
     </div>
 </div>
+<script>
+    var imageIndex = @imageIndex;
+
+    function AddMoreImages() {
+        console.log("AddMoreImages()");
+        $("#ImagesContainer").append("<div class='form-control'> ImageURL: <input type='text' name='Images[" + imageIndex + "].ImageUrl' /> </div>");
+        imageIndex++;
+    }
+</script>
 
 
 
