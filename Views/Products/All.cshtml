@@ -89,6 +89,21 @@
                         <a class="btn btn-primary text-center" asp-controller="Products" asp-action="Details" asp-route-id="@product.Id">Details</a>
                         <a class="btn btn-warning text-center" asp-controller="Products" asp-action="Edit" asp-route-id="@product.Id">Edit</a>
                         <a class="btn btn-danger text-center" asp-controller="Products" asp-action="Delete" asp-route-id="@product.Id">Delete</a>
+                        <a class="btn btn-danger text-center" onclick="document.getElementById('id01').style.display='block'">Delete1</a>
+                    </div>
+                    <div id="id01" class="modal">
+                        <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+                        <form class="modal-content" action="/action_page.php">
+                            <div class="container">
+                                <h1>Delete Account</h1>
+                                <p>Are you sure you want to delete your account?</p>
+
+                                <div class="clearfix">
+                                    <button type="button" class="cancelbtn">Cancel</button>
+                                    <a class="btn btn-danger text-center" asp-controller="Products" asp-action="Delete" asp-route-id="@product.Id">Delete</a>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -96,4 +111,14 @@
     </div>
 
 </div>
+<script>
+    // Get the modal
+    var modal = document.getElementById('id01');
 
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
