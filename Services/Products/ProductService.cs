@@ -88,8 +88,19 @@ namespace VanillaArtStore.Services.Products
             };
         }
 
-        public bool CategoryExists(int categoryId)
-            => this.data.Categories.Any(c => c.Id == categoryId);
+        public bool Delete(int id)
+        {
+            var prduct = this.data
+                .Products
+                .Where(p => p.Id == id)
+                .FirstOrDefault();
+
+            this.data.Products.Remove(prduct);
+
+            this.data.SaveChanges();
+
+            return true;
+        }
 
         public int Create(string name, decimal price, string description, ICollection<ImageInputModel> images, int inStockQuantity, int categoryId)
         {
@@ -239,5 +250,9 @@ namespace VanillaArtStore.Services.Products
 
             return productImages;
         }
+
+        public bool CategoryExists(int categoryId)
+            => this.data.Categories.Any(c => c.Id == categoryId);
+
     }
 }

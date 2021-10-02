@@ -181,5 +181,17 @@
 
             return BadRequest();
         }
+
+        [Authorize(Roles = WebConstants.AdministratorRoleName)]
+        public IActionResult Delete(int id)
+        {
+            var deleted = this.products.Delete(id);
+            if (!deleted)
+            {
+                return this.BadRequest();
+            }
+
+            return this.RedirectToAction(nameof(this.All));
+        }
     }
 }

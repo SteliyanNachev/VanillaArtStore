@@ -19,13 +19,6 @@
 
         ProductServiceModel Details(int id);
 
-        IEnumerable<ProductCategoryServiceModel> GetAllProductCategories();
-        IEnumerable<ProductServiceModel> GetAllProductFromSAmeCategory(int categoryId);
-
-        IEnumerable<Review> GetAllProductReviews(int productId);
-
-        bool CategoryExists(int categoryId);
-
         int Create(
             string name,
             decimal price,
@@ -42,6 +35,15 @@
            ICollection<ImageInputModel> images,
            int inStockQuantity,
            int categoryId);
+
+        bool Delete(int id);
+
+        IEnumerable<ProductCategoryServiceModel> GetAllProductCategories();
+        IEnumerable<ProductServiceModel> GetAllProductFromSAmeCategory(int categoryId);
+
+        IEnumerable<Review> GetAllProductReviews(int productId);
+
+        bool CategoryExists(int categoryId);
 
         IEnumerable<Image> GetImages(int productId);
     }

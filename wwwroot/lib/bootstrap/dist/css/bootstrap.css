@@ -5727,8 +5727,8 @@ a.close.disabled {
 
 .modal {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 30%;
+  left: 30%;
   z-index: 1050;
   display: none;
   width: 100%;
