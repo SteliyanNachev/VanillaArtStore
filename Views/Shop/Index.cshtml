@@ -67,10 +67,10 @@
                         <div class="col-lg-4 col-sm-6 mb--30">
                             <div class="product-card">
                                 <div class="image">
-                                    <img src="@product.ImageUrl" alt="">
+                                    <img src="@product.Images.FirstOrDefault().ImageUrl" alt="">
                                     <div class="hover-content">
                                         <a  asp-controller="Products" asp-action="Details" asp-route-id="@product.Id" class="hover-image">
-                                            <img src="@product.ImageUrl" alt="">
+                                            <img src="@product.Images.Skip(1).FirstOrDefault().ImageUrl" alt="">
                                         </a>
 
                                         <div class="hover-btns">

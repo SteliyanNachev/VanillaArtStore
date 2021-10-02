@@ -38,9 +38,9 @@
                 Id = p.Id,
                 Price = p.Price,
                 Description = p.Description,
-               // ImageUrl = p.ImageUrl,
                 Category = p.Category,
                 Name = p.Name,
+                Images = p.Images,
                 InStockQuantity = p.InStockQuantity
             });
 
