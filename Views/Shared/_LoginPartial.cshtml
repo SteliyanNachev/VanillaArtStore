@@ -8,7 +8,7 @@
 @if (SignInManager.IsSignedIn(User))
 {
     <li>
-        <a asp-area="Identity" asp-page="/Account/Manage/Index">My Account</a>
+        <a asp-controller="Users" asp-action="Details">My Account</a>
     </li>
     <li><a href="checkout.html">Checkout</a></li>
     <li class="nav-item">

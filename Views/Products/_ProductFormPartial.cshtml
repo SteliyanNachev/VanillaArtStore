@@ -42,13 +42,15 @@
                 <div class="text-white" id="ImagesContainer">
 
                     @{
-                        
 
-                        @foreach (var image in Model.Images)
+                        @if (Model.Images != null)
                         {
-                            <div class='form-control'> ImageURL: <input type='text' name='Images[@imageIndex].ImageUrl' value="@image.ImageUrl" /> </div>
+                            @foreach (var image in Model.Images)
+                            {
+                                <div class='form-control'> ImageURL: <input type='text' name='Images[@imageIndex].ImageUrl' value="@image.ImageUrl" /> </div>
 
-                            imageIndex++;
+                                imageIndex++;
+                            }
                         }
 
                         <label asp-for="Images"></label>
