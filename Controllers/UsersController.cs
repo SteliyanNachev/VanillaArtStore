@@ -48,13 +48,67 @@
 
             var currentUser = await this.userManager.GetUserAsync(this.User);
 
-            if (form.FirstName != currentUser.FirstName)
+            if (form.FirstName != null && form.FirstName != currentUser.FirstName)
             {
                 currentUser.FirstName = form.FirstName;
-                return View(form);
             }
 
-            return BadRequest();
+            if (form.LastName != null &&  form.LastName != currentUser.LastName)
+            {
+                currentUser.LastName = form.LastName;
+            }
+
+            if (form.UserName != null && form.UserName != currentUser.UserName)
+            {
+                currentUser.UserName = form.UserName;
+            }
+
+            if (form.Email != null && form.Email != currentUser.Email)
+            {
+                currentUser.Email = form.Email;
+            }
+
+            if (form.PhoneNumber != null && form.PhoneNumber != currentUser.PhoneNumber)
+            {
+                currentUser.PhoneNumber = form.PhoneNumber;
+            }
+
+            if (form.Adress != null && form.Adress != currentUser.Adress)
+            {
+                currentUser.Adress = form.Adress;
+            }
+
+            if (form.NewPassword == form.ConfirmPassword && form.NewPassword != null)
+            {
+                var passwordChanged = await this.userManager.ChangePasswordAsync(currentUser, form.Password, form.NewPassword);
+
+                if (!passwordChanged.Succeeded)
+                {
+                    var errors = passwordChanged.Errors.Select(e => e.Description);
+
+                    foreach (var error in errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error);
+                    }
+
+                    return View(errors);
+                }
+            }
+            var result = await this.userManager.UpdateAsync(currentUser);
+
+            if (!result.Succeeded)
+            {
+                var errors = result.Errors.Select(e => e.Description);
+
+                foreach (var error in errors)
+                {
+                    ModelState.AddModelError(string.Empty, error);
+                }
+
+                return View(errors);
+            }
+
+            return RedirectToAction("Details", "Users"); 
         }
     }
 }

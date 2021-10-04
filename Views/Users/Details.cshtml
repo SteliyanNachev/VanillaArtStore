@@ -154,7 +154,19 @@
                                         <p>@Model.Adress</p>
                                     </address>
 
-                                    <a href="#" class="btn btn--primary"><i class="fa fa-edit"></i>Edit Address</a>
+                                    <form method="post" enctype="multipart/form-data">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-12  mb--30">
+                                                <label asp-for="Adress">Adress</label>
+                                                <input asp-for="Adress" class="form-control">
+                                                <span asp-validation-for="Adress" class="text-danger"></span>
+                                            </div>
+
+                                            <div class="col-12">
+                                                <button class="btn btn--primary" type="submit">Save Changes</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
                             <!-- Single Tab Content End -->
@@ -184,9 +196,9 @@
                                                     <span asp-validation-for="UserName" class="text-danger"></span>
                                                 </div>
                                                 <div class="col-12  mb--30">
-                                                    <label asp-for="PhoneNumber">Phone Number</label>
-                                                    <input asp-for="PhoneNumber" class="form-control" placeholder="@Model.PhoneNumber">
-                                                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                                                    <label asp-for="Email">Phone Number</label>
+                                                    <input asp-for="Email" class="form-control" placeholder="@Model.Email">
+                                                    <span asp-validation-for="Email" class="text-danger"></span>
                                                 </div>
 
                                                 <div class="col-12  mb--30">
@@ -198,16 +210,21 @@
                                                 <div class="col-12  mb--30"><h4>Password change</h4></div>
 
                                                 <div class="col-12  mb--30">
-                                                    Current Password
-                                                    <input id="current-pwd" placeholder="Current Password" type="password">
+                                                    <label asp-for="Password">Current Password</label>
+                                                    <input asp-for="Password" class="form-control" placeholder="Enter your current password!" type="password">
+                                                    <span asp-validation-for="Password" class="text-danger"></span>
                                                 </div>
 
                                                 <div class="col-lg-6 col-12  mb--30">
-                                                    <input id="new-pwd" placeholder="New Password" type="password">
+                                                    <label asp-for="NewPassword">New Password</label>
+                                                    <input asp-for="NewPassword" class="form-control" placeholder="Enter your new password!" type="password">
+                                                    <span asp-validation-for="NewPassword" class="text-danger"></span>
                                                 </div>
 
                                                 <div class="col-lg-6 col-12  mb--30">
-                                                    <input id="confirm-pwd" placeholder="Confirm Password" type="password">
+                                                    <label asp-for="ConfirmPassword">Confirm Password</label>
+                                                    <input asp-for="ConfirmPassword" class="form-control" placeholder="Confirm your new password!" type="password">
+                                                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                                                 </div>
 
                                                 <div class="col-12">
