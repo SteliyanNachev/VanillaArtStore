@@ -86,6 +86,9 @@
                             <li class="menu-item">
                                 <a href="/Contact">Contact</a>
                             </li>
+                            <li class="menu-item">
+                                <a href="/Cart">Cart</a>
+                            </li>
                             <!--Products-->
                             @if (User.IsInRole(WebConstants.AdministratorRoleName))
                             {
@@ -108,8 +111,6 @@
                                     <i class="ion-ios-search-strong"></i>
                                 </a>
                             </li>
-                            @if (SignInManager.IsSignedIn(User))
-                            {
                                 <li class="sin-link">
                                     <a href="javascript:" class="cart-link link-icon"><i class="ion-bag"></i></a>
                                     <div class="sin-dropdown cart-dropdown">
@@ -149,12 +150,10 @@
                                             </ul>
                                         </div>
                                         <div class="inner-single-block">
-                                            <a href="checkout.html" class="btn w-100">Checkout</a>
+                                            <a href="/Cart" class="btn w-100">Checkout</a>
                                         </div>
                                     </div>
                                 </li>
-                            }
-
                             <li class="sin-link">
                                 <a href="javascript:" class="link-icon hamburgur-icon">
                                     <i class="ion-navicon"></i>
