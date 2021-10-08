@@ -98,7 +98,7 @@
                                 </div>
                             </div>
                             <div class="add-cart-btn">
-                                <a href="" class="btn btn-outlined--primary"><i class="ion-bag"></i>Add to Cart</a>
+                                <a asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@Model.Products.Id" class="btn btn-outlined--primary"><i class="ion-bag"></i>Add to Cart</a>
                             </div>
                             <div class="product-status">
                                 @if (Model.Products.InStockQuantity >= 1)

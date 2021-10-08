@@ -56,6 +56,7 @@
             var products = new ProductListingViewModel
 
             {
+                Id = id,
                 Name = product.Name,
                 Price = product.Price,
                 Description = product.Description,

@@ -16,6 +16,7 @@
         public DbSet<Category> Categories { get; init; }
         public DbSet<Review> Reviews { get; init; }
         public DbSet<Image> Images { get; init; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; init; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

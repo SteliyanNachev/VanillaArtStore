@@ -3,6 +3,7 @@ namespace VanillaArtStore
 {
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.HttpsPolicy;
 
     using Microsoft.AspNetCore.Identity;
@@ -14,6 +15,7 @@ namespace VanillaArtStore
     using VanillaArtStore.Data.Models;
     using VanillaArtStore.Infrastructure;
     using VanillaArtStore.Services.Products;
+    using VanillaArtStore.Services.ShoppingCart;
 
     public class Startup
     {
@@ -43,9 +45,19 @@ namespace VanillaArtStore
 
             services.AddAutoMapper(typeof(Startup));
 
+            services.AddDistributedMemoryCache();
+            services.AddSession(options =>
+            {
+                options.Cookie.HttpOnly = true;
+            });
+
             services.AddControllersWithViews();
 
             services.AddTransient<IProductService,ProductService>();
+            services.AddTransient<IShoppingCartService,ShoppingCartService>();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(sp => ShoppingCartService.GetCart(sp));
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -69,6 +81,7 @@ namespace VanillaArtStore
                 .UseRouting()
                 .UseAuthentication()
                 .UseAuthorization()
+                .UseSession()
                 .UseEndpoints(endpoints =>
                 {
                     endpoints.MapDefaultControllerRoute();
