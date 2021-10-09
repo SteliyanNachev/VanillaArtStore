@@ -56,7 +56,7 @@
                 shoppingCart.RemoveFromCart(selectedProduct);
             }
 
-            return RedirectToAction("Index");
+            return Redirect("/Home");
         }
     }
 }

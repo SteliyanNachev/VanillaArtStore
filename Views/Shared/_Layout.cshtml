@@ -1,8 +1,10 @@
 ﻿@using Microsoft.AspNetCore.Identity
 @using VanillaArtStore.Data.Models
+@using VanillaArtStore.Services.ShoppingCart
 
 @inject SignInManager<User> SignInManager
 @inject UserManager<User> UserManager
+@inject ShoppingCartService ShoppingCart
 
 <!DOCTYPE html>
 <html lang="en">
@@ -114,44 +116,54 @@
                                 <li class="sin-link">
                                     <a href="javascript:" class="cart-link link-icon"><i class="ion-bag"></i></a>
                                     <div class="sin-dropdown cart-dropdown">
-                                        <div class="inner-single-block">
-                                            <div class="cart-product">
-                                                <div class="icon">
-                                                    <img src="image/products/home-1/cart-product-1.jpg" alt="">
-                                                    <div class="product-badge-3">1x</div>
+                                        @if (ShoppingCart.GetShoppingCartItems().Count > 0)
+                                        {
+                                            foreach (var product in ShoppingCart.ShoppingCartItems)
+                                            {
+                                                <div class="inner-single-block">
+                                                    <div class="cart-product">
+                                                        <div class="icon">
+                                                            <img src="@product.Product.Images.FirstOrDefault().ImageUrl" alt="">
+                                                            <div class="product-badge-3">@product.Quantity x</div>
+                                                        </div>
+                                                        <div class="description">
+                                                            <h4>@product.Product.Name</h4>
+                                                            <span class="price">@product.Product.Price Лв.</span>
+                                                            <ul class="attr-content">
+                                                                <li>@product.Product.Description</li>
+                                                            </ul>
+                                                        </div>
+                                                        <a asp-controller="ShoppingCart" asp-action="RemoveFromCart" asp-route-id="@product.ProductId" class="cart-item-cross">
+                                                            <i class="fas fa-times"></i>
+                                                        </a>
+                                                    </div>
                                                 </div>
-                                                <div class="description">
-                                                    <h4>Yuqidong Sudaderas</h4>
-                                                    <span class="price">€500.00</span>
-                                                    <ul class="attr-content">
-                                                        <li><span>size :</span> S</li>
-                                                        <li><span>color :</span> Beige</li>
-                                                    </ul>
-                                                </div>
-                                                <a href="#" class="cart-item-cross">
-                                                    <i class="fas fa-times"></i>
-                                                </a>
+                                            }
+
+                                            <div class="inner-single-block">
+                                                <ul class="cart-details">
+                                                    <li>
+                                                        <span class="label">Subtotal</span> <span class="value">@ShoppingCart.GetShoppingCartTotal() Лв.</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="label">Shipping</span> <span class="value">€7.00</span>
+                                                    </li>
+                                                    <li>
+                                                        <span class="label">Total</span> <span class="value">@ShoppingCart.GetShoppingCartTotal() Лв.</span>
+                                                    </li>
+                                                </ul>
                                             </div>
-                                        </div>
-                                        <div class="inner-single-block">
-                                            <ul class="cart-details">
-                                                <li>
-                                                    <span class="label">Subtotal</span> <span class="value">€500.00</span>
-                                                </li>
-                                                <li>
-                                                    <span class="label">Shipping</span> <span class="value">€7.00</span>
-                                                </li>
-                                                <li>
-                                                    <span class="label">Taxes</span> <span class="value">€0.00</span>
-                                                </li>
-                                                <li>
-                                                    <span class="label">Total</span> <span class="value">€507.00</span>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div class="inner-single-block">
-                                            <a href="/Cart" class="btn w-100">Checkout</a>
-                                        </div>
+                                            <div class="inner-single-block">
+                                                <a href="/Cart" class="btn w-100">Checkout</a>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="inner-single-block">
+                                                <p class="text-sm-center" style="font-size:medium">Your shopping cart is empty. Continue shopping</p>
+                                                <a href="/Shop" class="btn w-100">Continue Shopping</a>
+                                            </div>
+                                        }
                                     </div>
                                 </li>
                             <li class="sin-link">
