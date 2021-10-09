@@ -37,13 +37,26 @@
             return View(sCVM);
         }
 
-        public void AddToCart(int id)
+        public IActionResult AddToCart([FromQuery]int id, [FromQuery]int quantity)
         {
             var selectedProduct = this.data.Products.FirstOrDefault(p => p.Id == id);
             if (selectedProduct != null)
             {
-                shoppingCart.AddToCart(selectedProduct, 1);
+                shoppingCart.AddToCart(selectedProduct, quantity);
             }
+
+            return Redirect("/Shop");
+        }
+
+        public IActionResult RemoveFromCart(int id)
+        {
+            var selectedProduct = this.data.Products.FirstOrDefault(p => p.Id == id);
+            if (selectedProduct != null)
+            {
+                shoppingCart.RemoveFromCart(selectedProduct);
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }

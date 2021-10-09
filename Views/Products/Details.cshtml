@@ -6,6 +6,10 @@
 @inject SignInManager<User> SignInManager
 @inject UserManager<User> UserManager
 
+@{ 
+    var productQuantity = 1;
+
+}
 <section class="bg-image" data-bg="/image/bg-images/bg-header.jpg">
     <h2 class="sr-only">Site Breadcrumb</h2>
     <div class="container">
@@ -91,14 +95,14 @@
                         <span class="widget-label">Quantity</span>
                         <div class="widgets">
                             <div class="count-input-block">
-                                <input type="number" class="form-control text-center" value="1">
+                                <input id="quantittyInput" name="quantittyInput" type="number" class="form-control text-center" value="1">
                                 <div class="count-input-btns">
-                                    <button class="inc-ammount count-btn"><i class="zmdi zmdi-chevron-up"></i></button>
-                                    <button class="dec-ammount count-btn"><i class="zmdi zmdi-chevron-up"></i></button>
+                                    <button class="inc-ammount count-btn" onclick="IncreaseQuantity()"><i class="zmdi zmdi-chevron-up"></i></button>
+                                    <button class="dec-ammount count-btn" onclick="DecreaseQuantity()"><i class="zmdi zmdi-chevron-down"></i></button>
                                 </div>
                             </div>
                             <div class="add-cart-btn">
-                                <a asp-controller="ShoppingCart" asp-action="AddToCart" asp-route-id="@Model.Products.Id" class="btn btn-outlined--primary"><i class="ion-bag"></i>Add to Cart</a>
+                                <a id="btnAddToCart" href="@Url.Action("AddToCart","ShoppingCart")" class="btn btn-outlined--primary"><i class="ion-bag"></i>Add to Cart</a>
                             </div>
                             <div class="product-status">
                                 @if (Model.Products.InStockQuantity >= 1)
@@ -269,3 +273,47 @@
         </div>
     </section>
 </main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+
+        $(document).ready(function () {
+             $("#btnAddToCart").click(function (event) {
+                 event.preventDefault();
+                 window.location.href = "@Url.Action("AddToCart", "ShoppingCart")" +
+                     "?id=" + @Model.Products.Id +
+                     "&quantity=" + $("#quantittyInput").val();
+             });
+        });
+
+
+    var productQuantity = @productQuantity;
+
+    function IncreaseQuantity() {
+        $(".dec-ammount").removeAttr('disabled');
+        if (productQuantity < @Model.Products.InStockQuantity) {
+
+            productQuantity++;
+            console.log(productQuantity);
+            console.log(@productQuantity);
+        } else {
+            productQuantity = @Model.Products.InStockQuantity;
+        }
+
+    }
+    function DecreaseQuantity() {
+
+        if (productQuantity <= 1) {
+            productQuantity = 1;
+            $(".dec-ammount").attr('disabled', 'disabled');
+            console.log(productQuantity);
+            console.log(@productQuantity);
+        }
+
+        else {
+
+            productQuantity--;
+            console.log(productQuantity);
+            console.log(@productQuantity);
+        }
+    }
+</script>

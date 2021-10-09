@@ -49,14 +49,16 @@
                 {
                     ShoppingCartId = ShoppingCartId,
                     Product = product,
-                    Quantity = quantity
+                    Quantity = quantity,
+                    TotalPrice = product.Price * quantity
                 };
 
                 this.data.ShoppingCartItems.Add(shoppingCartItem);
             }
             else
             {
-                shoppingCartItem.Quantity++;
+                shoppingCartItem.Quantity += quantity;
+                shoppingCartItem.TotalPrice += product.Price * quantity;
             }
 
             this.data.SaveChanges();
@@ -95,6 +97,7 @@
                 this.data.ShoppingCartItems
                 .Where(c => c.ShoppingCartId == ShoppingCartId)
                 .Include(s => s.Product)
+                .Include(s => s.Product.Images)
                 .ToList());
         }
 
@@ -117,7 +120,9 @@
                 .Select(c => c.Product.Price * c.Quantity)
                 .Sum();
 
-            return total;
+            var value = Math.Round(total, 2);
+
+            return value;
         }
     }
 }

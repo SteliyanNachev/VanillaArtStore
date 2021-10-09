@@ -1,4 +1,6 @@
-﻿<section class="bg-image" data-bg="image/bg-images/home-3/slidershow3-1-1920x960.jpg">
+﻿@model VanillaArtStore.Models.ShoppingCart.ShoppingCartViewModel
+
+<section class="bg-image" data-bg="image/bg-images/bg-header.jpg">
     <h2 class="sr-only">Site Breadcrumb</h2>
     <div class="container">
         <div class="breadcrumb-contents">
@@ -19,91 +21,91 @@
             <div class="page-section-title">
                 <h1>SHOPPING CART</h1>
             </div>
-            <div class="row">
-                <div class="col-12">
-                    <form action="#" class="">
-                        <!-- Cart Table -->
-                        <div class="cart-table table-responsive mb--40">
-                            <table class="table">
-                                <!-- Head Row -->
-                                <thead>
-                                    <tr>
-                                        <th class="pro-remove"></th>
-                                        <th class="pro-thumbnail">Image</th>
-                                        <th class="pro-title">Product</th>
-                                        <th class="pro-price">Price</th>
-                                        <th class="pro-quantity">Quantity</th>
-                                        <th class="pro-subtotal">Total</th>
-                                    </tr>
+            @if (Model.ShoppingCart.ShoppingCartItems.Count > 0)
+            {
+                <div class="row">
+                    <div class="col-12">
+                        <form action="#" class="">
+                            <!-- Cart Table -->
+                            <div class="cart-table table-responsive mb--40">
+                                <table class="table">
+                                    <!-- Head Row -->
+                                    <thead>
+                                        <tr>
+                                            <th class="pro-remove"></th>
+                                            <th class="pro-thumbnail">Image</th>
+                                            <th class="pro-title">Product</th>
+                                            <th class="pro-price">Price</th>
+                                            <th class="pro-quantity">Quantity</th>
+                                            <th class="pro-subtotal">Total</th>
+                                        </tr>
 
-                                </thead>
-                                <tbody>
-                                    <!-- Product Row -->
-                                    <tr>
-                                        <td class="pro-remove"><a href="#"><i class="far fa-trash-alt"></i></a></td>
-                                        <td class="pro-thumbnail"><a href="#"><img src="image/products/home-1/product-1.jpg" alt="Product"></a></td>
-                                        <td class="pro-title"><a href="#">Rinosin Glasses</a></td>
-                                        <td class="pro-price"><span>$395.00</span></td>
-                                        <td class="pro-quantity">
-                                            <div class="pro-qty">
-                                                <div class="count-input-block">
-                                                    <input type="number" class="form-control text-center" value="1">
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var product in Model.ShoppingCart.ShoppingCartItems)
+                                        {
+                                            <tr>
+                                                <td class="pro-remove"><a asp-action="RemoveFromCart" asp-route-id="@product.Product.Id"><i class="far fa-trash-alt"></i></a></td>
+                                                <td class="pro-thumbnail">
+                                                    <a asp-controller="Products" asp-action="Details" asp-route-id="@product.Product.Id">
+                                                        <img src="@product.Product.Images.FirstOrDefault().ImageUrl" alt="Product">
+                                                    </a>
+                                                </td>
+                                                <td class="pro-title"><a asp-controller="Products" asp-action="Details" asp-route-id="@product.Product.Id">@product.Product.Name</a></td>
+                                                <td class="pro-price"><span>@product.Product.Price Лв.</span></td>
+                                                <td class="pro-quantity">
+                                                    <div class="pro-qty">
+                                                        <div class="count-input-block">
+                                                            <input type="number" class="form-control text-center" value="@product.Quantity">
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                                <td class="pro-subtotal"><span>@product.TotalPrice Лв.</span></td>
+                                            </tr>
+                                        }
+                                        <!-- Discount Row  -->
+                                        <tr>
+                                            <td colspan="6" class="actions">
+
+                                                <div class="coupon-block" style="display:none">
+                                                    <div class="coupon-text">
+                                                        <label for="coupon_code">Coupon:</label>
+                                                        <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Coupon code">
+                                                    </div>
+                                                    <div class="coupon-btn">
+                                                        <input type="submit" class="btn-black" name="apply_coupon" value="Apply coupon">
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td class="pro-subtotal"><span>$395.00</span></td>
-                                    </tr>
-                                    <!-- Product Row -->
-                                    <tr>
-                                        <td class="pro-remove"><a href="#"><i class="far fa-trash-alt"></i></a></td>
-                                        <td class="pro-thumbnail"><a href="#"><img src="image/products/home-1/product-2.jpg" alt="Product"></a></td>
-                                        <td class="pro-title"><a href="#">Rinosin Glasses</a></td>
-                                        <td class="pro-price"><span>$395.00</span></td>
-                                        <td class="pro-quantity">
-                                            <div class="pro-qty">
-                                                <div class="count-input-block">
-                                                    <input type="number" class="form-control text-center" value="1">
+
+                                                <div class="update-block text-right">
+                                                    <input type="submit" class="btn-black" name="update_cart" value="Update cart">
+                                                    <input type="hidden" id="_wpnonce" name="_wpnonce" value="05741b501f"><input type="hidden" name="_wp_http_referer"
+                                                                                                                                 value="/petmark/cart/">
                                                 </div>
-                                            </div>
-                                        </td>
-                                        <td class="pro-subtotal"><span>$395.00</span></td>
-                                    </tr>
-                                    <!-- Discount Row  -->
-                                    <tr>
-                                        <td colspan="6" class="actions">
+                                            </td>
+                                        </tr>
 
-                                            <div class="coupon-block">
-                                                <div class="coupon-text">
-                                                    <label for="coupon_code">Coupon:</label>
-                                                    <input type="text" name="coupon_code" class="input-text" id="coupon_code" value="" placeholder="Coupon code">
-                                                </div>
-                                                <div class="coupon-btn">
-                                                    <input type="submit" class="btn-black" name="apply_coupon" value="Apply coupon">
-                                                </div>
-                                            </div>
+                                    </tbody>
+                                </table>
+                            </div>
 
-                                            <div class="update-block text-right">
-                                                <input type="submit" class="btn-black" name="update_cart" value="Update cart">
-                                                <input type="hidden" id="_wpnonce" name="_wpnonce" value="05741b501f"><input type="hidden" name="_wp_http_referer"
-                                                                                                                             value="/petmark/cart/">
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </form>
+                        </form>
+                    </div>
                 </div>
-            </div>
+            }
+
+            else
+            {
+                <h1 class="mb--120">YOUR SHOPPING CART IS EMPTY.</h1>
+            }
+
         </div>
     </div>
 
     <div class="cart-section-2 sp-inner-page--bottom">
         <div class="container">
             <div class="row">
-                <div class="col-lg-6 col-12 mb--30 mb-lg-0">
+                <div class="col-lg-6 col-12 mb--30 mb-lg-0" style="display:none">
                     <!-- slide Block 5 / Normal Slider -->
                     <div class="cart-block-title">
                         <h2>YOU MAY BE INTERESTED IN…</h2>
@@ -304,9 +306,9 @@
                     <div class="cart-summary">
                         <div class="cart-summary-wrap">
                             <h4><span>Cart Summary</span></h4>
-                            <p>Sub Total <span class="text-primary">$1250.00</span></p>
+                            <p>Sub Total <span class="text-primary">@Model.ShoppingCartTotal Лв.</span></p>
                             <p>Shipping Cost <span class="text-primary">$00.00</span></p>
-                            <h2>Grand Total <span class="text-primary">$1250.00</span></h2>
+                            <h2>Grand Total <span class="text-primary">@Model.ShoppingCartTotal Лв.</span></h2>
                         </div>
                         <div class="cart-summary-button">
                             <a href="checkout.html" class="checkout-btn c-btn">Checkout</a>
@@ -318,4 +320,8 @@
         </div>
     </div>
 </main>
-<!-- Cart Page End -->
+<!-- Cart Page End -->@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}

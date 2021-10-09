@@ -87,7 +87,7 @@
                                 <a href="/Contact">Contact</a>
                             </li>
                             <li class="menu-item">
-                                <a href="/Cart">Cart</a>
+                                <a asp-controller="ShoppingCart" asp-action="Index">Cart</a>
                             </li>
                             <!--Products-->
                             @if (User.IsInRole(WebConstants.AdministratorRoleName))
