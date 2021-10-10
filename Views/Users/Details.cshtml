@@ -151,15 +151,31 @@
 
                                     <address>
                                         <p><strong>@Model.FirstName @Model.LastName</strong></p>
-                                        <p>@Model.Adress</p>
+                                        <p>@Model.Address</p>
                                     </address>
 
                                     <form method="post" enctype="multipart/form-data">
                                         <div class="row">
                                             <div class="col-lg-6 col-12  mb--30">
-                                                <label asp-for="Adress">Adress</label>
-                                                <input asp-for="Adress" class="form-control">
-                                                <span asp-validation-for="Adress" class="text-danger"></span>
+                                                <label asp-for="Address.Country">Country</label>
+                                                <select asp-for="Address.Country" class="form-control">
+                                                   
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-6 col-12  mb--30">
+                                                <label asp-for="Address.ZipCode">ZipCode</label>
+                                                <input asp-for="Address.ZipCode" class="form-control">
+                                                <span asp-validation-for="Address.ZipCode" class="text-danger"></span>
+                                            </div>
+                                            <div class="col-lg-6 col-12  mb--30">
+                                                <label asp-for="Address.Town">Town</label>
+                                                <input asp-for="Address.Town" class="form-control">
+                                                <span asp-validation-for="Address.Town" class="text-danger"></span>
+                                            </div>
+                                            <div class="col-lg-6 col-12  mb--30">
+                                                <label asp-for="Address.AddressLine">AddressLine</label>
+                                                <input asp-for="Address.AddressLine" class="form-control">
+                                                <span asp-validation-for="Address.AddressLine" class="text-danger"></span>
                                             </div>
 
                                             <div class="col-12">

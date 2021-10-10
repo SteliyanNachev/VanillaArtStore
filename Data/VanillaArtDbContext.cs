@@ -17,6 +17,7 @@
         public DbSet<Review> Reviews { get; init; }
         public DbSet<Image> Images { get; init; }
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; init; }
+        public DbSet<Address> Addresses { get; init; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -47,6 +48,7 @@
                 .WithMany(c => c.Images)
                 .HasForeignKey(c => c.ProductId)
                 .OnDelete(DeleteBehavior.Restrict);
+
 
             base.OnModelCreating(builder);
         }

@@ -67,7 +67,7 @@
             
             [Display(Name = "Adress")]
             [MaxLength(UserAdressMaxLenght)]
-            public string Adress { get; set; }
+            public Address Adress { get; set; }
 
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]            
@@ -99,7 +99,7 @@
                     PhoneNumber = Input.PhoneNumber,
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,
-                    Adress = Input.Adress
+                    Address = Input.Adress
                 };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)

@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using VanillaArtStore.Data.Models;
 
 namespace VanillaArtStore.Models.Users
 {
@@ -8,7 +9,9 @@ namespace VanillaArtStore.Models.Users
 
         public string LastName { get; set; }
 
-        public string Adress { get; set; }
+        //public string Adress { get; set; }
+
+        public Address Address { get; set; }
 
         public string Email { get; set; }
 

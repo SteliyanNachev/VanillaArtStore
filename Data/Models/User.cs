@@ -13,8 +13,9 @@
         [MaxLength(UserNameMaxLenght)]
         public string LastName { get; set; }
 
-        [MaxLength(UserAdressMaxLenght)]
-        public string Adress { get; set; }
+        public int AddressId { get; set; }
+
+        public Address Address { get; set; }
 
         public  IEnumerable<Review> Reviews { get; set; }
     }

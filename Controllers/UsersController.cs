@@ -30,7 +30,7 @@
                 FirstName = currentUser.FirstName,
                 LastName = currentUser.LastName,
                 UserName = currentUser.UserName,
-                Adress = currentUser.Adress,
+                Address = currentUser.Address,
                 Email = currentUser.Email,
                 PhoneNumber = currentUser.PhoneNumber
             };
@@ -73,9 +73,9 @@
                 currentUser.PhoneNumber = form.PhoneNumber;
             }
 
-            if (form.Adress != null && form.Adress != currentUser.Adress)
+            if (form.Address != null && form.Address != currentUser.Address)
             {
-                currentUser.Adress = form.Adress;
+                currentUser.Address = form.Address;
             }
 
             if (form.NewPassword == form.ConfirmPassword && form.NewPassword != null)

@@ -28,5 +28,17 @@
             public const int UserAdressMaxLenght = 120;
             public const int UserPhoneMaxLenght = 20;
         }
+
+        public class Address
+        {
+            public const int AddressLineMaxLenght = 500;
+            public const int TownMaxLenght = 30;
+            public const int ZipCodeMaxLenght = 30;
+        }
+
+        public class Country
+        {
+            public const int CountryNameMaxLenght = 30;
+        }
     }
 }
