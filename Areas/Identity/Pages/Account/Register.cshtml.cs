@@ -17,6 +17,8 @@
     using VanillaArtStore.Data.Models;
     using static VanillaArtStore.Data.DataConstants.User;
 
+    using static VanillaArtStore.Infrastructure.AdressExtentions;
+
     [AllowAnonymous]
     public class RegisterModel : PageModel
     {
@@ -44,6 +46,8 @@
 
         public IList<AuthenticationScheme> ExternalLogins { get; set; }
 
+        public List<string> Countries { get; set; } = GetCountryList();
+
         public class InputModel
         {
             [Required]
@@ -65,9 +69,7 @@
             [MaxLength(UserPhoneMaxLenght)]
             public string PhoneNumber { get; set; }
             
-            [Display(Name = "Adress")]
-            [MaxLength(UserAdressMaxLenght)]
-            public Address Adress { get; set; }
+            public Address Address { get; set; }
 
             [Required]
             [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]            
@@ -79,6 +81,7 @@
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
         }
 
         public async Task OnGetAsync(string returnUrl = null)
@@ -99,7 +102,14 @@
                     PhoneNumber = Input.PhoneNumber,
                     FirstName = Input.FirstName,
                     LastName = Input.LastName,
-                    Address = Input.Adress
+                    Address = new Address
+                    {
+                        Country = Input.Address.Country,
+                        Town = Input.Address.Town,
+                        ZipCode = Input.Address.ZipCode,
+                        AddressLine = Input.Address.AddressLine
+                    },
+                    UserName = Input.FirstName + Input.LastName
                 };
                 var result = await _userManager.CreateAsync(user, Input.Password);
                 if (result.Succeeded)

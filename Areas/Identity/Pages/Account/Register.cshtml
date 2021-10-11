@@ -39,10 +39,30 @@
                             <input asp-for="Input.PhoneNumber" class="form-control mb-0" type="number" />
                             <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
                         </div>
+
                         <div class="col-md-12 col-12 mb--20">
-                            <label asp-for="Input.Adress"></label>
-                            <input asp-for="Input.Adress" class="form-control mb-0" type="text" />
-                            <span asp-validation-for="Input.Adress" class="text-danger"></span>
+                            <label asp-for="Input.Address.Country">Country</label>
+                            <select asp-for="Input.Address.Country" class="form-control">
+                                @foreach (var country in Model.Countries)
+                                {
+                                    <option value="@country">@country</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-12 col-12 mb--20">
+                            <label asp-for="Input.Address.Town">Town</label>
+                            <input asp-for="Input.Address.Town" class="form-control">
+                            <span asp-validation-for="Input.Address.Town" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-12 col-12 mb--20">
+                            <label asp-for="Input.Address.ZipCode">ZipCode</label>
+                            <input asp-for="Input.Address.ZipCode" class="form-control">
+                            <span asp-validation-for="Input.Address.ZipCode" class="text-danger"></span>
+                        </div>
+                        <div class="col-md-12 col-12 mb--20">
+                            <label asp-for="Input.Address.AddressLine">AddressLine</label>
+                            <input asp-for="Input.Address.AddressLine" class="form-control">
+                            <span asp-validation-for="Input.Address.AddressLine" class="text-danger"></span>
                         </div>
                         <div class="col-md-12 col-12 mb--20">
                             <label asp-for="Input.Email"></label>
