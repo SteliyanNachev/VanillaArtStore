@@ -7,6 +7,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+    using VanillaArtStore.Data;
     using VanillaArtStore.Data.Models;
     using VanillaArtStore.Models.Users;
 
@@ -15,22 +16,27 @@
     {
         private readonly UserManager<User> userManager;
         private readonly SignInManager<User> signInManager;
+        private readonly VanillaArtDbContext data;
 
-        public UsersController(UserManager<User> userManager, SignInManager<User> signInManager)
+        public UsersController(UserManager<User> userManager, SignInManager<User> signInManager, VanillaArtDbContext data)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
+            this.data = data;
         }
 
         public async Task<IActionResult> Details()
         {
             var currentUser = await this.userManager.GetUserAsync(this.User);
+            Address userAddress = this.data.Addresses.Where(a => a.UserId == currentUser.Id).FirstOrDefault();
+            currentUser.Address = userAddress;
+            
             var user = new UserDetailsFormModel
             {
                 FirstName = currentUser.FirstName,
                 LastName = currentUser.LastName,
                 UserName = currentUser.UserName,
-                Address = currentUser.Address,
+                Address = userAddress,
                 Email = currentUser.Email,
                 PhoneNumber = currentUser.PhoneNumber
             };
@@ -47,6 +53,9 @@
             }
 
             var currentUser = await this.userManager.GetUserAsync(this.User);
+
+
+            currentUser.Address = this.data.Addresses.Where(a => a.UserId == currentUser.Id).FirstOrDefault();
 
             if (form.FirstName != null && form.FirstName != currentUser.FirstName)
             {
@@ -73,9 +82,23 @@
                 currentUser.PhoneNumber = form.PhoneNumber;
             }
 
-            if (form.Address != null && form.Address != currentUser.Address)
+            if (form.Address.Country != null && form.Address.Country != currentUser.Address.Country)
             {
-                currentUser.Address = form.Address;
+                currentUser.Address.Country = form.Address.Country;
+            }
+
+            if (form.Address.Town != null && form.Address.Town != currentUser.Address.Town)
+            {
+                currentUser.Address.Town = form.Address.Town;
+            }
+
+            if (form.Address.ZipCode != currentUser.Address.ZipCode)
+            {
+                currentUser.Address.ZipCode = form.Address.ZipCode;
+            }
+            if (form.Address.AddressLine != null && form.Address.AddressLine != currentUser.Address.AddressLine)
+            {
+                currentUser.Address.AddressLine = form.Address.AddressLine;
             }
 
             if (form.NewPassword == form.ConfirmPassword && form.NewPassword != null)

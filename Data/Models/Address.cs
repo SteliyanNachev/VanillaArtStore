@@ -20,8 +20,6 @@
         [MaxLength(TownMaxLenght)]
         public string Town { get; set; }
 
-        [Required]
-        [MaxLength(ZipCodeMaxLenght)]
         public int ZipCode { get; set; }
         
         [Required]

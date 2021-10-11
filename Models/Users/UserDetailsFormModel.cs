@@ -1,5 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using VanillaArtStore.Data.Models;
+
+using static VanillaArtStore.Infrastructure.AdressExtentions;
 
 namespace VanillaArtStore.Models.Users
 {
@@ -30,6 +33,8 @@ namespace VanillaArtStore.Models.Users
         [DataType(DataType.Password)]
         [Compare("NewPassword", ErrorMessage = "The new password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+
+        public List<string> Countries { get; set; } = GetCountryList();
 
     }
 }
