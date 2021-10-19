@@ -5,28 +5,35 @@
     using Microsoft.AspNetCore.Mvc;
     using System.Diagnostics;
     using System.Linq;
-    using VanillaArtStore.Data;
     using VanillaArtStore.Models;
     using VanillaArtStore.Models.Products;
+    using VanillaArtStore.Services.Products;
 
     public class HomeController : Controller
     {
-        private readonly VanillaArtDbContext data;
         private readonly IMapper mapper;
+        private readonly IProductService products;
 
-        public HomeController(VanillaArtDbContext data, IMapper mapper)
+        public HomeController(IMapper mapper, IProductService products)
         {
-            this.data = data;
             this.mapper = mapper;
+            this.products = products;
         }
 
         public IActionResult Index()
         {
-            var products = this.data
-                .Products
-                .OrderByDescending(p => p.Id)
-                .ProjectTo<ProductListingViewModel>(this.mapper.ConfigurationProvider)
-                .Take(8)
+            var products = this.products.GetLatestProducts()
+                .Select(p => new ProductListingViewModel
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Price = p.Price,
+                    Description = p.Description,
+                    InStockQuantity = p.InStockQuantity,
+                    Category = p.Category,
+                    Images = p.Images,
+                    Reviews = p.Reviews
+                })
                 .ToList();
 
             return View(products);

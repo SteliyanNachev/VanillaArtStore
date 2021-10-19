@@ -254,5 +254,25 @@ namespace VanillaArtStore.Services.Products
         public bool CategoryExists(int categoryId)
             => this.data.Categories.Any(c => c.Id == categoryId);
 
+        public IEnumerable<ProductServiceModel> GetLatestProducts()
+        {
+            var latestProducts = this.data
+                .Products
+                .OrderByDescending(p => p.Id)
+                .Select(p => new ProductServiceModel
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Description = p.Description,
+                    Price = p.Price,
+                    InStockQuantity = p.InStockQuantity,
+                    Category = p.Category.Name,
+                    Images = p.Images
+                })
+                .Take(8)
+                .ToList();
+
+            return latestProducts;
+        }
     }
 }

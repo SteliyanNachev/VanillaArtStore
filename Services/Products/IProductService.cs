@@ -46,5 +46,7 @@
         bool CategoryExists(int categoryId);
 
         IEnumerable<Image> GetImages(int productId);
+
+        IEnumerable<ProductServiceModel> GetLatestProducts();
     }
 }
