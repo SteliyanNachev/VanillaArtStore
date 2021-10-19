@@ -13,6 +13,8 @@ namespace VanillaArtStore.Infrastructure
         {
             this.CreateMap<Product, ProductListingViewModel>();
             this.CreateMap<Product, ProductServiceModel>();
+            this.CreateMap<ProductServiceModel, ProductListingViewModel>();
+            this.CreateMap<ProductListingViewModel, ProductServiceModel>();
             this.CreateMap<ProductFormModel, ProductServiceModel>();
             this.CreateMap<ProductServiceModel, ProductFormModel>();
             this.CreateMap<ImageInputModel, Image>();

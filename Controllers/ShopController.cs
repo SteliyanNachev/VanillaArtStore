@@ -17,14 +17,10 @@
         private readonly IProductService products;
         private readonly IMapper mapper;
 
-        //Make it with service
-        private readonly VanillaArtDbContext data;
-
-        public ShopController(IProductService products, IMapper mapper, VanillaArtDbContext data)
+        public ShopController(IProductService products, IMapper mapper)
         {
             this.products = products;
             this.mapper = mapper;
-            this.data = data;
         }
 
         public IActionResult Index([FromQuery] AllProductsQueryModel query)
@@ -55,11 +51,8 @@
         {
             ViewBag.LayoutSecond = true;
 
-            var products1 = new List<ProductServiceModel>();
-
-            var products = this.data
-                .Products
-                .OrderByDescending(p => p.Id)
+            var products = this.products
+                .GetAllProducts()
                 .ProjectTo<ProductListingViewModel>(this.mapper.ConfigurationProvider)
                 .Take(8)
                 .ToList();

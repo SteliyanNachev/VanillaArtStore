@@ -274,5 +274,25 @@ namespace VanillaArtStore.Services.Products
 
             return latestProducts;
         }
+
+        public IQueryable<ProductServiceModel> GetAllProducts()
+        {
+            var allProducts = this.data
+                .Products
+                .OrderByDescending(p => p.Id)
+                .Select(p => new ProductServiceModel
+                {
+                    Id = p.Id,
+                    Name = p.Name,
+                    Description = p.Description,
+                    Price = p.Price,
+                    InStockQuantity = p.InStockQuantity,
+                    Category = p.Category.Name,
+                    Images = p.Images
+                })
+                .AsQueryable();
+
+            return allProducts;
+        }
     }
 }

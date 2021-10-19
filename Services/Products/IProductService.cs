@@ -48,5 +48,7 @@
         IEnumerable<Image> GetImages(int productId);
 
         IEnumerable<ProductServiceModel> GetLatestProducts();
+
+        IQueryable<ProductServiceModel> GetAllProducts();
     }
 }
