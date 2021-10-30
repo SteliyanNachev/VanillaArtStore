@@ -3,14 +3,9 @@
     using AutoMapper;
     using AutoMapper.QueryableExtensions;
     using Microsoft.AspNetCore.Mvc;
-    using System;
-    using System.Collections.Generic;
     using System.Linq;
-    using System.Threading.Tasks;
-    using VanillaArtStore.Data;
     using VanillaArtStore.Models.Products;
     using VanillaArtStore.Services.Products;
-    using VanillaArtStore.Services.Products.Models;
 
     public class ShopController : Controller
     {

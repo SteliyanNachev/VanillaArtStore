@@ -9,6 +9,7 @@
     using System.Threading.Tasks;
     using VanillaArtStore.Data;
     using VanillaArtStore.Data.Models;
+    using VanillaArtStore.Services.Products.Models;
     using VanillaArtStore.Services.ShoppingCart.Models;
 
     public class ShoppingCartService : IShoppingCartService
