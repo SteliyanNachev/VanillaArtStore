@@ -18,7 +18,7 @@
         public const int ProductImagesMinCount = 3;
 
         public const int ReviewCommentMaxLenght = 10000;
-        public const int ReviewCommentMinLenght = 10000;
+        public const int ReviewCommentMinLenght = 10;
         public const int ReviewRatingMin = 1;
         public const int ReviewRatingMxn = 5;
 
