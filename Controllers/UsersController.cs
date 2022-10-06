@@ -33,12 +33,25 @@
 
             foreach (var user in allUsersAsQuery)
             {
+                Address userAddress = this.data.Addresses.Where(a => a.UserId == user.Id).FirstOrDefault();
+                user.Address = userAddress;
+                if (user.Address == null)
+                {
+                    user.Address = new Address
+                    {
+                        AddressLine = "No Address",
+                        Country = "No Country",
+                        ZipCode = 0,
+                        Town = "No Town",
+                        UserId = user.Id,
+                    };
+                }
                 var currentUser = new UserDetailsQueryModel
                 {
                     FirstName = user.FirstName,
                     LastName = user.LastName,
                     UserName = user.UserName,
-                    Address = user.Address,
+                    Address = user.Address.AddressLine,
                     Email = user.Email,
                     PhoneNumber = user.PhoneNumber
                 };
