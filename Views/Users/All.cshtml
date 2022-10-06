@@ -1,16 +1,45 @@
 ﻿@model List<UserDetailsQueryModel>
 
-    <section class="bg-image" data-bg="/image/bg-images/bg-header.jpg">
-        <h2 class="sr-only">Site Breadcrumb</h2>
-        <div class="container">
-            <div class="breadcrumb-contents">
-                <nav aria-label="breadcrumb">
-                    <h2 class="page-name">Listing all Products here</h2>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item">All</li>
-                    </ol>
-                </nav>
-            </div>
+<section class="bg-image" data-bg="/image/bg-images/bg-header.jpg">
+    <h2 class="sr-only">Site Breadcrumb</h2>
+    <div class="container">
+        <div class="breadcrumb-contents">
+            <nav aria-label="breadcrumb">
+                <h2 class="page-name">Listing all Products here</h2>
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item">All</li>
+                </ol>
+            </nav>
         </div>
-    </section>
+    </div>
+</section>
+
+<table class="table table-hover table-dark">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            var n = 1;
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <th scope="row">@n</th>
+                    <td>@user.FirstName</td>
+                    <td>@user.LastName</td>
+                    <td>@user.Email</td>
+                    <td>@user.Address</td>
+                </tr>
+                n++;
+            }
+        }
+    </tbody>
+</table>
+
