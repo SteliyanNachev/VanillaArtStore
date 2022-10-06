@@ -25,6 +25,30 @@
             this.data = data;
         }
 
+        public async Task<IActionResult> All()
+        {
+            var allUsersAsQuery =  this.userManager.Users.ToList();
+
+            var allUsers = new List<UserDetailsQueryModel>();
+
+            foreach (var user in allUsersAsQuery)
+            {
+                var currentUser = new UserDetailsQueryModel
+                {
+                    FirstName = user.FirstName,
+                    LastName = user.LastName,
+                    UserName = user.UserName,
+                    Address = user.Address,
+                    Email = user.Email,
+                    PhoneNumber = user.PhoneNumber
+                };
+
+                allUsers.Add(currentUser);
+            }
+
+            return this.View(allUsers);
+        }
+
         public async Task<IActionResult> Details()
         {
             var currentUser = await this.userManager.GetUserAsync(this.User);

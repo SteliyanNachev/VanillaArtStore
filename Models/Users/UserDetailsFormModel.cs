@@ -1,8 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using static VanillaArtStore.Infrastructure.AdressExtentions;
+
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using VanillaArtStore.Data.Models;
-
-using static VanillaArtStore.Infrastructure.AdressExtentions;
 
 namespace VanillaArtStore.Models.Users
 {
