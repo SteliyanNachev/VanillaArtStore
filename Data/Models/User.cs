@@ -18,5 +18,7 @@
         public Address Address { get; set; }
 
         public  IEnumerable<Review> Reviews { get; set; }
+
+        public bool HasDiscount { get; set; } = false;
     }
 }
