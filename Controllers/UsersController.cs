@@ -53,7 +53,8 @@
                     UserName = user.UserName,
                     Address = user.Address.AddressLine,
                     Email = user.Email,
-                    PhoneNumber = user.PhoneNumber
+                    PhoneNumber = user.PhoneNumber,
+                    HasDiscount = user.HasDiscount
                 };
 
                 allUsers.Add(currentUser);
@@ -169,6 +170,36 @@
             }
 
             return RedirectToAction("Details", "Users"); 
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Subscribe(string email)
+        {
+            var currentUser = await this.userManager.GetUserAsync(this.User);
+
+            if (email == currentUser.Email)
+            {
+                currentUser.HasDiscount = true;
+
+                var result = await this.userManager.UpdateAsync(currentUser);
+
+                if (!result.Succeeded)
+                {
+                    var errors = result.Errors.Select(e => e.Description);
+
+                    foreach (var error in errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error);
+                    }
+
+                    return View(errors);
+
+                }
+
+                return RedirectToAction("Index", "Home");
+            };
+
+            return RedirectToAction("Index", "Home");
         }
     }
 }

@@ -75,7 +75,8 @@
                        LastName = "Nachev",
                        UserName = "admin@gmail.com",
                        PhoneNumber = "0898460866",
-                       Email = "admin@gmail.com"
+                       Email = "admin@gmail.com",
+                       HasDiscount=true
                     };
 
                     await userManager.CreateAsync(user, adminPass);
