@@ -22,6 +22,11 @@
         public const int ReviewRatingMin = 1;
         public const int ReviewRatingMxn = 5;
 
+        public const int MessageUsernameMinLenght = 3;
+        public const int MessageUsernameMaxLenght = 40;
+        public const int MessageSubjectMaxLenght = 500;
+        public const int MessageMaxLenght = 50000;
+
         public class User
         {
             public const int UserNameMaxLenght = 20;

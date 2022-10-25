@@ -389,13 +389,15 @@
                                 <div class="newsletter-content">
                                     <p>Special Ofers For Subscribers</p>
                                     <h2 class="title">Ten Percent Member Discount</h2>
-                                    <p>Mirum est notare quam littera gothica, quam nunc putamus parum claram anteposuerit litterarum formas.</p>
                                     <div class="newsletter-subscription">
-                                        <form id="mc-form" class="mc-form footer-newsletter">
+                                        <form asp-controller="Users" asp-action="Subscribe" method="post" class="mc-form footer-newsletter">
                                             <div class="newsletter-input">
 
-                                                <input placeholder="Your Email Adress" id="mc-email" type="email" autocomplete="off" name="EMAIL">
-                                                <button class="subscribe-btn" id="mc-submit"><span>Subscribe</span></button>
+                                                <input placeholder="Your Email Adress" id="email" type="email"
+                                                       autocomplete="off" name="EMAIL">
+                                                <button type="submit" class="subscribe-btn">
+                                                    <span>Subscribe</span>
+                                                </button>
                                             </div>
                                         </form>
                                     </div>
