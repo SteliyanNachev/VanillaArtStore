@@ -1,16 +1,11 @@
-﻿namespace VanillaArtStore.Services.Messages
-{
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using VanillaArtStore.Models.Messages;
-    using VanillaArtStore.Services.Messages.Models;
+﻿using VanillaArtStore.Services.Messages.Models;
 
-    interface IMessageService
+namespace VanillaArtStore.Services.Messages
+{
+
+    public interface IMessageService
     {
-        MessageServiceModel SendMessage(
-            int id,
+        bool SendMessage(
             string userName,
             string userEmail,
             string subject, 

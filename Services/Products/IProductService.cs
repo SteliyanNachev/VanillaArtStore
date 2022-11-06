@@ -1,13 +1,14 @@
-﻿namespace VanillaArtStore.Services.Products
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using VanillaArtStore.Data.Models;
+using VanillaArtStore.Models.Images;
+using VanillaArtStore.Models.Products;
+using VanillaArtStore.Services.Products.Models;
+
+namespace VanillaArtStore.Services.Products
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
-    using VanillaArtStore.Data.Models;
-    using VanillaArtStore.Models.Images;
-    using VanillaArtStore.Models.Products;
-    using VanillaArtStore.Services.Products.Models;
 
     public interface IProductService
     {
