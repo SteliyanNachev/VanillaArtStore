@@ -20,5 +20,7 @@
         public  IEnumerable<Review> Reviews { get; set; }
 
         public bool HasDiscount { get; set; } = false;
+
+        public ICollection<Message> Messages { get; set; } = new HashSet<Message>();
     }
 }

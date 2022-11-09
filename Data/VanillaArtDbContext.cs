@@ -49,6 +49,13 @@
                 .HasForeignKey(c => c.ProductId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            builder
+                .Entity<Message>()
+                .HasOne(c => c.User)
+                .WithMany(c => c.Messages)
+                .HasForeignKey(c => c.UserId)
+                .OnDelete(DeleteBehavior.Restrict);
+
 
             base.OnModelCreating(builder);
         }
