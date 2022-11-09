@@ -16,12 +16,12 @@
 
         [Required]
         [EmailAddress]
-        public string Email { get; init; }
+        public string UserEmail { get; init; }
 
         [MaxLength(MessageSubjectMaxLenght)]
         public string Subject { get; init; }
 
-
+        [Required]
         [MaxLength(MessageMaxLenght)]
         public string Message { get; init; }
 

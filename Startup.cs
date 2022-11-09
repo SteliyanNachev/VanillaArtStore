@@ -13,6 +13,7 @@ namespace VanillaArtStore
     using VanillaArtStore.Data;
     using VanillaArtStore.Data.Models;
     using VanillaArtStore.Infrastructure;
+    using VanillaArtStore.Services.Messages;
     using VanillaArtStore.Services.Products;
     using VanillaArtStore.Services.ShoppingCart;
 
@@ -54,6 +55,7 @@ namespace VanillaArtStore
 
             services.AddTransient<IProductService,ProductService>();
             services.AddTransient<IShoppingCartService,ShoppingCartService>();
+            services.AddTransient<IMessageService, MessageService>();
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(sp => ShoppingCartService.GetCart(sp));

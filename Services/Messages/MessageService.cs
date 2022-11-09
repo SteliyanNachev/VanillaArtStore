@@ -7,16 +7,17 @@
     using System.Linq;
     using System.Threading.Tasks;
     using VanillaArtStore.Data;
+    using VanillaArtStore.Data.Models;
     using VanillaArtStore.Services.Messages.Models;
     using static VanillaArtStore.Data.DataConstants;
 
     public class MessageService : IMessageService
     {
         private readonly VanillaArtDbContext data;
-        private readonly UserManager<User> user;
+        private readonly UserManager<Data.Models.User> user;
         private readonly IMapper mapper;
 
-        public MessageService(VanillaArtDbContext data, UserManager<User> user, IMapper mapper)
+        public MessageService(VanillaArtDbContext data, UserManager<Data.Models.User> user, IMapper mapper)
         {
             this.data = data;
             this.user = user;
@@ -25,6 +26,25 @@
 
         bool IMessageService.SendMessage(string userName, string userEmail, string subject, string message)
         {
+            var existingUser = this.user.FindByEmailAsync(userEmail);
+            
+            if (existingUser == null)
+            {
+                var messageData = new Message
+                {
+                    UserName = userName,
+                    UserEmail = userEmail,
+                    Subject = subject,
+                    MessageText = message
+                };
+
+                this.data.Messages.Add(messageData);
+                this.data.SaveChanges();
+
+                return true;
+            }
+
+
             throw new NotImplementedException();
         }
     }

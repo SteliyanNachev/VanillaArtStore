@@ -18,6 +18,7 @@
         public DbSet<Image> Images { get; init; }
         public DbSet<ShoppingCartItem> ShoppingCartItems { get; init; }
         public DbSet<Address> Addresses { get; init; }
+        public DbSet<Message> Messages { get; init; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
