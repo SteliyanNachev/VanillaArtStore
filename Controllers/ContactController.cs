@@ -22,7 +22,7 @@
         }
 
         [HttpPost]
-        public IActionResult SendEmail(SendMessageFormModel model)
+        public IActionResult Index(SendMessageFormModel model)
         {
             var sendMessageResult = this.messages.SendMessage(model.UserName,model.UserEmail,model.Subject,model.Message);
 

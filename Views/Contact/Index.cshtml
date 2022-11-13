@@ -1,3 +1,5 @@
+@model SendMessageFormModel
+
 <!DOCTYPE html>
 <html lang="zxx">
 <head>
@@ -91,36 +93,35 @@
                         <div class="contact_form">
                             <h3 class="ct_title">Send Us a Message</h3>
 
-                            <form id="contact-form" action="php/mail.php" method="post" class="contact-form">
+                            <form method="post">
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Your Name <span class="required">*</span></label>
-                                            <input type="text" name="customerName" id="customername" class="form-control" required>
+                                            <label asp-for="UserName">Your Name <span class="required">*</span></label>
+                                            <input asp-for="UserName" type="text" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Your Email <span class="required">*</span></label>
-                                            <input type="email" name="customerEmail" id="customerEmail" class="form-control" required>
+                                            <label asp-for="UserEmail">Your Email <span class="required">*</span></label>
+                                            <input asp-for="UserEmail"type="email" class="form-control" required>
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Subject</label>
-                                            <input type="text" name="contactSubject" class="form-control" id="contactSubject">
+                                            <label asp-for="Subject">Subject</label>
+                                            <input asp-for="Subject"type="text" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-lg-12">
                                         <div class="form-group">
-                                            <label>Your Message</label>
-                                            <textarea name="contactMessage" class="form-control" id="contactMessage"></textarea>
+                                            <label asp-for="Message" >Your Message</label>
+                                            <textarea asp-for="Message" class="form-control"></textarea>
                                         </div>
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="form-btn">
-                                            <button type="submit" value="submit" id="submit" class="btn btn-black"
-                                                    name="submit">
+                                            <button type="submit" class="btn btn-black">
                                                 send
                                             </button>
                                         </div>
