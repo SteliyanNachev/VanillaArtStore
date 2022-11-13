@@ -27,8 +27,8 @@
         bool IMessageService.SendMessage(string userName, string userEmail, string subject, string message)
         {
             var existingUser = this.user.FindByEmailAsync(userEmail);
-            
-            if (existingUser == null)
+
+            if (existingUser.Result == null)
             {
                 var messageData = new Message
                 {
@@ -43,9 +43,25 @@
 
                 return true;
             }
+            else
+            {
+                var messageData = new Message
+                {
+                    UserName = userName,
+                    UserEmail = userEmail,
+                    Subject = subject,
+                    MessageText = message,
+                    UserId = existingUser.Result.Id
+                };
+
+                this.data.Messages.Add(messageData);
+                this.data.SaveChanges();
+
+                return true;
+            }
 
 
-            throw new NotImplementedException();
+            return false;
         }
     }
 }

@@ -26,7 +26,6 @@
         {
             var sendMessageResult = this.messages.SendMessage(model.UserName,model.UserEmail,model.Subject,model.Message);
 
-
             return RedirectToAction("Index");
         }
     }
