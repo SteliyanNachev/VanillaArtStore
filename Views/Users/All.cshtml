@@ -5,7 +5,7 @@
     <div class="container">
         <div class="breadcrumb-contents">
             <nav aria-label="breadcrumb">
-                <h2 class="page-name">Listing all Products here</h2>
+                <h2 class="page-name">Listing all Users here</h2>
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#">Home</a></li>
                     <li class="breadcrumb-item">All</li>
@@ -24,6 +24,7 @@
             <th scope="col">Email</th>
             <th scope="col">Address</th>
             <th scope="col">Has discount</th>
+            <th scope="col">Messages</th>
         </tr>
     </thead>
     <tbody>
@@ -38,6 +39,7 @@
                     <td>@user.Email</td>
                     <td>@user.Address</td>
                     <td>@user.HasDiscount</td>
+                    <td>@user.Messages.Count</td>
                 </tr>
                 n++;
             }

@@ -24,6 +24,13 @@
             this.mapper = mapper;
         }
 
+        public ICollection<Message> GetAllUserMessages(string userId)
+        {
+            var messages = this.data.Messages.Where(m => m.UserId == userId).ToList();
+
+            return messages;
+        }
+
         bool IMessageService.SendMessage(string userName, string userEmail, string subject, string message)
         {
             var existingUser = this.user.FindByEmailAsync(userEmail);

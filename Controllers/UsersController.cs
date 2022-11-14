@@ -10,6 +10,7 @@
     using VanillaArtStore.Data;
     using VanillaArtStore.Data.Models;
     using VanillaArtStore.Models.Users;
+    using VanillaArtStore.Services.Messages;
 
     [Authorize]
     public class UsersController : Controller
@@ -17,12 +18,14 @@
         private readonly UserManager<User> userManager;
         private readonly SignInManager<User> signInManager;
         private readonly VanillaArtDbContext data;
+        private readonly IMessageService messages; 
 
-        public UsersController(UserManager<User> userManager, SignInManager<User> signInManager, VanillaArtDbContext data)
+        public UsersController(UserManager<User> userManager, SignInManager<User> signInManager, VanillaArtDbContext data, IMessageService messages)
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.data = data;
+            this.messages = messages;
         }
 
         public async Task<IActionResult> All()
@@ -46,6 +49,9 @@
                         UserId = user.Id,
                     };
                 }
+
+                var currentUserMessages = this.messages.GetAllUserMessages(user.Id);
+
                 var currentUser = new UserDetailsQueryModel
                 {
                     FirstName = user.FirstName,
@@ -54,7 +60,8 @@
                     Address = user.Address.AddressLine,
                     Email = user.Email,
                     PhoneNumber = user.PhoneNumber,
-                    HasDiscount = user.HasDiscount
+                    HasDiscount = user.HasDiscount,
+                    Messages = currentUserMessages
                 };
 
                 allUsers.Add(currentUser);
