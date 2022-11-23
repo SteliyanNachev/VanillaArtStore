@@ -86,8 +86,11 @@ namespace VanillaArtStore
                 .UseEndpoints(endpoints =>
                 {
                     endpoints.MapDefaultControllerRoute();
+                    endpoints.MapControllerRoute("areaRoute", "{area:exists}/{controller=Home}/{action=Index}/{userId?}");
+                    endpoints.MapControllerRoute("default", "{controller=Users}/{action=Messages}/{userId?}");
                     endpoints.MapRazorPages();
                 });
+
         }
     }
 }

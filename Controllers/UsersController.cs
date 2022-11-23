@@ -54,6 +54,7 @@
 
                 var currentUser = new UserDetailsQueryModel
                 {
+                    UserId = user.Id,
                     FirstName = user.FirstName,
                     LastName = user.LastName,
                     UserName = user.UserName,
@@ -70,6 +71,13 @@
             return this.View(allUsers);
         }
 
+        [Route("Messages/{userId}")]
+        public async Task<IActionResult> Messages(string userId)
+        {
+            var userMessages = this.messages.GetAllUserMessages(userId);
+
+            return this.View(userMessages);
+        }
         public async Task<IActionResult> Details()
         {
             var currentUser = await this.userManager.GetUserAsync(this.User);
